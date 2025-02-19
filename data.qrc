@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="images">
+    <file>images/completada.png</file>
+    <file>images/reloj.png</file>
+    <file>images/gato.png</file>
+    <file>images/perro.png</file>
+    <file>images/dinero.png</file>
+    <file>images/pesos.png</file>
+    <file>images/fondo.png</file>
+    <file>images/fondo2.png</file>
+    <file>images/fondo3.png</file>
+    <file>images/ojo.png</file>
+  </qresource>
+</RCC>

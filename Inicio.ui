@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1260</width>
+    <height>820</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Inicio</string>
+  </property>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>370</y>
+     <width>61</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+QPushButton#pushButton_3 {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(100, 100, 100, 255), stop:1 rgba(60, 60, 60, 255));
+    color: rgba(255, 255, 255, 255);  /* Color del texto en blanco */
+    border-radius: 5px;
+border-image: url(:/images/invisible.png);
+}
+
+QPushButton#pushButton_3:hover {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(150, 150, 150, 255), stop:1 rgba(80, 80, 80, 255));
+}
+
+QPushButton#pushButton_3:pressed {
+    padding-left: 5px;
+    padding-top: 5px;
+    background-color: rgba(120, 120, 120, 255);
+}
+
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>272</y>
+     <width>271</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe MDL2 Assets</family>
+     <pointsize>25</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+     <underline>false</underline>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgba(0,0,0)</string>
+   </property>
+   <property name="text">
+    <string>Usuario:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditContrasenia">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>370</y>
+     <width>521</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>18</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(80, 80, 80, 255);  /* Color de fondo gris oscuro */
+    border: none;
+ 
+    color: rgba(255, 255, 255, 255);  /* Color del texto blanco */
+    padding-bottom: 7px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
+   <property name="placeholderText">
+    <string>Ingrese Contraseña</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>30</y>
+     <width>461</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Palatino Linotype</family>
+     <pointsize>35</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgba(0,0,0)</string>
+   </property>
+   <property name="text">
+    <string>VETERINARIA</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditUsuario">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>280</y>
+     <width>521</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>18</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(80, 80, 80, 255);  /* Color de fondo gris oscuro */
+    border: none;
+ 
+    color: rgba(255, 255, 255, 255);  /* Color del texto blanco */
+    padding-bottom: 7px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="maxLength">
+    <number>32788</number>
+   </property>
+   <property name="placeholderText">
+    <string>Ingrese Usuario</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="forgotPasswordButton">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>660</y>
+     <width>372</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#forgotPasswordButton {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(100, 100, 100, 255), stop:1 rgba(60, 60, 60, 255));
+    color: rgba(255, 255, 255, 255);  /* Color del texto en blanco */
+    border-radius: 5px;
+}
+
+QPushButton#forgotPasswordButton:hover {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(150, 150, 150, 255), stop:1 rgba(80, 80, 80, 255));
+}
+
+QPushButton#forgotPasswordButton:pressed {
+    padding-left: 5px;
+    padding-top: 5px;
+    background-color: rgba(120, 120, 120, 255);
+}
+</string>
+   </property>
+   <property name="text">
+    <string>¿Olvidaste Tu Contraseña?</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>360</y>
+     <width>271</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe MDL2 Assets</family>
+     <pointsize>26</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+     <underline>false</underline>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgba(0,0,0)</string>
+   </property>
+   <property name="text">
+    <string>Contraseña: </string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonIngresar">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>460</y>
+     <width>260</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#pushButtonIngresar {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(100, 100, 100, 255), stop:1 rgba(60, 60, 60, 255));
+    color: rgba(255, 255, 255, 255);  /* Color del texto en blanco */
+    border-radius: 5px;
+}
+
+QPushButton#pushButtonIngresar:hover {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(150, 150, 150, 255), stop:1 rgba(80, 80, 80, 255));
+}
+
+QPushButton#pushButtonIngresar:pressed {
+    padding-left: 5px;
+    padding-top: 5px;
+    background-color: rgba(120, 120, 120, 255);
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Ingresar</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1261</width>
+     <height>821</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MV Boli</family>
+     <pointsize>26</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/images/images/fondo2.png);
+border-top-left-radius: 7px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonVer">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>370</y>
+     <width>61</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+QPushButton#pushButtonVer {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(100, 100, 100, 255), stop:1 rgba(60, 60, 60, 255));
+    color: rgba(255, 255, 255, 255);  /* Color del texto en blanco */
+    border-radius: 5px;
+border-image: url(:/images/images/ojo.png);
+}
+
+QPushButton#pushButtonVer:hover {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(150, 150, 150, 255), stop:1 rgba(80, 80, 80, 255));
+}
+
+QPushButton#pushButtonVer:pressed {
+    padding-left: 5px;
+    padding-top: 5px;
+    background-color: rgba(120, 120, 120, 255);
+}
+
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>label_2</zorder>
+  <zorder>pushButton_3</zorder>
+  <zorder>label_4</zorder>
+  <zorder>lineEditContrasenia</zorder>
+  <zorder>label_3</zorder>
+  <zorder>lineEditUsuario</zorder>
+  <zorder>forgotPasswordButton</zorder>
+  <zorder>label_5</zorder>
+  <zorder>pushButtonIngresar</zorder>
+  <zorder>pushButtonVer</zorder>
+ </widget>
+ <resources>
+  <include location="data.qrc"/>
+ </resources>
+ <connections/>
+</ui>

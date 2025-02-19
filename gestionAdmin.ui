@@ -1,0 +1,4837 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1259</width>
+    <height>822</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Veterinaria</string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: white;</string>
+  </property>
+  <widget class="QWidget" name="widgetTitulo" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1261</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>1271</width>
+     <height>16777215</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #4aa6ff; /* Azul claro */
+
+</string>
+   </property>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>10</y>
+      <width>171</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/icons/Iconos/logo.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>30</y>
+      <width>591</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Veterinaria </string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="widgetBarraVertical" native="true">
+   <property name="geometry">
+    <rect>
+     <x>-10</x>
+     <y>100</y>
+     <width>131</width>
+     <height>751</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #e8e9e8; /* Azul claro */</string>
+   </property>
+   <widget class="QPushButton" name="pushButtonParqueaderoGeneral">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>101</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+    image: url(:/icons/Iconos/Carro.png); /* Imagen en el botón */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>90</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>General</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>210</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Usuarios</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonParqueaderoAsignar">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>130</y>
+      <width>101</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+    image: url(:/icons/Iconos/Carro.png); /* Imagen en el botón */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>330</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Tarifas</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonParqueaderoTarifas">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>250</y>
+      <width>101</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+    image: url(:/icons/Iconos/Carro.png); /* Imagen en el botón */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>450</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Contaduria</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonParqueaderoContaduria">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>370</y>
+      <width>101</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+    image: url(:/icons/Iconos/Carro.png); /* Imagen en el botón */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>570</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Propietarios</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonParqueaderoPropietarios">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>490</y>
+      <width>101</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+    image: url(:/icons/Iconos/Carro.png); /* Imagen en el botón */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonParqueaderoVisitantes">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>610</y>
+      <width>101</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+    image: url(:/icons/Iconos/Carro.png); /* Imagen en el botón */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>690</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Visitantes</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStackedWidget" name="stackedWidget">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>100</y>
+     <width>1171</width>
+     <height>741</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="pageGeneral">
+    <widget class="QWidget" name="widgetDinero" native="true">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>110</y>
+       <width>321</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget#widgetDinero {
+background-color: #a8daff; /* Azul claro */
+border-radius: 15px; /* Borde redondeado */
+border: 2px solid #808080; /* Borde gris */
+background-position: right center; /* Coloca la imagen en el lado derecho */
+background-repeat: no-repeat; /* No repite la imagen */
+padding-right: 40px; /* Espacio adicional para evitar que el contenido se superponga con la imagen */
+
+}
+
+
+</string>
+     </property>
+     <widget class="QLineEdit" name="lineEditDineroCaja">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>50</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #a8daff; /* Azul claro */
+border: 2px solid #a8daff; /* Borde gris */</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>161</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #a8daff; /* Azul claro */</string>
+      </property>
+      <property name="text">
+       <string>Dinero En Caja Mes </string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>40</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #a8daff; /* Azul claro */
+image: url(:/images/images/dinero.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEditMesDineroEnCaja">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>10</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #a8daff; /* Azul claro */
+border: 2px solid #a8daff; /* Borde gris */</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widgetCarrosEnParqueadero" native="true">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>310</y>
+       <width>281</width>
+       <height>191</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget#widgetCarrosEnParqueadero {
+background-color: #e7e4e4; /* Azul claro */
+border-radius: 15px; /* Borde redondeado */
+border: 2px solid #808080; /* Borde gris */
+background-position: right center; /* Coloca la imagen en el lado derecho */
+background-repeat: no-repeat; /* No repite la imagen */
+padding-right: 40px; /* Espacio adicional para evitar que el contenido se superponga con la imagen */
+
+}
+
+
+</string>
+     </property>
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>10</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #e7e4e4; /* Azul claro */</string>
+      </property>
+      <property name="text">
+       <string>Citas Completadas</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>50</y>
+        <width>151</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #e7e4e4; /* Azul claro */
+image: url(:/images/images/completada.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLCDNumber" name="lcdNumberCitasCompletadas">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>150</y>
+        <width>64</width>
+        <height>23</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widgetMotosEnParqueadero" native="true">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>310</y>
+       <width>281</width>
+       <height>191</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget#widgetMotosEnParqueadero {
+background-color: #e7e4e4; /* Azul claro */
+border-radius: 15px; /* Borde redondeado */
+border: 2px solid #808080; /* Borde gris */
+background-position: right center; /* Coloca la imagen en el lado derecho */
+background-repeat: no-repeat; /* No repite la imagen */
+padding-right: 40px; /* Espacio adicional para evitar que el contenido se superponga con la imagen */
+
+}
+
+
+</string>
+     </property>
+     <widget class="QLabel" name="label_15">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>10</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #e7e4e4; /* Azul claro */</string>
+      </property>
+      <property name="text">
+       <string>Citas Agendadas</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_16">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>50</y>
+        <width>161</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #e7e4e4; /* Azul claro */
+image: url(:/images/images/reloj.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLCDNumber" name="lcdNumberCitasAgendadas">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>150</y>
+        <width>64</width>
+        <height>23</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widgetParqueaderosDisponibles" native="true">
+     <property name="geometry">
+      <rect>
+       <x>780</x>
+       <y>110</y>
+       <width>281</width>
+       <height>451</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget#widgetParqueaderosDisponibles {
+background-color: #a8daff; /* Azul claro */
+border-radius: 15px; /* Borde redondeado */
+border: 2px solid #808080; /* Borde gris */
+background-position: right center; /* Coloca la imagen en el lado derecho */
+background-repeat: no-repeat; /* No repite la imagen */
+padding-right: 40px; /* Espacio adicional para evitar que el contenido se superponga con la imagen */
+
+}
+
+
+</string>
+     </property>
+     <widget class="QLabel" name="label_17">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>10</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #a8daff; /* Azul claro */</string>
+      </property>
+      <property name="text">
+       <string>Animales Atendidos</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_18">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>70</y>
+        <width>161</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #a8daff; /* Azul claro */
+image: url(:/images/images/perro.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLCDNumber" name="lcdNumberPerros">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>180</y>
+        <width>64</width>
+        <height>23</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLCDNumber" name="lcdNumberGatos">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>390</y>
+        <width>64</width>
+        <height>23</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_19">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>280</y>
+        <width>161</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #a8daff; /* Azul claro */
+image: url(:/images/images/gato.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_22">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>40</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #a8daff; /* Azul claro */</string>
+      </property>
+      <property name="text">
+       <string>Perros</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_23">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>240</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #a8daff; /* Azul claro */</string>
+      </property>
+      <property name="text">
+       <string>Gatos</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widgetMoneda" native="true">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>110</y>
+       <width>261</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget#widgetMoneda {
+background-color: #a8daff; /* Azul claro */
+border-radius: 15px; /* Borde redondeado */
+border: 2px solid #808080; /* Borde gris */
+background-position: right center; /* Coloca la imagen en el lado derecho */
+background-repeat: no-repeat; /* No repite la imagen */
+padding-right: 40px; /* Espacio adicional para evitar que el contenido se superponga con la imagen */
+
+}
+
+
+</string>
+     </property>
+     <widget class="QLabel" name="label_20">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>30</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #a8daff; /* Azul claro */</string>
+      </property>
+      <property name="text">
+       <string>Moneda: COP</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_21">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>20</y>
+        <width>111</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #a8daff; /* Azul claro */
+image: url(:images/images/pesos.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QLabel" name="labelFecha">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>240</y>
+       <width>291</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Miercoles 19 de febrero 2025</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="pageAsignacionParqueaderos">
+    <widget class="QLabel" name="label_11">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>10</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Crear Usuario</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="formLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>100</y>
+       <width>811</width>
+       <height>235</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_12">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Nombre: </string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEditNombre">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_25">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Cedula: </string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEditCedula">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_26">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Torre:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="comboBoxTorre">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_27">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Apartamento:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="comboBoxApartamento">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_28">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Telefono:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="lineEditTelefono">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_29">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Celular:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="lineEditCelular">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QLabel" name="label_30">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>60</y>
+       <width>161</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Datos Propietario:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_31">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>350</y>
+       <width>161</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Datos Mascota</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="formLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>380</y>
+       <width>811</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_32">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Placa:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEditPlaca">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_33">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Marca:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEditMarca">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_34">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Tipo Vehiculo:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="comboBoxTipoVehiculo">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_35">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Parqueadero:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="comboBoxParqueadero">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QPushButton" name="pushButtonRegresarParqueadero">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>590</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Regresar</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonParqueaderosAsignados">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>590</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Parqueaderos Asignados</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonAsignarParqueadero">
+     <property name="geometry">
+      <rect>
+       <x>670</x>
+       <y>590</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Asignar</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="pageListaParqueaderosAsignados">
+    <widget class="QLabel" name="label_36">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>10</y>
+       <width>581</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Lista de Vehículos y Parqueaderos Asignados</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="formLayoutWidget_4">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>50</y>
+       <width>731</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout_4">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_42">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Cedula: </string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEditCedulaLista">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+        <property name="placeholderText">
+         <string>Buscar por cedula...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEditPlacaLista">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+        <property name="placeholderText">
+         <string>Buscar por placa...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_45">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Placa:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_43">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Tipo Vehiculo:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="comboBoxTipoVehiculoLista">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_44">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Numero de Parqueadero:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="comboBoxNumeroParqueaderoLista">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QTableWidget" name="tableWidgetListaAsignados">
+     <property name="geometry">
+      <rect>
+       <x>145</x>
+       <y>241</y>
+       <width>861</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonRegresarLista">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>620</y>
+       <width>221</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Regresar</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonAbrirLista">
+     <property name="geometry">
+      <rect>
+       <x>580</x>
+       <y>620</y>
+       <width>221</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Abrir</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="pageDetallesPropietario">
+    <widget class="QLabel" name="label_37">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>-10</y>
+       <width>281</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Detalles del Propietario:</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="formLayoutWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>320</y>
+       <width>371</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout_3">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_38">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Placa:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEditPlacaDetalles">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_39">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Marca:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEditMarcaDetalles">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_40">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Tipo Vehiculo:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_41">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Parqueadero:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="lineEditTipoVehiculoDetalles">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="lineEditParqueaderoDetalles">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="formLayoutWidget_5">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>40</y>
+       <width>811</width>
+       <height>235</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout_5">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_46">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Nombre: </string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEditNombreDetalles">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_47">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Cedula: </string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEditCedulaDetalles">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_48">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Torre:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_49">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Apartamento:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_50">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Telefono:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="lineEditTelefonoDetalles">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_51">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Celular:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="lineEditCelularDetalles">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="lineEditTorreDetalles">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="lineEditApartamentoDetalles">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QLabel" name="label_52">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>290</y>
+       <width>161</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Datos Vehiculo:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelFotoDelantera">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>319</y>
+       <width>231</width>
+       <height>211</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelFotoTrasera">
+     <property name="geometry">
+      <rect>
+       <x>800</x>
+       <y>319</y>
+       <width>231</width>
+       <height>211</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonLlamarDetalles">
+     <property name="geometry">
+      <rect>
+       <x>540</x>
+       <y>610</y>
+       <width>221</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Llamar</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonRegresarDetalles">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>610</y>
+       <width>221</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Regresar</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="pageTarifas">
+    <widget class="QLabel" name="label_53">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>20</y>
+       <width>241</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Establecer Tarifas</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="formLayoutWidget_6">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>140</y>
+       <width>361</width>
+       <height>204</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout_6">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_54">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Tipo de Vehiculo: </string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="comboBoxTipoVehiculo1">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_57">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Hora Inicio:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_58">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Hora Fin:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_56">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Tarifa Por Periodo:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QDoubleSpinBox" name="doubleSpinBoxTarifaPeriodo">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QTimeEdit" name="timeEditFin">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QTimeEdit" name="timeEditInicio">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" colspan="2">
+       <widget class="QPushButton" name="pushButtonTarifaHorario">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Agregar Tarifa </string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="formLayoutWidget_7">
+     <property name="geometry">
+      <rect>
+       <x>540</x>
+       <y>180</y>
+       <width>401</width>
+       <height>181</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout_8">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_66">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Tipo de Vehiculo: </string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="comboBoxTipoVehiculo2">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_60">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Fracciones de Tiempo:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="comboBoxFraccionTiempo">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_67">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Tarifa Por Fraccion:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QDoubleSpinBox" name="doubleSpinBoxTarifaFraccion">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_59">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QPushButton" name="pushButtonTarifaFraccion">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Agregar Tarifa </string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QLabel" name="label_68">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>80</y>
+       <width>361</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Tarifa por Rango de Tiempo:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_69">
+     <property name="geometry">
+      <rect>
+       <x>540</x>
+       <y>80</y>
+       <width>401</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Tarifas por Fracción de Tiempo:</string>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="tableWidgetTarifas">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>380</y>
+       <width>821</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonRegresarTarifa">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>630</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Regresar</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonEliminarTarifa">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>630</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Eliminar Tarifa</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="pageContaduria">
+    <widget class="QLabel" name="label_70">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>10</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Contaduría </string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="horizontalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>60</y>
+       <width>1011</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>23</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_71">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Desde:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QDateEdit" name="dateEditDesdeContaduria">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_72">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Hasta:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QDateEdit" name="dateEditHastaContaduria">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_73">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Periodo:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBoxPeriodoContaduria">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_74">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Estado</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBoxEstadoContaduria">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QTableWidget" name="tableWidgetContaduria">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>160</y>
+       <width>1011</width>
+       <height>361</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonRegresarContaduria">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>580</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Regresar</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonDetallesContaduria">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>580</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Ver Detalles</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonExportarContaduria">
+     <property name="geometry">
+      <rect>
+       <x>670</x>
+       <y>580</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Exportar</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="pageDetallesContaduria">
+    <widget class="QLabel" name="label_75">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>10</y>
+       <width>231</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Detalles del Registro</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="formLayoutWidget_9">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>50</y>
+       <width>601</width>
+       <height>501</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout_10">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_80">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Nombre: </string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEditNombreDetalles_2">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_81">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Cedula: </string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEditCedulaDetalles_2">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_82">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Torre:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="lineEditTorreDetalles_2">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_83">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Apartamento:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="lineEditApartamentoDetalles_2">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_85">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Celular:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="lineEditCelularDetalles_2">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="lineEditPlacaDetalles_2">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_76">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Placa:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_77">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Marca:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_78">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Tipo Vehiculo:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="lineEditMarcaDetalles_2">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLineEdit" name="lineEditTipoVehiculoDetalles_2">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="label_79">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Parqueadero:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QLineEdit" name="lineEditParqueaderoDetalles_2">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QLabel" name="label_84">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Fecha: </string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QDateEdit" name="dateEditFechaDetalles">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="QLabel" name="label_86">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Hora:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="0">
+       <widget class="QLabel" name="label_87">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Valor Pagado:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="1">
+       <widget class="QLineEdit" name="lineEditValorPagadoDetalles">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="1">
+       <widget class="QTimeEdit" name="timeEditHoraDetalles">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QLabel" name="labelFotoDelantera_2">
+     <property name="geometry">
+      <rect>
+       <x>670</x>
+       <y>50</y>
+       <width>421</width>
+       <height>221</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelFotoTrasera_2">
+     <property name="geometry">
+      <rect>
+       <x>670</x>
+       <y>280</y>
+       <width>421</width>
+       <height>221</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonImprimirDetalles">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>600</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Imprimir Factura</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonRegresarDetalles_2">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>600</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Regresar</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonFotosSalidaDetalles">
+     <property name="geometry">
+      <rect>
+       <x>880</x>
+       <y>510</y>
+       <width>141</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Salida</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonFotosEntradaDetalles">
+     <property name="geometry">
+      <rect>
+       <x>720</x>
+       <y>510</y>
+       <width>141</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Entrada</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="pagePropietarios">
+    <widget class="QWidget" name="widgetCarrosEnPropietarios" native="true">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>90</y>
+       <width>281</width>
+       <height>191</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget#widgetCarrosEnPropietarios {
+background-color: #c2f89e; /* Azul claro */
+border-radius: 15px; /* Borde redondeado */
+border: 2px solid #808080; /* Borde gris */
+background-position: right center; /* Coloca la imagen en el lado derecho */
+background-repeat: no-repeat; /* No repite la imagen */
+padding-right: 40px; /* Espacio adicional para evitar que el contenido se superponga con la imagen */
+
+}
+
+
+</string>
+     </property>
+     <widget class="QLabel" name="label_161">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>10</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #c2f89e; /* Azul claro */</string>
+      </property>
+      <property name="text">
+       <string>Carros en el Parqueadero</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_162">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>50</y>
+        <width>151</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #c2f89e; /* Azul claro */
+image: url(:/icons/Iconos/carroFrente.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLCDNumber" name="lcdNumberCarrosPropietario">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>150</y>
+        <width>64</width>
+        <height>23</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="widgetMotosEnPropietarios" native="true">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>300</y>
+       <width>281</width>
+       <height>191</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget#widgetMotosEnPropietarios {
+background-color: #c2f89e; /* Azul claro */
+border-radius: 15px; /* Borde redondeado */
+border: 2px solid #808080; /* Borde gris */
+background-position: right center; /* Coloca la imagen en el lado derecho */
+background-repeat: no-repeat; /* No repite la imagen */
+padding-right: 40px; /* Espacio adicional para evitar que el contenido se superponga con la imagen */
+
+}
+
+
+</string>
+     </property>
+     <widget class="QLabel" name="label_163">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>10</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #c2f89e; /* Azul claro */</string>
+      </property>
+      <property name="text">
+       <string>Motos en el Parqueadero</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_164">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>50</y>
+        <width>161</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #c2f89e; /* Azul claro */
+image: url(:/icons/Iconos/motoFrente.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLCDNumber" name="lcdNumberMotosPropietario">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>150</y>
+        <width>64</width>
+        <height>23</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QLabel" name="label_165">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>10</y>
+       <width>441</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Resumen de Parqueaderos Propietarios</string>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="tableWidgetParqueaderosDisponibles">
+     <property name="geometry">
+      <rect>
+       <x>480</x>
+       <y>150</y>
+       <width>471</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_166">
+     <property name="geometry">
+      <rect>
+       <x>480</x>
+       <y>90</y>
+       <width>181</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Tipo de Vehiculo:</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBoxTipoDeVehiculoPropietario">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>90</y>
+       <width>271</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonActualizarTabla">
+     <property name="geometry">
+      <rect>
+       <x>620</x>
+       <y>490</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Actualizar</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonRegresarPropietario">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>610</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Regresar</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonRegistrosPropietario">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>610</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Registros Propietarios</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="pageRegistrosPropietarios">
+    <widget class="QWidget" name="horizontalLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>80</y>
+       <width>981</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0,0,0,0,0,0">
+      <property name="spacing">
+       <number>29</number>
+      </property>
+      <property name="rightMargin">
+       <number>18</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_61">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Placa:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEditPlacaRegistros">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+</string>
+        </property>
+        <property name="placeholderText">
+         <string>Ingrese Placa...</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_88">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Desde:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QDateEdit" name="dateEditDesdeRegistros">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_89">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Hasta:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QDateEdit" name="dateEditHastaRegistros">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonBuscarRegistros">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Buscar</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QTableWidget" name="tableWidgetRegistrosPropietarios">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>180</y>
+       <width>1011</width>
+       <height>361</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonRegresarRegistros">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>600</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Regresar</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonExportarRegistros">
+     <property name="geometry">
+      <rect>
+       <x>670</x>
+       <y>600</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Exportar</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_55">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>20</y>
+       <width>321</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Registros de Propietarios </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonDetallesRegistro">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>600</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Detalles Registro</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="pageDetallesRegistro">
+    <widget class="QPushButton" name="pushButtonRegresarRegistro">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>570</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Regresar</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelFotoTraseraDetalles">
+     <property name="geometry">
+      <rect>
+       <x>570</x>
+       <y>320</y>
+       <width>521</width>
+       <height>271</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelFotoDelanteraDetalles">
+     <property name="geometry">
+      <rect>
+       <x>570</x>
+       <y>20</y>
+       <width>521</width>
+       <height>281</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="tableWidgetDetallesRegistro">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>90</y>
+       <width>461</width>
+       <height>451</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">   background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_62">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>30</y>
+       <width>231</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Detalles del Registro</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonFotosEntradaDetalles_2">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>610</y>
+       <width>141</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Entrada</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonFotosSalidaDetalles_2">
+     <property name="geometry">
+      <rect>
+       <x>840</x>
+       <y>610</y>
+       <width>141</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Salida</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="pageVisitantes">
+    <widget class="QTableWidget" name="tableWidgetParqueaderosVisitantes">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>150</y>
+       <width>471</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_167">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>100</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Placa:</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonRegistrosVisitantes">
+     <property name="geometry">
+      <rect>
+       <x>540</x>
+       <y>610</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Registros Visitantes</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonActualizarTablaVisitantes">
+     <property name="geometry">
+      <rect>
+       <x>630</x>
+       <y>490</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Actualizar</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="widgetMotosEnVisitantes" native="true">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>300</y>
+       <width>281</width>
+       <height>191</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget#widgetMotosEnVisitantes {
+background-color: #c2f89e; /* Azul claro */
+border-radius: 15px; /* Borde redondeado */
+border: 2px solid #808080; /* Borde gris */
+background-position: right center; /* Coloca la imagen en el lado derecho */
+background-repeat: no-repeat; /* No repite la imagen */
+padding-right: 40px; /* Espacio adicional para evitar que el contenido se superponga con la imagen */
+
+}
+
+
+</string>
+     </property>
+     <widget class="QLabel" name="label_170">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>10</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #c2f89e; /* Azul claro */</string>
+      </property>
+      <property name="text">
+       <string>Motos en el Parqueadero</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_171">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>50</y>
+        <width>161</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #c2f89e; /* Azul claro */
+image: url(:/icons/Iconos/motoFrente.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLCDNumber" name="lcdNumberMotosVisitantes">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>150</y>
+        <width>64</width>
+        <height>23</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QLabel" name="label_172">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>10</y>
+       <width>441</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Resumen de Parqueaderos Visitantes</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="widgetCarrosEnVisitantes" native="true">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>90</y>
+       <width>281</width>
+       <height>191</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget#widgetCarrosEnVisitantes {
+background-color: #c2f89e; /* Azul claro */
+border-radius: 15px; /* Borde redondeado */
+border: 2px solid #808080; /* Borde gris */
+background-position: right center; /* Coloca la imagen en el lado derecho */
+background-repeat: no-repeat; /* No repite la imagen */
+padding-right: 40px; /* Espacio adicional para evitar que el contenido se superponga con la imagen */
+
+}
+
+
+</string>
+     </property>
+     <widget class="QLabel" name="label_173">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>10</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #c2f89e; /* Azul claro */</string>
+      </property>
+      <property name="text">
+       <string>Carros en el Parqueadero</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_174">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>50</y>
+        <width>151</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #c2f89e; /* Azul claro */
+image: url(:/icons/Iconos/carroFrente.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLCDNumber" name="lcdNumberCarrosVisitantes">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>150</y>
+        <width>64</width>
+        <height>23</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="pushButtonRegresarVisitantes">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>610</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Regresar</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>100</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonBuscarVisitantes">
+     <property name="geometry">
+      <rect>
+       <x>800</x>
+       <y>90</y>
+       <width>91</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Buscar</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="pageDetallesVisitante">
+    <widget class="QLabel" name="label_63">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>30</y>
+       <width>231</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Detalles del Registro</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonRegresarVisitante">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>570</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Regresar</string>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="tableWidgetDetallesVisitante">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>90</y>
+       <width>461</width>
+       <height>451</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">   background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelFotoDelanteraVisitante">
+     <property name="geometry">
+      <rect>
+       <x>560</x>
+       <y>20</y>
+       <width>521</width>
+       <height>281</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelFotoTraseraVisitante">
+     <property name="geometry">
+      <rect>
+       <x>560</x>
+       <y>320</y>
+       <width>521</width>
+       <height>271</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonLlamarVisitante">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>570</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Llamar</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="pageCompletarDatosVisitante">
+    <widget class="QPushButton" name="pushButtonCompletarVisitante">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>530</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Completar</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="formLayoutWidget_10">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>110</y>
+       <width>811</width>
+       <height>275</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout_9">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_92">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Nombre: </string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEditNombreVisitante">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_94">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Torre:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="comboBoxTorreVisitante">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_95">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Apartamento:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="comboBoxApartamentoVisitante">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_97">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Celular:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="lineEditCelularVisitante">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_64">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Placa:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_90">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Tipo Vehiculo:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_91">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Parqueadero:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="lineEditPlacaVisitante">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QComboBox" name="comboBoxParqueaderoVisitante">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QComboBox" name="comboBoxTipoVehiculoVisitante">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QPushButton" name="pushButtonRegresarVisitante_2">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>530</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Regresar</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_65">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>20</y>
+       <width>331</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Completar Datos Visitante</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <zorder>widgetBarraVertical</zorder>
+  <zorder>widgetTitulo</zorder>
+  <zorder>stackedWidget</zorder>
+ </widget>
+ <resources>
+  <include location="data.qrc"/>
+ </resources>
+ <connections/>
+</ui>
