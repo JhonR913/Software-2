@@ -110,7 +110,7 @@ class MainWindow(QtWidgets.QDialog, Ui_Login):
      self.admin_window = QtWidgets.QMainWindow()  # Crea una nueva ventana
      self.ui = Ui_Admin()  # Instancia la interfaz
      self.ui.setupUi(self.admin_window)  # Aplica la UI a la ventana
-     self.admin_window.show()  # Muestra la ventana
+     self.admin_window.show()
      self.close()
 
     def openForgotPasswordWindow(self):

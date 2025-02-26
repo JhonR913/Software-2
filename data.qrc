@@ -1,5 +1,11 @@
 <RCC>
   <qresource prefix="images">
+    <file>images/agregar-usuario.png</file>
+    <file>images/casa-icono-silueta.png</file>
+    <file>images/cliente.png</file>
+    <file>images/contabilidad.png</file>
+    <file>images/historial-de-pedidos.png</file>
+    <file>images/moneda.png</file>
     <file>images/completada.png</file>
     <file>images/reloj.png</file>
     <file>images/gato.png</file>
