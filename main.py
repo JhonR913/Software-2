@@ -6,9 +6,21 @@ from Inicio import Ui_Form as Ui_Login
 from GestionAdmin import Ui_Form as Ui_Admin
 from olvidarContraseña import Ui_Dialog as Ui_RecuperarContrasena
 import bcrypt
+import socket
+import requests
 
 
 
+def obtener_informacion_dispositivo():
+    """Obtiene la dirección IP pública y el nombre del dispositivo."""
+    try:
+        ip_publica = requests.get("https://api64.ipify.org").text
+    except requests.RequestException:
+        ip_publica = "No disponible"
+
+    nombre_dispositivo = socket.gethostname()
+
+    return ip_publica, nombre_dispositivo
 
 def connect_to_database():
     return mysql.connector.connect(
@@ -43,43 +55,81 @@ class MainWindow(QtWidgets.QDialog, Ui_Login):
         cursor.execute("SELECT * FROM Usuarios WHERE NombreUsuario = %s", (username,))
         result = cursor.fetchone()
 
+        # Obtener la IP y el nombre del dispositivo
+        direccion_ip, nombre_dispositivo = obtener_informacion_dispositivo()
+
         if result:
             if result['Estado'] == 'Inactivo':
-                QtWidgets.QMessageBox.warning(self, "Usuario inactivo", "Su usuario está inactivo, contacte al administrador.")
-                cursor.execute("INSERT INTO IntentosDeAcceso (UsuarioID, FechaHora, Estado) VALUES (%s, CURRENT_TIMESTAMP, 'Fallido')", (result['ID'],))
+                QtWidgets.QMessageBox.warning(
+                    None, "Usuario inactivo", "Su usuario está inactivo, contacte al administrador."
+                )
+                cursor.execute(
+                    """
+                    INSERT INTO IntentosDeAcceso (UsuarioID, FechaHora, Estado, DireccionIP, NombreDispositivo) 
+                    VALUES (%s, CURRENT_TIMESTAMP, 'Fallido', %s, %s)
+                    """,
+                    (result['ID'], direccion_ip, nombre_dispositivo),
+                )
                 db.commit()
             else:
                 if bcrypt.checkpw(password.encode('utf-8'), result['Contraseña'].encode('utf-8')):
                     if result['IntentosFallidos'] == 2:
-                        self.open_captcha(result)  # Abre captcha si ya falló dos veces
+                        self.open_captcha(result)  
                     else:
-                        self.handle_successful_login(result)
+                        self.handle_successful_login(result, direccion_ip, nombre_dispositivo)
                 else:
-                    self.handle_failed_login(result)
+                    self.handle_failed_login(result, direccion_ip, nombre_dispositivo)
         else:
-            QtWidgets.QMessageBox.critical(self, "Error", "Usuario o contraseña incorrectos")
-            cursor.execute("INSERT INTO IntentosDeAcceso (UsuarioID, FechaHora, Estado) VALUES (NULL, CURRENT_TIMESTAMP, 'Fallido')")
+            QtWidgets.QMessageBox.critical(None, "Error", "Usuario o contraseña incorrectos")
+            cursor.execute(
+                """
+                INSERT INTO IntentosDeAcceso (UsuarioID, FechaHora, Estado, DireccionIP, NombreDispositivo) 
+                VALUES (NULL, CURRENT_TIMESTAMP, 'Fallido', %s, %s)
+                """,
+                (direccion_ip, nombre_dispositivo),
+            )
             db.commit()
         
         db.close()
 
-    def handle_failed_login(self, user_result):
+    def handle_failed_login(self, user_result, direccion_ip, nombre_dispositivo):
         nuevos_intentos = user_result['IntentosFallidos'] + 1
         db = connect_to_database()
         cursor = db.cursor()
-        cursor.execute("UPDATE Usuarios SET IntentosFallidos = %s WHERE ID = %s", (nuevos_intentos, user_result['ID']))
-        cursor.execute("INSERT INTO IntentosDeAcceso (UsuarioID, FechaHora, Estado) VALUES (%s, CURRENT_TIMESTAMP, 'Fallido')", (user_result['ID'],))
+
+        cursor.execute(
+            "UPDATE Usuarios SET IntentosFallidos = %s WHERE ID = %s",
+            (nuevos_intentos, user_result['ID']),
+        )
+        cursor.execute(
+            """
+            INSERT INTO IntentosDeAcceso (UsuarioID, FechaHora, Estado, DireccionIP, NombreDispositivo) 
+            VALUES (%s, CURRENT_TIMESTAMP, 'Fallido', %s, %s)
+            """,
+            (user_result['ID'], direccion_ip, nombre_dispositivo),
+        )
+
         db.commit()
         db.close()
 
         if nuevos_intentos == 2:
-            QtWidgets.QMessageBox.warning(self, "Atención", "Último intento antes de bloquearse. Complete el captcha.")
+            QtWidgets.QMessageBox.warning(
+                None, "Atención", "Último intento antes de bloquearse. Complete el captcha."
+            )
         elif nuevos_intentos >= 3:
-            cursor.execute("UPDATE Usuarios SET Estado = 'Inactivo' WHERE ID = %s", (user_result['ID'],))
+            cursor.execute(
+                "UPDATE Usuarios SET Estado = 'Inactivo' WHERE ID = %s",
+                (user_result['ID'],),
+            )
             db.commit()
-            QtWidgets.QMessageBox.warning(self, "Usuario bloqueado", "Su usuario ha sido desactivado por intentos fallidos.")
+            QtWidgets.QMessageBox.warning(
+                None, "Usuario bloqueado", "Su usuario ha sido desactivado por intentos fallidos."
+            )
         else:
-            QtWidgets.QMessageBox.critical(self, "Error", f"Contraseña incorrecta. Intento {nuevos_intentos} de 3.")
+            QtWidgets.QMessageBox.critical(
+                None, "Error", f"Contraseña incorrecta. Intento {nuevos_intentos} de 3."
+            )
+
 
     def open_captcha(self, user_result):
         self.captcha_window = CaptchaWindow()
@@ -90,16 +140,31 @@ class MainWindow(QtWidgets.QDialog, Ui_Login):
     def handle_captcha_success(self, user_result):
         self.handle_successful_login(user_result)
 
-    def handle_successful_login(self, user_result):
+    def handle_successful_login(self, user_result, direccion_ip, nombre_dispositivo):
         db = connect_to_database()
         cursor = db.cursor()
-        cursor.execute("UPDATE Usuarios SET IntentosFallidos = 0, UltimoAcceso = CURRENT_TIMESTAMP WHERE ID = %s", (user_result['ID'],))
-        cursor.execute("INSERT INTO IntentosDeAcceso (UsuarioID, FechaHora, Estado) VALUES (%s, CURRENT_TIMESTAMP, 'Exitoso')", (user_result['ID'],))
+
+        cursor.execute(
+            """
+            UPDATE Usuarios 
+            SET IntentosFallidos = 0, UltimoAcceso = CURRENT_TIMESTAMP 
+            WHERE ID = %s
+            """,
+            (user_result['ID'],),
+        )
+        cursor.execute(
+            """
+            INSERT INTO IntentosDeAcceso (UsuarioID, FechaHora, Estado, DireccionIP, NombreDispositivo) 
+            VALUES (%s, CURRENT_TIMESTAMP, 'Exitoso', %s, %s)
+            """,
+            (user_result['ID'], direccion_ip, nombre_dispositivo),
+        )
+
         db.commit()
         db.close()
 
-        QtWidgets.QMessageBox.information(self, "Acceso concedido", "Bienvenido al sistema.")
-        
+        QtWidgets.QMessageBox.information(None, "Acceso concedido", "Bienvenido al sistema.")
+
         self.user_id = user_result['ID']
         self.user_role = user_result['Rol']
 

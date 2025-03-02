@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1258</width>
+    <width>1259</width>
     <height>822</height>
    </rect>
   </property>
@@ -388,7 +388,7 @@ QPushButton:pressed {
     <number>1</number>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="pageGeneral">
     <widget class="QWidget" name="widgetDinero" native="true">
@@ -492,7 +492,7 @@ border: 2px solid #a8daff; /* Borde gris */</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="widgetCarrosEnParqueadero" native="true">
+    <widget class="QWidget" name="widgetCitasCompletadas" native="true">
      <property name="geometry">
       <rect>
        <x>100</x>
@@ -518,9 +518,9 @@ padding-right: 40px; /* Espacio adicional para evitar que el contenido se superp
      <widget class="QLabel" name="label_13">
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>70</x>
         <y>10</y>
-        <width>191</width>
+        <width>141</width>
         <height>31</height>
        </rect>
       </property>
@@ -575,7 +575,7 @@ image: url(:/images/images/completada.png);</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="widgetMotosEnParqueadero" native="true">
+    <widget class="QWidget" name="widgetCitasAgendadas" native="true">
      <property name="geometry">
       <rect>
        <x>450</x>
@@ -601,9 +601,9 @@ padding-right: 40px; /* Espacio adicional para evitar que el contenido se superp
      <widget class="QLabel" name="label_15">
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>80</x>
         <y>10</y>
-        <width>191</width>
+        <width>131</width>
         <height>31</height>
        </rect>
       </property>
@@ -658,7 +658,7 @@ image: url(:/images/images/reloj.png);</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="widgetParqueaderosDisponibles" native="true">
+    <widget class="QWidget" name="widgetAnimales" native="true">
      <property name="geometry">
       <rect>
        <x>780</x>
@@ -3137,7 +3137,7 @@ QPushButton:pressed {
     <widget class="QPushButton" name="pushButtonRegresarUsuarios">
      <property name="geometry">
       <rect>
-       <x>340</x>
+       <x>240</x>
        <y>600</y>
        <width>191</width>
        <height>51</height>
@@ -3188,45 +3188,11 @@ QPushButton:pressed {
       <string>Usuarios:</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButtonModificarUsuarios">
-     <property name="geometry">
-      <rect>
-       <x>570</x>
-       <y>600</y>
-       <width>191</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>10</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-    background-color: #a4a8a5; /* Color del botón */
-    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
-    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
-}
-
-QPushButton:hover {
-    background-color: #b0b5b0; /* Color al pasar el mouse */
-}
-
-QPushButton:pressed {
-    background-color: #8f938f; /* Color al hacer clic */
-}
-</string>
-     </property>
-     <property name="text">
-      <string>Modificar</string>
-     </property>
-    </widget>
     <widget class="QWidget" name="formLayoutWidget_7">
      <property name="geometry">
       <rect>
        <x>180</x>
-       <y>60</y>
+       <y>70</y>
        <width>731</width>
        <height>151</height>
       </rect>
@@ -3326,6 +3292,74 @@ QPushButton:pressed {
        </widget>
       </item>
      </layout>
+    </widget>
+    <widget class="QPushButton" name="pushButtonModificarUsuarios">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>600</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Modificar</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonListaMascotas">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>600</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Lista Mascotas</string>
+     </property>
     </widget>
    </widget>
    <widget class="QWidget" name="pageDetallesRegistro">

@@ -3,6 +3,13 @@ import data_rc
 import mysql.connector
 from PyQt5.QtWidgets import QMessageBox
 import bcrypt
+from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QHeaderView
+from PyQt5.QtCore import Qt  # Para centrar texto
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtCore import Qt
+import os, shutil
+from PyQt5.QtWidgets import QFileDialog
 
 
 def connect_to_database():
@@ -14,10 +21,11 @@ def connect_to_database():
         database="veterinaria"
     )
 
+
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(1258, 822)
+        Form.resize(1259, 822)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -1665,7 +1673,7 @@ class Ui_Form(object):
         self.tableWidgetUsuarios.setColumnCount(0)
         self.tableWidgetUsuarios.setRowCount(0)
         self.pushButtonRegresarUsuarios = QtWidgets.QPushButton(self.pageRegistrosPropietarios)
-        self.pushButtonRegresarUsuarios.setGeometry(QtCore.QRect(340, 600, 191, 51))
+        self.pushButtonRegresarUsuarios.setGeometry(QtCore.QRect(240, 600, 191, 51))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.pushButtonRegresarUsuarios.setFont(font)
@@ -1692,28 +1700,8 @@ class Ui_Form(object):
         font.setWeight(75)
         self.label_55.setFont(font)
         self.label_55.setObjectName("label_55")
-        self.pushButtonModificarUsuarios = QtWidgets.QPushButton(self.pageRegistrosPropietarios)
-        self.pushButtonModificarUsuarios.setGeometry(QtCore.QRect(570, 600, 191, 51))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.pushButtonModificarUsuarios.setFont(font)
-        self.pushButtonModificarUsuarios.setStyleSheet("QPushButton {\n"
-"    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #8f938f; /* Color al hacer clic */\n"
-"}\n"
-"")
-        self.pushButtonModificarUsuarios.setObjectName("pushButtonModificarUsuarios")
         self.formLayoutWidget_7 = QtWidgets.QWidget(self.pageRegistrosPropietarios)
-        self.formLayoutWidget_7.setGeometry(QtCore.QRect(180, 60, 731, 151))
+        self.formLayoutWidget_7.setGeometry(QtCore.QRect(180, 70, 731, 151))
         self.formLayoutWidget_7.setObjectName("formLayoutWidget_7")
         self.formLayout_8 = QtWidgets.QFormLayout(self.formLayoutWidget_7)
         self.formLayout_8.setContentsMargins(0, 0, 0, 0)
@@ -1765,6 +1753,46 @@ class Ui_Form(object):
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
         self.lineEditUsuarioUsuarios.setObjectName("lineEditUsuarioUsuarios")
         self.formLayout_8.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEditUsuarioUsuarios)
+        self.pushButtonModificarUsuarios = QtWidgets.QPushButton(self.pageRegistrosPropietarios)
+        self.pushButtonModificarUsuarios.setGeometry(QtCore.QRect(460, 600, 191, 51))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.pushButtonModificarUsuarios.setFont(font)
+        self.pushButtonModificarUsuarios.setStyleSheet("QPushButton {\n"
+"    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #8f938f; /* Color al hacer clic */\n"
+"}\n"
+"")
+        self.pushButtonModificarUsuarios.setObjectName("pushButtonModificarUsuarios")
+        self.pushButtonListaMascotas = QtWidgets.QPushButton(self.pageRegistrosPropietarios)
+        self.pushButtonListaMascotas.setGeometry(QtCore.QRect(680, 600, 191, 51))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.pushButtonListaMascotas.setFont(font)
+        self.pushButtonListaMascotas.setStyleSheet("QPushButton {\n"
+"    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #8f938f; /* Color al hacer clic */\n"
+"}\n"
+"")
+        self.pushButtonListaMascotas.setObjectName("pushButtonListaMascotas")
         self.stackedWidget.addWidget(self.pageRegistrosPropietarios)
         self.pageDetallesRegistro = QtWidgets.QWidget()
         self.pageDetallesRegistro.setObjectName("pageDetallesRegistro")
@@ -1806,6 +1834,7 @@ class Ui_Form(object):
         self.widgetBarraVertical.raise_()
         self.widgetTitulo.raise_()
         self.stackedWidget.raise_()
+
 # Self botones
 
         self.configurar_botones()
@@ -1814,11 +1843,31 @@ class Ui_Form(object):
         self.retranslateUi(Form)
         self.stackedWidget.setCurrentIndex(0)
         self.pushButtonRegresarRegistrar.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+        self.pushButtonRegresarUsuarios.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0)) 
         self.pushButtonAgregarMascota.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
         self.pushButtonRegresarMascota.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
-        self.cargar_datos_combobox()  
+        self.pushButtonListaMascotas.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
+        self.pushButtonRegresarLista.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(8))
+        self.pushButtonRegresarDetalles.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
+        self.pushButtonRegresarRegistro.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
         self.pushButtonRegistrarMascota.clicked.connect(self.registrar_mascota)
+        self.cargar_datos_combobox()  
+        self.cargar_usuarios()
+        self.conectar_filtros()
+        self.cargar_lista_usuarios_mascotas()
+        self.llenar_combo_especies()
+        self.conectar_filtros_lista()
+        self.conectar_boton_abrir()     
+        self.configurar_label_foto()
+        self.cargar_foto_mascota_desde_bd() 
+        self.cargar_intentos_acceso()
+
+
+
         QtCore.QMetaObject.connectSlotsByName(Form)
+        self.retranslateUi(Form)
+        self.stackedWidget.setCurrentIndex(0)
+        
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
@@ -1916,13 +1965,14 @@ class Ui_Form(object):
         self.pushButtonRegresarDetallesFactura.setText(_translate("Form", "Regresar"))
         self.pushButtonRegresarUsuarios.setText(_translate("Form", "Regresar"))
         self.label_55.setText(_translate("Form", "Usuarios:"))
-        self.pushButtonModificarUsuarios.setText(_translate("Form", "Modificar"))
         self.label_48.setText(_translate("Form", "Cedula: "))
         self.lineEditCedulaUsuarios.setPlaceholderText(_translate("Form", "Buscar por cedula..."))
         self.label_49.setText(_translate("Form", "Nombre Cliente:"))
         self.lineEditNombreUsuarios.setPlaceholderText(_translate("Form", "Buscar por Nombre..."))
         self.label_58.setText(_translate("Form", "Usuario:"))
         self.lineEditUsuarioUsuarios.setPlaceholderText(_translate("Form", "Buscar por Usuario..."))
+        self.pushButtonModificarUsuarios.setText(_translate("Form", "Modificar"))
+        self.pushButtonListaMascotas.setText(_translate("Form", "Lista Mascotas"))
         self.pushButtonRegresarRegistro.setText(_translate("Form", "Regresar"))
         self.label_62.setText(_translate("Form", "Detalles del Registro"))
 
@@ -1964,28 +2014,31 @@ class Ui_Form(object):
             # Contraseña debe tener mínimo 8 caracteres
             if len(contrasena) < 8:
                 QMessageBox.warning(None, "Error", "La contraseña debe tener al menos 8 caracteres.")
-
                 return
 
-            # Conectar a la base de datos
+            # 3️⃣ Conectar a la base de datos
             conexion = connect_to_database()
             cursor = conexion.cursor()
 
-            # 3️⃣ Verificar si el usuario, correo o cédula ya existen
+            # 4️⃣ Verificar si el usuario, correo o cédula ya existen
             cursor.execute("SELECT ID FROM Usuarios WHERE NombreUsuario = %s", (usuario,))
             if cursor.fetchone():
                 QMessageBox.warning(None, "Error", "El nombre de usuario ya está en uso.")
+                cursor.close()
+                conexion.close()
                 return
 
             cursor.execute("SELECT ID FROM DatosUsuarios WHERE Cedula = %s OR CorreoElectronico = %s", (cedula, correo))
             if cursor.fetchone():
                 QMessageBox.warning(None, "Error", "La cédula o el correo ya están registrados.")
+                cursor.close()
+                conexion.close()
                 return
 
-            # 4️⃣ Hashear la contraseña de forma segura
+            # 5️⃣ Hashear la contraseña de forma segura
             hashed_password = bcrypt.hashpw(contrasena.encode('utf-8'), bcrypt.gensalt())
 
-            # 5️⃣ Insertar en Usuarios
+            # 6️⃣ Insertar en Usuarios
             cursor.execute("""
                 INSERT INTO Usuarios (NombreUsuario, Contraseña, Rol)
                 VALUES (%s, %s, %s)
@@ -1994,17 +2047,13 @@ class Ui_Form(object):
             conexion.commit()  # Guardar cambios en la BD
             usuario_id = cursor.lastrowid  # Obtener el ID generado
 
-            # 6️⃣ Insertar en DatosUsuarios
+            # 7️⃣ Insertar en DatosUsuarios con Nombre incluido
             cursor.execute("""
-                INSERT INTO DatosUsuarios (UsuarioID, Cedula, CorreoElectronico, Telefono, Direccion)
-                VALUES (%s, %s, %s, %s, %s)
-            """, (usuario_id, cedula, correo, telefono, direccion))
+                INSERT INTO DatosUsuarios (UsuarioID, Nombre, Cedula, CorreoElectronico, Telefono, Direccion)
+                VALUES (%s, %s, %s, %s, %s, %s)
+            """, (usuario_id, nombre, cedula, correo, telefono, direccion))
 
             conexion.commit()
-
-            # 7️⃣ Cerrar conexión
-            cursor.close()
-            conexion.close()
 
             # 8️⃣ Confirmar el registro
             QMessageBox.information(None, "Éxito", "Usuario registrado correctamente.")
@@ -2021,6 +2070,10 @@ class Ui_Form(object):
 
         except mysql.connector.Error as err:
             QMessageBox.critical(None, "Error", f"No se pudo registrar el usuario: {err}")
+
+        finally:
+            cursor.close()
+            conexion.close()
 
     def cargar_datos_combobox(self):
         """Carga los usuarios y especies en los combobox."""
@@ -2080,3 +2133,360 @@ class Ui_Form(object):
         finally:
             cursor.close()
             conexion.close()
+
+    def cargar_usuarios(self):
+        """Carga los usuarios en la tabla con ID, Usuario, Nombre, Cédula, Rol, Estado, Teléfono y cantidad de mascotas."""
+        conexion = connect_to_database()
+        cursor = conexion.cursor()
+
+        query = """
+            SELECT u.ID, u.NombreUsuario, d.Nombre, d.Cedula, u.Rol, u.Estado, d.Telefono,
+                   (SELECT COUNT(*) FROM Mascotas m WHERE m.UsuarioID = u.ID) AS CantidadMascotas
+            FROM Usuarios u
+            LEFT JOIN DatosUsuarios d ON u.ID = d.UsuarioID
+            ORDER BY u.ID
+        """
+        
+        cursor.execute(query)
+        usuarios = cursor.fetchall()
+
+        # Configurar la tabla
+        self.tableWidgetUsuarios.setRowCount(len(usuarios))
+        self.tableWidgetUsuarios.setColumnCount(7)  # ID, Usuario, Nombre, Cédula, Rol, Estado, Teléfono, Mascotas
+        self.tableWidgetUsuarios.setHorizontalHeaderLabels(["ID", "Usuario", "Nombre", "Cédula", "Rol", "Estado", "Teléfono", "Mascotas"])
+        self.tableWidgetUsuarios.setSelectionBehavior(QTableWidget.SelectRows)  # Selección por filas
+        self.tableWidgetUsuarios.setEditTriggers(QTableWidget.NoEditTriggers)  # No editable
+        self.tableWidgetUsuarios.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)  # Ajustar ancho
+
+        for row_idx, usuario in enumerate(usuarios):
+            for col_idx, dato in enumerate(usuario):
+                item = QTableWidgetItem(str(dato))
+                item.setTextAlignment(Qt.AlignCenter)  # Centrar texto
+                self.tableWidgetUsuarios.setItem(row_idx, col_idx, item)
+
+        cursor.close()
+        conexion.close()
+
+
+    def filtrar_usuarios(self):
+        """Filtra los usuarios en la tabla en tiempo real basándose en los valores de los lineEdits."""
+        texto_cedula = self.lineEditCedulaUsuarios.text().strip()
+        texto_nombre = self.lineEditNombreUsuarios.text().strip().lower()
+        texto_usuario = self.lineEditUsuarioUsuarios.text().strip().lower()
+
+        for fila in range(self.tableWidgetUsuarios.rowCount()):
+            item_cedula = self.tableWidgetUsuarios.item(fila, 3)  # Columna de Cédula
+            item_usuario = self.tableWidgetUsuarios.item(fila, 1)  # Columna de Usuario
+            item_nombre = self.tableWidgetUsuarios.item(fila, 2)  # Columna de Nombre
+
+            if item_cedula and item_usuario and item_nombre:
+                cedula_coincide = item_cedula.text().startswith(texto_cedula) if texto_cedula else True
+                usuario_coincide = texto_usuario in item_usuario.text().lower() if texto_usuario else True
+                nombre_coincide = texto_nombre in item_nombre.text().lower() if texto_nombre else True
+
+                self.tableWidgetUsuarios.setRowHidden(fila, not (cedula_coincide and usuario_coincide and nombre_coincide))
+
+
+    def conectar_filtros(self):
+        """Conecta los lineEdits a la función de filtrado en tiempo real."""
+        self.lineEditCedulaUsuarios.textChanged.connect(self.filtrar_usuarios)
+        self.lineEditNombreUsuarios.textChanged.connect(self.filtrar_usuarios)
+        self.lineEditUsuarioUsuarios.textChanged.connect(self.filtrar_usuarios)
+
+
+    def cargar_lista_usuarios_mascotas(self):
+        """Carga la lista de usuarios y sus mascotas en la tabla."""
+        conexion = connect_to_database()
+        cursor = conexion.cursor()
+
+        query = """
+            SELECT m.ID, m.Nombre, m.Especie, m.Raza, m.Tamano, u.NombreUsuario, d.Cedula
+            FROM Mascotas m
+            JOIN Usuarios u ON m.UsuarioID = u.ID
+            JOIN DatosUsuarios d ON u.ID = d.UsuarioID
+            ORDER BY u.NombreUsuario, m.Nombre
+        """
+
+        cursor.execute(query)
+        registros = cursor.fetchall()
+
+        # Configurar la tabla
+        self.tableWidgetListaUsuariosMascotas.setRowCount(len(registros))
+        self.tableWidgetListaUsuariosMascotas.setColumnCount(7)
+        self.tableWidgetListaUsuariosMascotas.setHorizontalHeaderLabels(
+            ["ID", "Mascota", "Especie", "Raza", "Tamaño", "Dueño", "Cédula"]
+        )
+        self.tableWidgetListaUsuariosMascotas.setSelectionBehavior(QTableWidget.SelectRows)
+        self.tableWidgetListaUsuariosMascotas.setEditTriggers(QTableWidget.NoEditTriggers)
+        self.tableWidgetListaUsuariosMascotas.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+
+        # Llenar la tabla
+        for row_idx, registro in enumerate(registros):
+            for col_idx, dato in enumerate(registro):
+                item = QTableWidgetItem(str(dato))
+                item.setTextAlignment(Qt.AlignCenter)
+                self.tableWidgetListaUsuariosMascotas.setItem(row_idx, col_idx, item)
+
+        cursor.close()
+        conexion.close()
+
+    
+    def llenar_combo_especies(self):
+        """Llena el comboBoxTipoEspecieLista con las especies disponibles en la base de datos."""
+        conexion = connect_to_database()
+        cursor = conexion.cursor()
+
+        query = "SELECT DISTINCT Especie FROM Mascotas ORDER BY Especie"
+        cursor.execute(query)
+        especies = cursor.fetchall()
+
+        self.comboBoxTipoEspecieLista.clear()
+        self.comboBoxTipoEspecieLista.addItem("Todos")  # Opción para ver todas las especies
+        for especie in especies:
+            self.comboBoxTipoEspecieLista.addItem(especie[0])
+
+        cursor.close()
+        conexion.close()
+
+    
+    def filtrar_lista_usuarios_mascotas(self):
+        """Filtra la lista en tiempo real según la cédula, nombre, especie y raza."""
+        texto_cedula = self.lineEditCedulaLista.text().strip()
+        texto_nombre = self.lineEditNombreLista.text().strip().lower()
+        texto_especie = self.comboBoxTipoEspecieLista.currentText()
+        texto_raza = self.lineEditRazaLista.text().strip().lower()
+
+        for fila in range(self.tableWidgetListaUsuariosMascotas.rowCount()):
+            item_cedula = self.tableWidgetListaUsuariosMascotas.item(fila, 6)  # Cédula
+            item_nombre = self.tableWidgetListaUsuariosMascotas.item(fila, 5)  # Dueño
+            item_especie = self.tableWidgetListaUsuariosMascotas.item(fila, 2)  # Especie
+            item_raza = self.tableWidgetListaUsuariosMascotas.item(fila, 3)  # Raza
+
+            if item_cedula and item_nombre and item_especie and item_raza:
+                cedula_coincide = texto_cedula in item_cedula.text() if texto_cedula else True
+                nombre_coincide = texto_nombre in item_nombre.text().lower() if texto_nombre else True
+                especie_coincide = texto_especie in item_especie.text() if texto_especie and texto_especie != "Todos" else True
+                raza_coincide = texto_raza in item_raza.text().lower() if texto_raza else True
+
+                self.tableWidgetListaUsuariosMascotas.setRowHidden(
+                    fila, not (cedula_coincide and nombre_coincide and especie_coincide and raza_coincide)
+                )
+
+    
+    def conectar_filtros_lista(self):
+        """Conecta los filtros a la función de filtrado."""
+        self.lineEditCedulaLista.textChanged.connect(self.filtrar_lista_usuarios_mascotas)
+        self.lineEditNombreLista.textChanged.connect(self.filtrar_lista_usuarios_mascotas)
+        self.comboBoxTipoEspecieLista.currentTextChanged.connect(self.filtrar_lista_usuarios_mascotas)
+        self.lineEditRazaLista.textChanged.connect(self.filtrar_lista_usuarios_mascotas)
+
+    def seleccionar_mascota(self):
+        """Guarda el ID de la mascota seleccionada y cambia de página."""
+        fila_seleccionada = self.tableWidgetListaUsuariosMascotas.currentRow()
+
+        if fila_seleccionada != -1:  # Verifica que haya una fila seleccionada
+            item_id = self.tableWidgetListaUsuariosMascotas.item(fila_seleccionada, 0)  # Columna ID
+
+            if item_id:
+                self.mascota_seleccionada_id = int(item_id.text())  # Guarda el ID de la mascota seleccionada
+                self.stackedWidget.setCurrentIndex(4)  # Cambia a la página deseada
+                self.abrir_detalles_mascota()  # Llama a la función para cargar los detalles
+        else:
+            QMessageBox.warning(None, "Selección requerida", "Por favor, seleccione una mascota de la lista.")
+
+    
+    def conectar_boton_abrir(self):
+        """Conecta el botón Abrir con la función para seleccionar y abrir la mascota."""
+        self.pushButtonAbrirLista.clicked.connect(self.seleccionar_mascota)
+
+
+    def abrir_detalles_mascota(self):
+        """Carga los detalles del propietario y la mascota seleccionada, deshabilita los campos y muestra la foto."""
+        
+        if not hasattr(self, 'mascota_seleccionada_id'):
+            QMessageBox.warning(None, "Error", "No se ha seleccionado ninguna mascota.")
+            return
+
+        conexion = connect_to_database()
+        cursor = conexion.cursor()
+
+        # Consultar los datos del propietario y la mascota
+        query = """
+            SELECT d.Nombre, d.Cedula, d.CorreoElectronico, d.Telefono, d.Direccion,
+                   m.Nombre, m.Especie, m.Raza, m.Color, m.Tamano, m.FechaNacimiento, m.Foto
+            FROM Mascotas m
+            JOIN DatosUsuarios d ON m.UsuarioID = d.UsuarioID
+            WHERE m.ID = %s
+        """
+        cursor.execute(query, (self.mascota_seleccionada_id,))
+        datos = cursor.fetchone()
+
+        if datos:
+            (nombre, cedula, correo, telefono, direccion, 
+             nombre_mascota, especie, raza, color, tamano, fecha_nacimiento, foto) = datos
+
+            self.lineEditNombreDetalles.setText(nombre)
+            self.lineEditCedulaDetalles.setText(cedula)
+            self.lineEditCorreoDetalles.setText(correo)
+            self.lineEditTelefonoDetalles.setText(telefono)
+            self.lineEditDireccion_2.setText(direccion)
+            self.lineEditNombreMascotaDetalles.setText(nombre_mascota)
+            self.lineEditEspeciesDetalles.setText(especie)
+            self.lineEditRazaDetalles.setText(raza)
+            self.lineEditColorDetalles.setText(color)
+            self.lineEditTamanioDetalles.setText(tamano)
+            self.lineEditfechaNacimientoDetalles.setText(str(fecha_nacimiento))
+
+            # Deshabilitar edición en los lineEdit
+            for campo in [
+                self.lineEditNombreDetalles, self.lineEditCedulaDetalles, 
+                self.lineEditCorreoDetalles, self.lineEditTelefonoDetalles, 
+                self.lineEditDireccion_2, self.lineEditNombreMascotaDetalles, 
+                self.lineEditEspeciesDetalles, self.lineEditRazaDetalles, 
+                self.lineEditColorDetalles, self.lineEditTamanioDetalles, 
+                self.lineEditfechaNacimientoDetalles]:
+                campo.setReadOnly(True)
+
+            # Cargar la foto de la mascota si existe
+            self.mostrar_foto_mascota(foto if foto else "")
+
+        else:
+            QMessageBox.warning(None, "Error", "No se encontraron detalles para la mascota seleccionada.")
+
+        cursor.close()
+        conexion.close()
+
+    def configurar_label_foto(self):
+        """Configura el QLabel para detectar clics y mostrar un mensaje cuando no haya imagen."""
+        self.labelFotoMascota.setText("Clic para subir foto")
+        self.labelFotoMascota.setAlignment(Qt.AlignCenter)
+        self.labelFotoMascota.setStyleSheet("border: 2px dashed gray; color: gray;")  
+        self.labelFotoMascota.mousePressEvent = self.subir_foto_mascota  # Detectar clic en QLabel
+
+    def subir_foto_mascota(self, event):
+        """Abre un cuadro de diálogo para seleccionar una imagen y la guarda en la base de datos."""
+        if not hasattr(self, 'mascota_seleccionada_id'):
+            QMessageBox.warning(None, "Error", "No se ha seleccionado ninguna mascota.")
+            return
+
+        opciones = QFileDialog.Options()
+        ruta_imagen, _ = QFileDialog.getOpenFileName(
+            None, "Seleccionar Foto de Mascota", "", 
+            "Imágenes (*.png *.jpg *.jpeg *.bmp);;Todos los archivos (*)", 
+            options=opciones
+        )
+
+        if ruta_imagen:
+            self.guardar_foto_mascota(ruta_imagen)
+
+    def guardar_foto_mascota(self, ruta_origen):
+        """Guarda la imagen en la carpeta images-mascotas/[NombreMascota] y actualiza la base de datos."""
+        conexion = connect_to_database()
+        cursor = conexion.cursor()
+
+        # Obtener el nombre de la mascota
+        query = "SELECT Nombre FROM Mascotas WHERE ID = %s"
+        cursor.execute(query, (self.mascota_seleccionada_id,))
+        resultado = cursor.fetchone()
+
+        if resultado:
+            nombre_mascota = resultado[0]
+            carpeta_destino = os.path.join("images-mascotas", nombre_mascota)
+
+            # Crear la carpeta si no existe
+            os.makedirs(carpeta_destino, exist_ok=True)
+
+            # Guardar la imagen con el nombre de la mascota
+            extension = os.path.splitext(ruta_origen)[1]
+            ruta_destino = os.path.join(carpeta_destino, f"{nombre_mascota}{extension}")
+
+            # Copiar la imagen al destino
+            shutil.copy(ruta_origen, ruta_destino)
+
+            # Guardar la ruta en la base de datos
+            update_query = "UPDATE Mascotas SET Foto = %s WHERE ID = %s"
+            cursor.execute(update_query, (ruta_destino, self.mascota_seleccionada_id))
+            conexion.commit()
+
+            # Mostrar la imagen en el QLabel
+            self.mostrar_foto_mascota(ruta_destino)
+
+        else:
+            QMessageBox.warning(None, "Error", "No se pudo obtener el nombre de la mascota.")
+
+        cursor.close()
+        conexion.close()
+
+    def mostrar_foto_mascota(self, ruta_foto):
+        """Carga y muestra la imagen en el QLabel. Si no existe, muestra el mensaje predeterminado."""
+        if ruta_foto and os.path.exists(ruta_foto):
+            pixmap = QPixmap(ruta_foto)
+            self.labelFotoMascota.setPixmap(
+                pixmap.scaled(self.labelFotoMascota.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
+            )
+            self.labelFotoMascota.setText("")  # Elimina el texto
+        else:
+            self.labelFotoMascota.clear()  # Limpia cualquier imagen anterior
+            self.labelFotoMascota.setText("Clic para subir foto")
+            self.labelFotoMascota.setAlignment(Qt.AlignCenter)
+            self.labelFotoMascota.setStyleSheet("border: 2px dashed gray; color: gray;")
+
+    def cargar_foto_mascota_desde_bd(self):
+        """Carga la foto desde la base de datos y la muestra en el QLabel."""
+        if not hasattr(self, 'mascota_seleccionada_id'):
+            return
+
+        conexion = connect_to_database()
+        cursor = conexion.cursor()
+
+        query = "SELECT Foto FROM Mascotas WHERE ID = %s"
+        cursor.execute(query, (self.mascota_seleccionada_id,))
+        resultado = cursor.fetchone()
+
+        ruta_foto = resultado[0] if resultado and resultado[0] else None
+
+        cursor.close()
+        conexion.close()
+
+        self.mostrar_foto_mascota(ruta_foto)
+
+
+    def cargar_intentos_acceso(self):
+        """Carga los intentos de acceso en la tabla tableWidgetDetallesRegistro."""
+        db = connect_to_database()
+        cursor = db.cursor()
+
+        query = """
+            SELECT ia.ID, 
+                   IFNULL(u.NombreUsuario, 'Desconocido') AS Usuario, 
+                   ia.FechaHora, 
+                   ia.Estado, 
+                   IFNULL(ia.DireccionIP, 'No registrada') AS DireccionIP, 
+                   IFNULL(ia.NombreDispositivo, 'No registrado') AS NombreDispositivo
+            FROM IntentosDeAcceso ia
+            LEFT JOIN Usuarios u ON ia.UsuarioID = u.ID
+            ORDER BY ia.FechaHora DESC
+        """
+        cursor.execute(query)
+        intentos = cursor.fetchall()
+
+        self.tableWidgetDetallesRegistro.setRowCount(len(intentos))
+        self.tableWidgetDetallesRegistro.setColumnCount(6)
+        self.tableWidgetDetallesRegistro.setHorizontalHeaderLabels(
+            ["ID", "Usuario", "Fecha y Hora", "Estado", "Dirección IP", "Dispositivo"]
+        )
+
+        # Configuración de la tabla
+        self.tableWidgetDetallesRegistro.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)  # Bloquea edición
+        self.tableWidgetDetallesRegistro.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)  # Selección por fila
+        self.tableWidgetDetallesRegistro.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)  # Una sola fila a la vez
+        self.tableWidgetDetallesRegistro.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)  # Ajustar columnas
+
+        for fila, intento in enumerate(intentos):
+            for columna, dato in enumerate(intento):
+                item = QtWidgets.QTableWidgetItem(str(dato))
+                item.setTextAlignment(Qt.AlignCenter)
+                self.tableWidgetDetallesRegistro.setItem(fila, columna, item)
+
+        cursor.close()
+        db.close()
