@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1257</width>
+    <width>1258</width>
     <height>822</height>
    </rect>
   </property>
@@ -388,7 +388,7 @@ QPushButton:pressed {
     <number>1</number>
    </property>
    <property name="currentIndex">
-    <number>9</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="pageGeneral">
     <widget class="QWidget" name="widgetDinero" native="true">
@@ -1271,13 +1271,13 @@ QPushButton:pressed {
      <property name="geometry">
       <rect>
        <x>130</x>
-       <y>90</y>
+       <y>70</y>
        <width>811</width>
-       <height>441</height>
+       <height>479</height>
       </rect>
      </property>
      <layout class="QFormLayout" name="formLayout_7">
-      <item row="0" column="0">
+      <item row="1" column="0">
        <widget class="QLabel" name="label_96">
         <property name="font">
          <font>
@@ -1289,7 +1289,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
+      <item row="1" column="1">
        <widget class="QLineEdit" name="lineEditNombre_2">
         <property name="font">
          <font>
@@ -1303,7 +1303,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
+      <item row="2" column="0">
        <widget class="QLabel" name="label_98">
         <property name="font">
          <font>
@@ -1315,7 +1315,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
+      <item row="3" column="0">
        <widget class="QLabel" name="label_99">
         <property name="font">
          <font>
@@ -1327,7 +1327,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
+      <item row="4" column="0">
        <widget class="QLabel" name="label_100">
         <property name="font">
          <font>
@@ -1339,7 +1339,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="2" column="1">
        <widget class="QComboBox" name="comboBoxEspecie">
         <property name="font">
          <font>
@@ -1353,7 +1353,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
+      <item row="3" column="1">
        <widget class="QLineEdit" name="lineEditRaza">
         <property name="font">
          <font>
@@ -1367,7 +1367,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
+      <item row="4" column="1">
        <widget class="QLineEdit" name="lineEditColor">
         <property name="font">
          <font>
@@ -1381,7 +1381,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="4" column="0">
+      <item row="5" column="0">
        <widget class="QLabel" name="label_102">
         <property name="font">
          <font>
@@ -1393,7 +1393,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="4" column="1">
+      <item row="5" column="1">
        <widget class="QComboBox" name="comboBoxTamanio">
         <property name="font">
          <font>
@@ -1407,7 +1407,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="5" column="0">
+      <item row="6" column="0">
        <widget class="QLabel" name="label_103">
         <property name="font">
          <font>
@@ -1419,8 +1419,34 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
+      <item row="6" column="1">
        <widget class="QCalendarWidget" name="calendarWidgetFechaDeNacimiento">
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_109">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Usuario:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="comboBoxUsuario">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
         <property name="styleSheet">
          <string notr="true">    background-color: #a4a8a5; /* Color del botón */
     border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */

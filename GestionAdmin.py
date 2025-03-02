@@ -1,11 +1,23 @@
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 import data_rc
+import mysql.connector
+from PyQt5.QtWidgets import QMessageBox
+import bcrypt
+
+
+def connect_to_database():
+    return mysql.connector.connect(
+        host="34.70.72.185",
+        port=3306,
+        user="root",
+        password="Jhonr2005",
+        database="veterinaria"
+    )
 
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(1257, 822)
+        Form.resize(1258, 822)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -604,7 +616,7 @@ class Ui_Form(object):
         self.pageAgregarMascota = QtWidgets.QWidget()
         self.pageAgregarMascota.setObjectName("pageAgregarMascota")
         self.formLayoutWidget_8 = QtWidgets.QWidget(self.pageAgregarMascota)
-        self.formLayoutWidget_8.setGeometry(QtCore.QRect(130, 90, 811, 441))
+        self.formLayoutWidget_8.setGeometry(QtCore.QRect(130, 70, 811, 479))
         self.formLayoutWidget_8.setObjectName("formLayoutWidget_8")
         self.formLayout_7 = QtWidgets.QFormLayout(self.formLayoutWidget_8)
         self.formLayout_7.setContentsMargins(0, 0, 0, 0)
@@ -614,7 +626,7 @@ class Ui_Form(object):
         font.setPointSize(13)
         self.label_96.setFont(font)
         self.label_96.setObjectName("label_96")
-        self.formLayout_7.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_96)
+        self.formLayout_7.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_96)
         self.lineEditNombre_2 = QtWidgets.QLineEdit(self.formLayoutWidget_8)
         font = QtGui.QFont()
         font.setPointSize(13)
@@ -623,25 +635,25 @@ class Ui_Form(object):
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
         self.lineEditNombre_2.setObjectName("lineEditNombre_2")
-        self.formLayout_7.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEditNombre_2)
+        self.formLayout_7.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEditNombre_2)
         self.label_98 = QtWidgets.QLabel(self.formLayoutWidget_8)
         font = QtGui.QFont()
         font.setPointSize(13)
         self.label_98.setFont(font)
         self.label_98.setObjectName("label_98")
-        self.formLayout_7.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_98)
+        self.formLayout_7.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_98)
         self.label_99 = QtWidgets.QLabel(self.formLayoutWidget_8)
         font = QtGui.QFont()
         font.setPointSize(13)
         self.label_99.setFont(font)
         self.label_99.setObjectName("label_99")
-        self.formLayout_7.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_99)
+        self.formLayout_7.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_99)
         self.label_100 = QtWidgets.QLabel(self.formLayoutWidget_8)
         font = QtGui.QFont()
         font.setPointSize(13)
         self.label_100.setFont(font)
         self.label_100.setObjectName("label_100")
-        self.formLayout_7.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_100)
+        self.formLayout_7.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_100)
         self.comboBoxEspecie = QtWidgets.QComboBox(self.formLayoutWidget_8)
         font = QtGui.QFont()
         font.setPointSize(13)
@@ -650,7 +662,7 @@ class Ui_Form(object):
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
         self.comboBoxEspecie.setObjectName("comboBoxEspecie")
-        self.formLayout_7.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.comboBoxEspecie)
+        self.formLayout_7.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.comboBoxEspecie)
         self.lineEditRaza = QtWidgets.QLineEdit(self.formLayoutWidget_8)
         font = QtGui.QFont()
         font.setPointSize(13)
@@ -659,7 +671,7 @@ class Ui_Form(object):
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
         self.lineEditRaza.setObjectName("lineEditRaza")
-        self.formLayout_7.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEditRaza)
+        self.formLayout_7.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.lineEditRaza)
         self.lineEditColor = QtWidgets.QLineEdit(self.formLayoutWidget_8)
         font = QtGui.QFont()
         font.setPointSize(13)
@@ -668,13 +680,13 @@ class Ui_Form(object):
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
         self.lineEditColor.setObjectName("lineEditColor")
-        self.formLayout_7.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.lineEditColor)
+        self.formLayout_7.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.lineEditColor)
         self.label_102 = QtWidgets.QLabel(self.formLayoutWidget_8)
         font = QtGui.QFont()
         font.setPointSize(13)
         self.label_102.setFont(font)
         self.label_102.setObjectName("label_102")
-        self.formLayout_7.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_102)
+        self.formLayout_7.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.label_102)
         self.comboBoxTamanio = QtWidgets.QComboBox(self.formLayoutWidget_8)
         font = QtGui.QFont()
         font.setPointSize(13)
@@ -683,19 +695,34 @@ class Ui_Form(object):
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
         self.comboBoxTamanio.setObjectName("comboBoxTamanio")
-        self.formLayout_7.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.comboBoxTamanio)
+        self.formLayout_7.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.comboBoxTamanio)
         self.label_103 = QtWidgets.QLabel(self.formLayoutWidget_8)
         font = QtGui.QFont()
         font.setPointSize(13)
         self.label_103.setFont(font)
         self.label_103.setObjectName("label_103")
-        self.formLayout_7.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.label_103)
+        self.formLayout_7.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.label_103)
         self.calendarWidgetFechaDeNacimiento = QtWidgets.QCalendarWidget(self.formLayoutWidget_8)
         self.calendarWidgetFechaDeNacimiento.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
         self.calendarWidgetFechaDeNacimiento.setObjectName("calendarWidgetFechaDeNacimiento")
-        self.formLayout_7.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.calendarWidgetFechaDeNacimiento)
+        self.formLayout_7.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.calendarWidgetFechaDeNacimiento)
+        self.label_109 = QtWidgets.QLabel(self.formLayoutWidget_8)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_109.setFont(font)
+        self.label_109.setObjectName("label_109")
+        self.formLayout_7.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_109)
+        self.comboBoxUsuario = QtWidgets.QComboBox(self.formLayoutWidget_8)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.comboBoxUsuario.setFont(font)
+        self.comboBoxUsuario.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.comboBoxUsuario.setObjectName("comboBoxUsuario")
+        self.formLayout_7.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.comboBoxUsuario)
         self.pushButtonRegistrarMascota = QtWidgets.QPushButton(self.pageAgregarMascota)
         self.pushButtonRegistrarMascota.setGeometry(QtCore.QRect(550, 570, 191, 51))
         font = QtGui.QFont()
@@ -1779,11 +1806,20 @@ class Ui_Form(object):
         self.widgetBarraVertical.raise_()
         self.widgetTitulo.raise_()
         self.stackedWidget.raise_()
+# Self botones
+
         self.configurar_botones()
+        self.pushButtonCrear.clicked.connect(self.guardar_usuario)
+        self.llenar_roles()
         self.retranslateUi(Form)
         self.stackedWidget.setCurrentIndex(0)
+        self.pushButtonRegresarRegistrar.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+        self.pushButtonAgregarMascota.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
+        self.pushButtonRegresarMascota.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
+        self.cargar_datos_combobox()  
+        self.pushButtonRegistrarMascota.clicked.connect(self.registrar_mascota)
         QtCore.QMetaObject.connectSlotsByName(Form)
-        
+
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Veterinaria"))
@@ -1820,6 +1856,7 @@ class Ui_Form(object):
         self.label_100.setText(_translate("Form", "Color:"))
         self.label_102.setText(_translate("Form", "Tamaño:"))
         self.label_103.setText(_translate("Form", "Fecha de Nacimiento:"))
+        self.label_109.setText(_translate("Form", "Usuario:"))
         self.pushButtonRegistrarMascota.setText(_translate("Form", "Registrar Mascota"))
         self.pushButtonRegresarMascota.setText(_translate("Form", "Regresar"))
         self.label_29.setText(_translate("Form", "Datos Mascota:"))
@@ -1900,3 +1937,146 @@ class Ui_Form(object):
         self.pushButtonUsuarios.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(8))
         self.pushButtonRegistros.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(9))
 
+    def llenar_roles(self):
+        """Llena el comboBoxRol con los roles disponibles en la base de datos."""
+        roles_disponibles = ["Administrador", "Veterinario", "Recepcionista", "Cliente"]
+        self.comboBoxRol.addItems(roles_disponibles)  # Agregar roles al comboBox
+        self.comboBoxRol.setCurrentText("Cliente")  # Seleccionar por defecto Cliente
+
+    def guardar_usuario(self):
+        """Guarda un nuevo usuario en la base de datos con validaciones de seguridad."""
+        try:
+            # 1️⃣ Obtener datos de la interfaz
+            usuario = self.lineEditUsuario.text().strip()
+            contrasena = self.lineEditContrasenia.text().strip()
+            rol = self.comboBoxRol.currentText()
+            nombre = self.lineEditNombre.text().strip()
+            cedula = self.lineEditCedula.text().strip()
+            correo = self.lineEditCorreo.text().strip()
+            telefono = self.lineEditTelefono_2.text().strip()
+            direccion = self.lineEditDireccion.text().strip()
+
+            # 2️⃣ Validaciones
+            if not all([usuario, contrasena, rol, nombre, cedula, correo]):
+                QMessageBox.warning(None, "Error", "Por favor, llena todos los campos obligatorios.")
+                return
+            
+            # Contraseña debe tener mínimo 8 caracteres
+            if len(contrasena) < 8:
+                QMessageBox.warning(None, "Error", "La contraseña debe tener al menos 8 caracteres.")
+
+                return
+
+            # Conectar a la base de datos
+            conexion = connect_to_database()
+            cursor = conexion.cursor()
+
+            # 3️⃣ Verificar si el usuario, correo o cédula ya existen
+            cursor.execute("SELECT ID FROM Usuarios WHERE NombreUsuario = %s", (usuario,))
+            if cursor.fetchone():
+                QMessageBox.warning(None, "Error", "El nombre de usuario ya está en uso.")
+                return
+
+            cursor.execute("SELECT ID FROM DatosUsuarios WHERE Cedula = %s OR CorreoElectronico = %s", (cedula, correo))
+            if cursor.fetchone():
+                QMessageBox.warning(None, "Error", "La cédula o el correo ya están registrados.")
+                return
+
+            # 4️⃣ Hashear la contraseña de forma segura
+            hashed_password = bcrypt.hashpw(contrasena.encode('utf-8'), bcrypt.gensalt())
+
+            # 5️⃣ Insertar en Usuarios
+            cursor.execute("""
+                INSERT INTO Usuarios (NombreUsuario, Contraseña, Rol)
+                VALUES (%s, %s, %s)
+            """, (usuario, hashed_password, rol))
+
+            conexion.commit()  # Guardar cambios en la BD
+            usuario_id = cursor.lastrowid  # Obtener el ID generado
+
+            # 6️⃣ Insertar en DatosUsuarios
+            cursor.execute("""
+                INSERT INTO DatosUsuarios (UsuarioID, Cedula, CorreoElectronico, Telefono, Direccion)
+                VALUES (%s, %s, %s, %s, %s)
+            """, (usuario_id, cedula, correo, telefono, direccion))
+
+            conexion.commit()
+
+            # 7️⃣ Cerrar conexión
+            cursor.close()
+            conexion.close()
+
+            # 8️⃣ Confirmar el registro
+            QMessageBox.information(None, "Éxito", "Usuario registrado correctamente.")
+
+            # 9️⃣ Limpiar los campos
+            self.lineEditUsuario.clear()
+            self.lineEditContrasenia.clear()
+            self.comboBoxRol.setCurrentIndex(0)  # Reiniciar al primer rol (Cliente)
+            self.lineEditNombre.clear()
+            self.lineEditCedula.clear()
+            self.lineEditCorreo.clear()
+            self.lineEditTelefono_2.clear()
+            self.lineEditDireccion.clear()
+
+        except mysql.connector.Error as err:
+            QMessageBox.critical(None, "Error", f"No se pudo registrar el usuario: {err}")
+
+    def cargar_datos_combobox(self):
+        """Carga los usuarios y especies en los combobox."""
+        conexion = connect_to_database()
+        cursor = conexion.cursor()
+
+        # Cargar usuarios en el combobox
+        self.comboBoxUsuario.clear()
+        cursor.execute("SELECT ID, NombreUsuario FROM Usuarios")
+        usuarios = cursor.fetchall()
+        for usuario in usuarios:
+            self.comboBoxUsuario.addItem(usuario[1], usuario[0])  # Muestra el nombre pero guarda el ID
+
+        # Cargar especies en el combobox
+        especies = ["Perro", "Gato", "Ave", "Conejo", "Hámster", "Tortuga", "Pez", "Iguana", "Erizo"]
+        self.comboBoxEspecie.addItems(especies)
+        
+        # Cargar especies en el combobox
+        tamanio = ["Pequeño", "Mediano", "Grande"]
+        self.comboBoxTamanio.addItems(tamanio)
+
+        cursor.close()
+        conexion.close()
+
+    def registrar_mascota(self):
+        """Registra una nueva mascota en la base de datos."""
+        usuario_id = self.comboBoxUsuario.currentData()  # Obtener ID del usuario seleccionado
+        nombre = self.lineEditNombre_2.text().strip()
+        especie = self.comboBoxEspecie.currentText()
+        raza = self.lineEditRaza.text().strip()
+        color = self.lineEditColor.text().strip()
+        tamano = self.comboBoxTamanio.currentText()
+        fecha_nacimiento = self.calendarWidgetFechaDeNacimiento.selectedDate().toString("yyyy-MM-dd")
+
+        if not usuario_id or not nombre or not especie or not tamano:
+            QMessageBox.warning(None, "Error", "Todos los campos obligatorios deben estar llenos.")
+            return
+
+        conexion = connect_to_database()
+        cursor = conexion.cursor()
+
+        try:
+            query = """INSERT INTO Mascotas (UsuarioID, Nombre, Especie, Raza, Color, Tamano, FechaNacimiento)
+                       VALUES (%s, %s, %s, %s, %s, %s, %s)"""
+            valores = (usuario_id, nombre, especie, raza, color, tamano, fecha_nacimiento)
+            cursor.execute(query, valores)
+            conexion.commit()
+            QMessageBox.information(None, "Éxito", "Mascota registrada correctamente.")
+
+            # Limpiar campos después del registro
+            self.lineEditNombre_2.clear()
+            self.lineEditRaza.clear()
+            self.lineEditColor.clear()
+            self.comboBoxTamanio.setCurrentIndex(0)
+        except mysql.connector.Error as err:
+            QMessageBox.critical(None, "Error", f"No se pudo registrar la mascota: {err}")
+        finally:
+            cursor.close()
+            conexion.close()
