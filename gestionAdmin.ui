@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1259</width>
+    <width>1254</width>
     <height>822</height>
    </rect>
   </property>
@@ -64,7 +64,7 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>340</x>
       <y>30</y>
       <width>591</width>
       <height>51</height>
@@ -388,7 +388,7 @@ QPushButton:pressed {
     <number>1</number>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>9</number>
    </property>
    <widget class="QWidget" name="pageGeneral">
     <widget class="QWidget" name="widgetDinero" native="true">
@@ -920,7 +920,7 @@ image: url(:images/images/pesos.png);</string>
     <widget class="QLabel" name="label_11">
      <property name="geometry">
       <rect>
-       <x>380</x>
+       <x>400</x>
        <y>50</y>
        <width>221</width>
        <height>41</height>
@@ -1787,7 +1787,7 @@ QPushButton:pressed {
     <widget class="QLabel" name="label_37">
      <property name="geometry">
       <rect>
-       <x>360</x>
+       <x>370</x>
        <y>-10</y>
        <width>281</width>
        <height>61</height>
@@ -2199,7 +2199,7 @@ QPushButton:pressed {
     <widget class="QLabel" name="label_53">
      <property name="geometry">
       <rect>
-       <x>360</x>
+       <x>390</x>
        <y>20</y>
        <width>241</width>
        <height>31</height>
@@ -2433,7 +2433,7 @@ QPushButton:pressed {
     <widget class="QLabel" name="label_70">
      <property name="geometry">
       <rect>
-       <x>420</x>
+       <x>450</x>
        <y>10</y>
        <width>121</width>
        <height>31</height>
@@ -3171,7 +3171,7 @@ QPushButton:pressed {
     <widget class="QLabel" name="label_55">
      <property name="geometry">
       <rect>
-       <x>430</x>
+       <x>450</x>
        <y>20</y>
        <width>131</width>
        <height>31</height>
@@ -3366,8 +3366,8 @@ QPushButton:pressed {
     <widget class="QPushButton" name="pushButtonRegresarRegistro">
      <property name="geometry">
       <rect>
-       <x>420</x>
-       <y>580</y>
+       <x>450</x>
+       <y>640</y>
        <width>191</width>
        <height>51</height>
       </rect>
@@ -3400,10 +3400,10 @@ QPushButton:pressed {
     <widget class="QTableWidget" name="tableWidgetDetallesRegistro">
      <property name="geometry">
       <rect>
-       <x>80</x>
-       <y>90</y>
-       <width>961</width>
-       <height>451</height>
+       <x>100</x>
+       <y>220</y>
+       <width>891</width>
+       <height>371</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -3415,7 +3415,7 @@ QPushButton:pressed {
     <widget class="QLabel" name="label_62">
      <property name="geometry">
       <rect>
-       <x>380</x>
+       <x>400</x>
        <y>30</y>
        <width>231</width>
        <height>41</height>
@@ -3429,6 +3429,84 @@ QPushButton:pressed {
      <property name="text">
       <string>Detalles del Registro</string>
      </property>
+    </widget>
+    <widget class="QWidget" name="formLayoutWidget_10">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>100</y>
+       <width>731</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout_9">
+      <property name="horizontalSpacing">
+       <number>7</number>
+      </property>
+      <property name="verticalSpacing">
+       <number>16</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_51">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Estado:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_60">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Usuario:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEditUsuarioUsuarios_2">
+        <property name="font">
+         <font>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */</string>
+        </property>
+        <property name="placeholderText">
+         <string>Buscar por Usuario...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="comboBoxEstadoRegistro">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+</string>
+        </property>
+        <property name="placeholderText">
+         <string>Buscar Por Estado</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </widget>
   </widget>

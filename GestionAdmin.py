@@ -25,7 +25,7 @@ def connect_to_database():
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(1259, 822)
+        Form.resize(1254, 822)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -46,7 +46,7 @@ class Ui_Form(object):
         self.label.setText("")
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.widgetTitulo)
-        self.label_2.setGeometry(QtCore.QRect(320, 30, 591, 51))
+        self.label_2.setGeometry(QtCore.QRect(340, 30, 591, 51))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label_2.setFont(font)
@@ -246,9 +246,9 @@ class Ui_Form(object):
         self.lineEditMesDineroEnCaja.setStyleSheet("background-color: #a8daff; /* Azul claro */\n"
 "border: 2px solid #a8daff; /* Borde gris */")
         self.lineEditMesDineroEnCaja.setObjectName("lineEditMesDineroEnCaja")
-        self.widgetCarrosEnParqueadero = QtWidgets.QWidget(self.pageGeneral)
-        self.widgetCarrosEnParqueadero.setGeometry(QtCore.QRect(100, 310, 281, 191))
-        self.widgetCarrosEnParqueadero.setStyleSheet("QWidget#widgetCarrosEnParqueadero {\n"
+        self.widgetCitasCompletadas = QtWidgets.QWidget(self.pageGeneral)
+        self.widgetCitasCompletadas.setGeometry(QtCore.QRect(100, 310, 281, 191))
+        self.widgetCitasCompletadas.setStyleSheet("QWidget#widgetCitasCompletadas {\n"
 "background-color: #e7e4e4; /* Azul claro */\n"
 "border-radius: 15px; /* Borde redondeado */\n"
 "border: 2px solid #808080; /* Borde gris */\n"
@@ -260,16 +260,16 @@ class Ui_Form(object):
 "\n"
 "\n"
 "")
-        self.widgetCarrosEnParqueadero.setObjectName("widgetCarrosEnParqueadero")
-        self.label_13 = QtWidgets.QLabel(self.widgetCarrosEnParqueadero)
-        self.label_13.setGeometry(QtCore.QRect(50, 10, 191, 31))
+        self.widgetCitasCompletadas.setObjectName("widgetCitasCompletadas")
+        self.label_13 = QtWidgets.QLabel(self.widgetCitasCompletadas)
+        self.label_13.setGeometry(QtCore.QRect(70, 10, 141, 31))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.label_13.setFont(font)
         self.label_13.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_13.setStyleSheet("background-color: #e7e4e4; /* Azul claro */")
         self.label_13.setObjectName("label_13")
-        self.label_14 = QtWidgets.QLabel(self.widgetCarrosEnParqueadero)
+        self.label_14 = QtWidgets.QLabel(self.widgetCitasCompletadas)
         self.label_14.setGeometry(QtCore.QRect(60, 50, 151, 91))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -279,12 +279,12 @@ class Ui_Form(object):
 "image: url(:/images/images/completada.png);")
         self.label_14.setText("")
         self.label_14.setObjectName("label_14")
-        self.lcdNumberCitasCompletadas = QtWidgets.QLCDNumber(self.widgetCarrosEnParqueadero)
+        self.lcdNumberCitasCompletadas = QtWidgets.QLCDNumber(self.widgetCitasCompletadas)
         self.lcdNumberCitasCompletadas.setGeometry(QtCore.QRect(100, 150, 64, 23))
         self.lcdNumberCitasCompletadas.setObjectName("lcdNumberCitasCompletadas")
-        self.widgetMotosEnParqueadero = QtWidgets.QWidget(self.pageGeneral)
-        self.widgetMotosEnParqueadero.setGeometry(QtCore.QRect(450, 310, 281, 191))
-        self.widgetMotosEnParqueadero.setStyleSheet("QWidget#widgetMotosEnParqueadero {\n"
+        self.widgetCitasAgendadas = QtWidgets.QWidget(self.pageGeneral)
+        self.widgetCitasAgendadas.setGeometry(QtCore.QRect(450, 310, 281, 191))
+        self.widgetCitasAgendadas.setStyleSheet("QWidget#widgetCitasAgendadas {\n"
 "background-color: #e7e4e4; /* Azul claro */\n"
 "border-radius: 15px; /* Borde redondeado */\n"
 "border: 2px solid #808080; /* Borde gris */\n"
@@ -296,16 +296,16 @@ class Ui_Form(object):
 "\n"
 "\n"
 "")
-        self.widgetMotosEnParqueadero.setObjectName("widgetMotosEnParqueadero")
-        self.label_15 = QtWidgets.QLabel(self.widgetMotosEnParqueadero)
-        self.label_15.setGeometry(QtCore.QRect(50, 10, 191, 31))
+        self.widgetCitasAgendadas.setObjectName("widgetCitasAgendadas")
+        self.label_15 = QtWidgets.QLabel(self.widgetCitasAgendadas)
+        self.label_15.setGeometry(QtCore.QRect(80, 10, 131, 31))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.label_15.setFont(font)
         self.label_15.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_15.setStyleSheet("background-color: #e7e4e4; /* Azul claro */")
         self.label_15.setObjectName("label_15")
-        self.label_16 = QtWidgets.QLabel(self.widgetMotosEnParqueadero)
+        self.label_16 = QtWidgets.QLabel(self.widgetCitasAgendadas)
         self.label_16.setGeometry(QtCore.QRect(60, 50, 161, 101))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -315,12 +315,12 @@ class Ui_Form(object):
 "image: url(:/images/images/reloj.png);")
         self.label_16.setText("")
         self.label_16.setObjectName("label_16")
-        self.lcdNumberCitasAgendadas = QtWidgets.QLCDNumber(self.widgetMotosEnParqueadero)
+        self.lcdNumberCitasAgendadas = QtWidgets.QLCDNumber(self.widgetCitasAgendadas)
         self.lcdNumberCitasAgendadas.setGeometry(QtCore.QRect(110, 150, 64, 23))
         self.lcdNumberCitasAgendadas.setObjectName("lcdNumberCitasAgendadas")
-        self.widgetParqueaderosDisponibles = QtWidgets.QWidget(self.pageGeneral)
-        self.widgetParqueaderosDisponibles.setGeometry(QtCore.QRect(780, 110, 281, 451))
-        self.widgetParqueaderosDisponibles.setStyleSheet("QWidget#widgetParqueaderosDisponibles {\n"
+        self.widgetAnimales = QtWidgets.QWidget(self.pageGeneral)
+        self.widgetAnimales.setGeometry(QtCore.QRect(780, 110, 281, 451))
+        self.widgetAnimales.setStyleSheet("QWidget#widgetAnimales {\n"
 "background-color: #a8daff; /* Azul claro */\n"
 "border-radius: 15px; /* Borde redondeado */\n"
 "border: 2px solid #808080; /* Borde gris */\n"
@@ -332,8 +332,8 @@ class Ui_Form(object):
 "\n"
 "\n"
 "")
-        self.widgetParqueaderosDisponibles.setObjectName("widgetParqueaderosDisponibles")
-        self.label_17 = QtWidgets.QLabel(self.widgetParqueaderosDisponibles)
+        self.widgetAnimales.setObjectName("widgetAnimales")
+        self.label_17 = QtWidgets.QLabel(self.widgetAnimales)
         self.label_17.setGeometry(QtCore.QRect(70, 10, 151, 31))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -341,7 +341,7 @@ class Ui_Form(object):
         self.label_17.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_17.setStyleSheet("background-color: #a8daff; /* Azul claro */")
         self.label_17.setObjectName("label_17")
-        self.label_18 = QtWidgets.QLabel(self.widgetParqueaderosDisponibles)
+        self.label_18 = QtWidgets.QLabel(self.widgetAnimales)
         self.label_18.setGeometry(QtCore.QRect(60, 70, 161, 101))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -351,13 +351,13 @@ class Ui_Form(object):
 "image: url(:/images/images/perro.png);")
         self.label_18.setText("")
         self.label_18.setObjectName("label_18")
-        self.lcdNumberPerros = QtWidgets.QLCDNumber(self.widgetParqueaderosDisponibles)
+        self.lcdNumberPerros = QtWidgets.QLCDNumber(self.widgetAnimales)
         self.lcdNumberPerros.setGeometry(QtCore.QRect(110, 180, 64, 23))
         self.lcdNumberPerros.setObjectName("lcdNumberPerros")
-        self.lcdNumberGatos = QtWidgets.QLCDNumber(self.widgetParqueaderosDisponibles)
+        self.lcdNumberGatos = QtWidgets.QLCDNumber(self.widgetAnimales)
         self.lcdNumberGatos.setGeometry(QtCore.QRect(110, 390, 64, 23))
         self.lcdNumberGatos.setObjectName("lcdNumberGatos")
-        self.label_19 = QtWidgets.QLabel(self.widgetParqueaderosDisponibles)
+        self.label_19 = QtWidgets.QLabel(self.widgetAnimales)
         self.label_19.setGeometry(QtCore.QRect(60, 280, 161, 101))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -367,7 +367,7 @@ class Ui_Form(object):
 "image: url(:/images/images/gato.png);")
         self.label_19.setText("")
         self.label_19.setObjectName("label_19")
-        self.label_22 = QtWidgets.QLabel(self.widgetParqueaderosDisponibles)
+        self.label_22 = QtWidgets.QLabel(self.widgetAnimales)
         self.label_22.setGeometry(QtCore.QRect(120, 40, 71, 31))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -375,7 +375,7 @@ class Ui_Form(object):
         self.label_22.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_22.setStyleSheet("background-color: #a8daff; /* Azul claro */")
         self.label_22.setObjectName("label_22")
-        self.label_23 = QtWidgets.QLabel(self.widgetParqueaderosDisponibles)
+        self.label_23 = QtWidgets.QLabel(self.widgetAnimales)
         self.label_23.setGeometry(QtCore.QRect(120, 240, 71, 31))
         font = QtGui.QFont()
         font.setPointSize(10)
@@ -426,7 +426,7 @@ class Ui_Form(object):
         self.pageAgregarUsuarios = QtWidgets.QWidget()
         self.pageAgregarUsuarios.setObjectName("pageAgregarUsuarios")
         self.label_11 = QtWidgets.QLabel(self.pageAgregarUsuarios)
-        self.label_11.setGeometry(QtCore.QRect(380, 50, 221, 41))
+        self.label_11.setGeometry(QtCore.QRect(400, 50, 221, 41))
         font = QtGui.QFont()
         font.setPointSize(13)
         font.setBold(True)
@@ -912,7 +912,7 @@ class Ui_Form(object):
         self.pageDetallesPropietario = QtWidgets.QWidget()
         self.pageDetallesPropietario.setObjectName("pageDetallesPropietario")
         self.label_37 = QtWidgets.QLabel(self.pageDetallesPropietario)
-        self.label_37.setGeometry(QtCore.QRect(360, -10, 281, 61))
+        self.label_37.setGeometry(QtCore.QRect(370, -10, 281, 61))
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
@@ -1137,7 +1137,7 @@ class Ui_Form(object):
         self.pageTarifas = QtWidgets.QWidget()
         self.pageTarifas.setObjectName("pageTarifas")
         self.label_53 = QtWidgets.QLabel(self.pageTarifas)
-        self.label_53.setGeometry(QtCore.QRect(360, 20, 241, 31))
+        self.label_53.setGeometry(QtCore.QRect(390, 20, 241, 31))
         font = QtGui.QFont()
         font.setPointSize(15)
         font.setBold(True)
@@ -1190,6 +1190,9 @@ class Ui_Form(object):
 "")
         self.doubleSpinBoxTarifa.setObjectName("doubleSpinBoxTarifa")
         self.formLayout_6.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.doubleSpinBoxTarifa)
+        self.doubleSpinBoxTarifa.setDecimals(0)  # No permitir decimales
+        self.doubleSpinBoxTarifa.setMaximum(10000000)  # Ajusta el límite según necesidad
+        self.doubleSpinBoxTarifa.setSingleStep(1000)  # Incremento de 1000 en 1000
         self.pushButtonTarifaHorario = QtWidgets.QPushButton(self.formLayoutWidget_6)
         font = QtGui.QFont()
         font.setPointSize(13)
@@ -1278,7 +1281,7 @@ class Ui_Form(object):
         self.pageContaduria = QtWidgets.QWidget()
         self.pageContaduria.setObjectName("pageContaduria")
         self.label_70 = QtWidgets.QLabel(self.pageContaduria)
-        self.label_70.setGeometry(QtCore.QRect(420, 10, 121, 31))
+        self.label_70.setGeometry(QtCore.QRect(450, 10, 121, 31))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.label_70.setFont(font)
@@ -1693,7 +1696,7 @@ class Ui_Form(object):
 "")
         self.pushButtonRegresarUsuarios.setObjectName("pushButtonRegresarUsuarios")
         self.label_55 = QtWidgets.QLabel(self.pageRegistrosPropietarios)
-        self.label_55.setGeometry(QtCore.QRect(430, 20, 131, 31))
+        self.label_55.setGeometry(QtCore.QRect(450, 20, 131, 31))
         font = QtGui.QFont()
         font.setPointSize(15)
         font.setBold(True)
@@ -1797,7 +1800,7 @@ class Ui_Form(object):
         self.pageDetallesRegistro = QtWidgets.QWidget()
         self.pageDetallesRegistro.setObjectName("pageDetallesRegistro")
         self.pushButtonRegresarRegistro = QtWidgets.QPushButton(self.pageDetallesRegistro)
-        self.pushButtonRegresarRegistro.setGeometry(QtCore.QRect(420, 580, 191, 51))
+        self.pushButtonRegresarRegistro.setGeometry(QtCore.QRect(450, 640, 191, 51))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.pushButtonRegresarRegistro.setFont(font)
@@ -1817,7 +1820,7 @@ class Ui_Form(object):
 "")
         self.pushButtonRegresarRegistro.setObjectName("pushButtonRegresarRegistro")
         self.tableWidgetDetallesRegistro = QtWidgets.QTableWidget(self.pageDetallesRegistro)
-        self.tableWidgetDetallesRegistro.setGeometry(QtCore.QRect(80, 90, 961, 451))
+        self.tableWidgetDetallesRegistro.setGeometry(QtCore.QRect(100, 220, 891, 371))
         self.tableWidgetDetallesRegistro.setStyleSheet("   background-color: #a4a8a5; /* Color del botón */\n"
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
@@ -1825,18 +1828,60 @@ class Ui_Form(object):
         self.tableWidgetDetallesRegistro.setColumnCount(0)
         self.tableWidgetDetallesRegistro.setRowCount(0)
         self.label_62 = QtWidgets.QLabel(self.pageDetallesRegistro)
-        self.label_62.setGeometry(QtCore.QRect(380, 30, 231, 41))
+        self.label_62.setGeometry(QtCore.QRect(400, 30, 231, 41))
         font = QtGui.QFont()
         font.setPointSize(15)
         self.label_62.setFont(font)
         self.label_62.setObjectName("label_62")
+        self.formLayoutWidget_10 = QtWidgets.QWidget(self.pageDetallesRegistro)
+        self.formLayoutWidget_10.setGeometry(QtCore.QRect(200, 100, 731, 111))
+        self.formLayoutWidget_10.setObjectName("formLayoutWidget_10")
+        self.formLayout_9 = QtWidgets.QFormLayout(self.formLayoutWidget_10)
+        self.formLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.formLayout_9.setHorizontalSpacing(7)
+        self.formLayout_9.setVerticalSpacing(16)
+        self.formLayout_9.setObjectName("formLayout_9")
+        self.label_51 = QtWidgets.QLabel(self.formLayoutWidget_10)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_51.setFont(font)
+        self.label_51.setObjectName("label_51")
+        self.formLayout_9.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_51)
+        self.label_60 = QtWidgets.QLabel(self.formLayoutWidget_10)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_60.setFont(font)
+        self.label_60.setObjectName("label_60")
+        self.formLayout_9.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_60)
+        self.lineEditUsuarioUsuarios_2 = QtWidgets.QLineEdit(self.formLayoutWidget_10)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.lineEditUsuarioUsuarios_2.setFont(font)
+        self.lineEditUsuarioUsuarios_2.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.lineEditUsuarioUsuarios_2.setObjectName("lineEditUsuarioUsuarios_2")
+        self.formLayout_9.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEditUsuarioUsuarios_2)
+        self.comboBoxEstadoRegistro = QtWidgets.QComboBox(self.formLayoutWidget_10)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.comboBoxEstadoRegistro.setFont(font)
+        self.comboBoxEstadoRegistro.setStyleSheet("\n"
+"    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
+"")
+        self.comboBoxEstadoRegistro.setObjectName("comboBoxEstadoRegistro")
+        self.formLayout_9.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.comboBoxEstadoRegistro)
         self.stackedWidget.addWidget(self.pageDetallesRegistro)
         self.widgetBarraVertical.raise_()
         self.widgetTitulo.raise_()
         self.stackedWidget.raise_()
-
-# Self botones
-
+       
+        # Self botones
+        self.comboBoxEstadoRegistro.currentIndexChanged.connect(self.cargar_intentos_acceso)
+        self.lineEditUsuarioUsuarios_2.textChanged.connect(self.cargar_intentos_acceso)
+        self.comboBoxEstadoRegistro.addItems(["Todos", "Exitoso", "Fallido"])
         self.configurar_botones()
         self.pushButtonCrear.clicked.connect(self.guardar_usuario)
         self.llenar_roles()
@@ -1850,7 +1895,10 @@ class Ui_Form(object):
         self.pushButtonRegresarLista.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(8))
         self.pushButtonRegresarDetalles.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
         self.pushButtonRegresarRegistro.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+        self.pushButtonRegresarTarifa.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
         self.pushButtonRegistrarMascota.clicked.connect(self.registrar_mascota)
+        self.pushButtonTarifaHorario.clicked.connect(self.agregar_tarifa)
+        self.pushButtonEliminarTarifa.clicked.connect(self.eliminar_tarifa)
         self.cargar_datos_combobox()  
         self.cargar_usuarios()
         self.conectar_filtros()
@@ -1861,13 +1909,12 @@ class Ui_Form(object):
         self.configurar_label_foto()
         self.cargar_foto_mascota_desde_bd() 
         self.cargar_intentos_acceso()
-
-
-
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        self.cargar_servicios()
+        self.cargar_horarios()
+        self.mostrar_tarifas()
         self.retranslateUi(Form)
         self.stackedWidget.setCurrentIndex(0)
-        
+        QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
@@ -1975,6 +2022,10 @@ class Ui_Form(object):
         self.pushButtonListaMascotas.setText(_translate("Form", "Lista Mascotas"))
         self.pushButtonRegresarRegistro.setText(_translate("Form", "Regresar"))
         self.label_62.setText(_translate("Form", "Detalles del Registro"))
+        self.label_51.setText(_translate("Form", "Estado:"))
+        self.label_60.setText(_translate("Form", "Usuario:"))
+        self.lineEditUsuarioUsuarios_2.setPlaceholderText(_translate("Form", "Buscar por Usuario..."))
+        self.comboBoxEstadoRegistro.setPlaceholderText(_translate("Form", "Buscar Por Estado"))
 
 
     def configurar_botones(self):
@@ -2452,10 +2503,14 @@ class Ui_Form(object):
 
 
     def cargar_intentos_acceso(self):
-        """Carga los intentos de acceso en la tabla tableWidgetDetallesRegistro."""
+        """Carga los intentos de acceso en la tabla tableWidgetDetallesRegistro con filtros en tiempo real."""
+        estado_filtro = self.comboBoxEstadoRegistro.currentText()
+        usuario_filtro = self.lineEditUsuarioUsuarios_2.text().strip()
+
         db = connect_to_database()
         cursor = db.cursor()
 
+        # Construcción dinámica del query con filtros
         query = """
             SELECT ia.ID, 
                    IFNULL(u.NombreUsuario, 'Desconocido') AS Usuario, 
@@ -2465,9 +2520,23 @@ class Ui_Form(object):
                    IFNULL(ia.NombreDispositivo, 'No registrado') AS NombreDispositivo
             FROM IntentosDeAcceso ia
             LEFT JOIN Usuarios u ON ia.UsuarioID = u.ID
-            ORDER BY ia.FechaHora DESC
+            WHERE 1=1
         """
-        cursor.execute(query)
+        params = []
+
+        # Aplicar filtro de estado si no está en "Todos"
+        if estado_filtro and estado_filtro != "Todos":
+            query += " AND ia.Estado = %s"
+            params.append(estado_filtro)
+
+        # Aplicar filtro de usuario si no está vacío
+        if usuario_filtro:
+            query += " AND u.NombreUsuario LIKE %s"
+            params.append(f"%{usuario_filtro}%")
+
+        query += " ORDER BY ia.FechaHora DESC"
+
+        cursor.execute(query, params)
         intentos = cursor.fetchall()
 
         self.tableWidgetDetallesRegistro.setRowCount(len(intentos))
@@ -2490,3 +2559,119 @@ class Ui_Form(object):
 
         cursor.close()
         db.close()
+
+
+    def cargar_servicios(self):
+        """Carga los servicios desde la base de datos y los llena en el comboBoxTipoServicio."""
+        conexion = connect_to_database()
+        cursor = conexion.cursor()
+
+        query = "SELECT Nombre FROM Servicios ORDER BY Nombre"
+        cursor.execute(query)
+        servicios = cursor.fetchall()
+
+        self.comboBoxTipoServicio.clear()
+        for servicio in servicios:
+            self.comboBoxTipoServicio.addItem(servicio[0])
+
+        cursor.close()
+        conexion.close()
+
+    def cargar_horarios(self):
+        """Llena el comboBoxHorarioTarifa con los horarios disponibles."""
+        self.comboBoxHorarioTarifa.clear()
+        self.comboBoxHorarioTarifa.addItems(["Diurno", "Nocturno"])
+
+
+    def agregar_tarifa(self):
+        """Agrega una nueva tarifa a la base de datos con formato en pesos colombianos."""
+        servicio = self.comboBoxTipoServicio.currentText()
+        horario = self.comboBoxHorarioTarifa.currentText()
+        tarifa = int(self.doubleSpinBoxTarifa.value())  # Convertir a entero para evitar decimales
+
+        if not servicio or tarifa <= 0:
+            QtWidgets.QMessageBox.warning(None, "Advertencia", "Debe seleccionar un servicio y establecer un valor válido.")
+            return
+
+        conexion = connect_to_database()
+        cursor = conexion.cursor()
+
+        query = """
+            INSERT INTO Tarifas (ServicioID, Horario, Precio)
+            VALUES ((SELECT ID FROM Servicios WHERE Nombre = %s), %s, %s)
+        """
+        cursor.execute(query, (servicio, horario, tarifa))
+        conexion.commit()
+
+        cursor.close()
+        conexion.close()
+
+        QtWidgets.QMessageBox.information(None, "Éxito", f"Tarifa agregada correctamente: ${tarifa:,.0f} COP")
+        self.mostrar_tarifas()  # Actualizar la tabla
+
+    def mostrar_tarifas(self):
+        """Carga y muestra las tarifas en tableWidgetTarifas con formato en pesos colombianos."""
+        conexion = connect_to_database()
+        cursor = conexion.cursor()
+
+        query = """
+            SELECT t.ID, s.Nombre, t.Horario, t.Precio
+            FROM Tarifas t
+            JOIN Servicios s ON t.ServicioID = s.ID
+            ORDER BY s.Nombre, t.Horario
+        """
+        cursor.execute(query)
+        tarifas = cursor.fetchall()
+
+        self.tableWidgetTarifas.setRowCount(len(tarifas))
+        self.tableWidgetTarifas.setColumnCount(4)
+        self.tableWidgetTarifas.setHorizontalHeaderLabels(["ID", "Servicio", "Horario", "Precio (COP)"])
+
+        self.tableWidgetTarifas.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.tableWidgetTarifas.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
+        self.tableWidgetTarifas.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
+        self.tableWidgetTarifas.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+
+        for fila, tarifa in enumerate(tarifas):
+            for columna, dato in enumerate(tarifa):
+                if columna == 3:  # Columna de precio
+                    dato = f"${int(dato):,} COP"  # Formato de moneda
+                item = QtWidgets.QTableWidgetItem(str(dato))
+                item.setTextAlignment(Qt.AlignCenter)
+                self.tableWidgetTarifas.setItem(fila, columna, item)
+
+        cursor.close()
+        conexion.close()
+
+
+    def eliminar_tarifa(self):
+        """Elimina la tarifa seleccionada en la tabla."""
+        fila_seleccionada = self.tableWidgetTarifas.currentRow()
+        
+        if fila_seleccionada == -1:
+            QtWidgets.QMessageBox.warning(None, "Advertencia", "Seleccione una tarifa para eliminar.")
+            return
+
+        tarifa_id = self.tableWidgetTarifas.item(fila_seleccionada, 0).text()
+
+        respuesta = QtWidgets.QMessageBox.question(
+            None, "Confirmar eliminación", 
+            "¿Está seguro de que desea eliminar esta tarifa?", 
+            QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No
+        )
+
+        if respuesta == QtWidgets.QMessageBox.No:
+            return
+
+        conexion = connect_to_database()
+        cursor = conexion.cursor()
+
+        query = "DELETE FROM Tarifas WHERE ID = %s"
+        cursor.execute(query, (tarifa_id,))
+        conexion.commit()
+
+        cursor.close()
+        conexion.close()
+
+        QtWidgets.QMessageBox.information(None, "Éxito", "Tarifa eliminada correctamente.")
+        self.mostrar_tarifas()  # Actualizar la tabla
