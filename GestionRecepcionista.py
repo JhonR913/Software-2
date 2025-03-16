@@ -10,7 +10,14 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt
 import os, shutil
 from PyQt5.QtWidgets import QFileDialog
-
+from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtCore import QDate, QTime
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from PyQt5.QtWidgets import (
+    QTableWidgetItem, QHeaderView, QAbstractItemView, QMessageBox
+)
 
 def connect_to_database():
     return mysql.connector.connect(
@@ -22,10 +29,11 @@ def connect_to_database():
     )
 
 
+
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(1254, 822)
+        Form.resize(1260, 822)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -109,13 +117,13 @@ class Ui_Form(object):
         self.label_7.setGeometry(QtCore.QRect(30, 330, 81, 31))
         self.label_7.setAlignment(QtCore.Qt.AlignCenter)
         self.label_7.setObjectName("label_7")
-        self.pushButtonTarifas = QtWidgets.QPushButton(self.widgetBarraVertical)
-        self.pushButtonTarifas.setGeometry(QtCore.QRect(20, 250, 101, 81))
-        self.pushButtonTarifas.setStyleSheet("QPushButton {\n"
+        self.pushButtonCitas = QtWidgets.QPushButton(self.widgetBarraVertical)
+        self.pushButtonCitas.setGeometry(QtCore.QRect(20, 250, 101, 81))
+        self.pushButtonCitas.setStyleSheet("QPushButton {\n"
 "    background-color: #a4a8a5; /* Color del botón */\n"
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
-"    image:url(:/images/images/moneda.png); /* Imagen en el botón */\n"
+"    image:url(:/images/images/cita-medica.png)\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -126,19 +134,19 @@ class Ui_Form(object):
 "    background-color: #8f938f; /* Color al hacer clic */\n"
 "}\n"
 "")
-        self.pushButtonTarifas.setText("")
-        self.pushButtonTarifas.setObjectName("pushButtonTarifas")
+        self.pushButtonCitas.setText("")
+        self.pushButtonCitas.setObjectName("pushButtonCitas")
         self.label_8 = QtWidgets.QLabel(self.widgetBarraVertical)
         self.label_8.setGeometry(QtCore.QRect(30, 450, 81, 31))
         self.label_8.setAlignment(QtCore.Qt.AlignCenter)
         self.label_8.setObjectName("label_8")
-        self.pushButtonContaduria = QtWidgets.QPushButton(self.widgetBarraVertical)
-        self.pushButtonContaduria.setGeometry(QtCore.QRect(20, 370, 101, 81))
-        self.pushButtonContaduria.setStyleSheet("QPushButton {\n"
+        self.pushButtonPagos = QtWidgets.QPushButton(self.widgetBarraVertical)
+        self.pushButtonPagos.setGeometry(QtCore.QRect(20, 490, 101, 81))
+        self.pushButtonPagos.setStyleSheet("QPushButton {\n"
 "    background-color: #a4a8a5; /* Color del botón */\n"
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
-"    image:url(:/images/images/contabilidad.png); /* Imagen en el botón */\n"
+"    image:url(:/images/images/metodo-de-pago.png); /* Imagen en el botón */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -149,19 +157,19 @@ class Ui_Form(object):
 "    background-color: #8f938f; /* Color al hacer clic */\n"
 "}\n"
 "")
-        self.pushButtonContaduria.setText("")
-        self.pushButtonContaduria.setObjectName("pushButtonContaduria")
+        self.pushButtonPagos.setText("")
+        self.pushButtonPagos.setObjectName("pushButtonPagos")
         self.label_9 = QtWidgets.QLabel(self.widgetBarraVertical)
         self.label_9.setGeometry(QtCore.QRect(30, 570, 81, 31))
         self.label_9.setAlignment(QtCore.Qt.AlignCenter)
         self.label_9.setObjectName("label_9")
-        self.pushButtonUsuarios = QtWidgets.QPushButton(self.widgetBarraVertical)
-        self.pushButtonUsuarios.setGeometry(QtCore.QRect(20, 490, 101, 81))
-        self.pushButtonUsuarios.setStyleSheet("QPushButton {\n"
+        self.pushButtonHistoria = QtWidgets.QPushButton(self.widgetBarraVertical)
+        self.pushButtonHistoria.setGeometry(QtCore.QRect(20, 610, 101, 81))
+        self.pushButtonHistoria.setStyleSheet("QPushButton {\n"
 "    background-color: #a4a8a5; /* Color del botón */\n"
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
-"    image: url(:/images/images/cliente.png); /* Imagen en el botón */\n"
+"    image:url(:/images/images/diagnostico.png); /* Imagen en el botón */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -172,31 +180,31 @@ class Ui_Form(object):
 "    background-color: #8f938f; /* Color al hacer clic */\n"
 "}\n"
 "")
-        self.pushButtonUsuarios.setText("")
-        self.pushButtonUsuarios.setObjectName("pushButtonUsuarios")
-        self.pushButtonRegistros = QtWidgets.QPushButton(self.widgetBarraVertical)
-        self.pushButtonRegistros.setGeometry(QtCore.QRect(20, 610, 101, 81))
-        self.pushButtonRegistros.setStyleSheet("QPushButton {\n"
-"    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
-"    image: url(:/images/images/historial-de-pedidos.png); /* Imagen en el botón */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #8f938f; /* Color al hacer clic */\n"
-"}\n"
-"")
-        self.pushButtonRegistros.setText("")
-        self.pushButtonRegistros.setObjectName("pushButtonRegistros")
+        self.pushButtonHistoria.setText("")
+        self.pushButtonHistoria.setObjectName("pushButtonHistoria")
         self.label_10 = QtWidgets.QLabel(self.widgetBarraVertical)
-        self.label_10.setGeometry(QtCore.QRect(30, 690, 81, 31))
+        self.label_10.setGeometry(QtCore.QRect(20, 690, 101, 31))
         self.label_10.setAlignment(QtCore.Qt.AlignCenter)
         self.label_10.setObjectName("label_10")
+        self.pushButtonVentas = QtWidgets.QPushButton(self.widgetBarraVertical)
+        self.pushButtonVentas.setGeometry(QtCore.QRect(20, 370, 101, 81))
+        self.pushButtonVentas.setStyleSheet("QPushButton {\n"
+"    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
+"    image: url(:/images/images/carro.png) /* Imagen en el botón */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #8f938f; /* Color al hacer clic */\n"
+"}\n"
+"")
+        self.pushButtonVentas.setText("")
+        self.pushButtonVentas.setObjectName("pushButtonVentas")
         self.stackedWidget = QtWidgets.QStackedWidget(Form)
         self.stackedWidget.setGeometry(QtCore.QRect(120, 100, 1171, 741))
         self.stackedWidget.setLineWidth(1)
@@ -426,7 +434,7 @@ class Ui_Form(object):
         self.pageAgregarUsuarios = QtWidgets.QWidget()
         self.pageAgregarUsuarios.setObjectName("pageAgregarUsuarios")
         self.label_11 = QtWidgets.QLabel(self.pageAgregarUsuarios)
-        self.label_11.setGeometry(QtCore.QRect(400, 50, 221, 41))
+        self.label_11.setGeometry(QtCore.QRect(430, 50, 161, 41))
         font = QtGui.QFont()
         font.setPointSize(13)
         font.setBold(True)
@@ -470,27 +478,12 @@ class Ui_Form(object):
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
         self.lineEditContrasenia.setObjectName("lineEditContrasenia")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEditContrasenia)
-        self.label_30 = QtWidgets.QLabel(self.formLayoutWidget)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.label_30.setFont(font)
-        self.label_30.setObjectName("label_30")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_30)
-        self.comboBoxRol = QtWidgets.QComboBox(self.formLayoutWidget)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.comboBoxRol.setFont(font)
-        self.comboBoxRol.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.comboBoxRol.setObjectName("comboBoxRol")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.comboBoxRol)
         self.label_12 = QtWidgets.QLabel(self.formLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(13)
         self.label_12.setFont(font)
         self.label_12.setObjectName("label_12")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_12)
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_12)
         self.lineEditNombre = QtWidgets.QLineEdit(self.formLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(13)
@@ -499,13 +492,13 @@ class Ui_Form(object):
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
         self.lineEditNombre.setObjectName("lineEditNombre")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.lineEditNombre)
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEditNombre)
         self.label_25 = QtWidgets.QLabel(self.formLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(13)
         self.label_25.setFont(font)
         self.label_25.setObjectName("label_25")
-        self.formLayout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_25)
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_25)
         self.lineEditCedula = QtWidgets.QLineEdit(self.formLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(13)
@@ -514,13 +507,13 @@ class Ui_Form(object):
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
         self.lineEditCedula.setObjectName("lineEditCedula")
-        self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.lineEditCedula)
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.lineEditCedula)
         self.label_26 = QtWidgets.QLabel(self.formLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(13)
         self.label_26.setFont(font)
         self.label_26.setObjectName("label_26")
-        self.formLayout.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.label_26)
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_26)
         self.lineEditCorreo = QtWidgets.QLineEdit(self.formLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(13)
@@ -529,13 +522,13 @@ class Ui_Form(object):
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
         self.lineEditCorreo.setObjectName("lineEditCorreo")
-        self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.lineEditCorreo)
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.lineEditCorreo)
         self.label_27 = QtWidgets.QLabel(self.formLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(13)
         self.label_27.setFont(font)
         self.label_27.setObjectName("label_27")
-        self.formLayout.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.label_27)
+        self.formLayout.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.label_27)
         self.lineEditTelefono_2 = QtWidgets.QLineEdit(self.formLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(13)
@@ -544,13 +537,13 @@ class Ui_Form(object):
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
         self.lineEditTelefono_2.setObjectName("lineEditTelefono_2")
-        self.formLayout.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.lineEditTelefono_2)
+        self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.lineEditTelefono_2)
         self.label_28 = QtWidgets.QLabel(self.formLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(13)
         self.label_28.setFont(font)
         self.label_28.setObjectName("label_28")
-        self.formLayout.setWidget(7, QtWidgets.QFormLayout.LabelRole, self.label_28)
+        self.formLayout.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.label_28)
         self.lineEditDireccion = QtWidgets.QLineEdit(self.formLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(13)
@@ -559,7 +552,7 @@ class Ui_Form(object):
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
         self.lineEditDireccion.setObjectName("lineEditDireccion")
-        self.formLayout.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.lineEditDireccion)
+        self.formLayout.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.lineEditDireccion)
         self.pushButtonRegresarRegistrar = QtWidgets.QPushButton(self.pageAgregarUsuarios)
         self.pushButtonRegresarRegistrar.setGeometry(QtCore.QRect(240, 560, 191, 51))
         font = QtGui.QFont()
@@ -732,7 +725,7 @@ class Ui_Form(object):
         self.comboBoxUsuario.setObjectName("comboBoxUsuario")
         self.formLayout_7.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.comboBoxUsuario)
         self.pushButtonRegistrarMascota = QtWidgets.QPushButton(self.pageAgregarMascota)
-        self.pushButtonRegistrarMascota.setGeometry(QtCore.QRect(550, 570, 191, 51))
+        self.pushButtonRegistrarMascota.setGeometry(QtCore.QRect(480, 570, 191, 51))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.pushButtonRegistrarMascota.setFont(font)
@@ -752,7 +745,7 @@ class Ui_Form(object):
 "")
         self.pushButtonRegistrarMascota.setObjectName("pushButtonRegistrarMascota")
         self.pushButtonRegresarMascota = QtWidgets.QPushButton(self.pageAgregarMascota)
-        self.pushButtonRegresarMascota.setGeometry(QtCore.QRect(340, 570, 191, 51))
+        self.pushButtonRegresarMascota.setGeometry(QtCore.QRect(280, 570, 191, 51))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.pushButtonRegresarMascota.setFont(font)
@@ -772,13 +765,33 @@ class Ui_Form(object):
 "")
         self.pushButtonRegresarMascota.setObjectName("pushButtonRegresarMascota")
         self.label_29 = QtWidgets.QLabel(self.pageAgregarMascota)
-        self.label_29.setGeometry(QtCore.QRect(410, 20, 171, 41))
+        self.label_29.setGeometry(QtCore.QRect(430, 20, 171, 41))
         font = QtGui.QFont()
         font.setPointSize(13)
         font.setBold(True)
         font.setWeight(75)
         self.label_29.setFont(font)
         self.label_29.setObjectName("label_29")
+        self.pushButtonListaUsuariosMascotas = QtWidgets.QPushButton(self.pageAgregarMascota)
+        self.pushButtonListaUsuariosMascotas.setGeometry(QtCore.QRect(680, 570, 191, 51))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.pushButtonListaUsuariosMascotas.setFont(font)
+        self.pushButtonListaUsuariosMascotas.setStyleSheet("QPushButton {\n"
+"    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #8f938f; /* Color al hacer clic */\n"
+"}\n"
+"")
+        self.pushButtonListaUsuariosMascotas.setObjectName("pushButtonListaUsuariosMascotas")
         self.stackedWidget.addWidget(self.pageAgregarMascota)
         self.pageListaUsuariosMascotas = QtWidgets.QWidget()
         self.pageListaUsuariosMascotas.setObjectName("pageListaUsuariosMascotas")
@@ -1136,50 +1149,625 @@ class Ui_Form(object):
         self.stackedWidget.addWidget(self.pageDetallesPropietario)
         self.pageTarifas = QtWidgets.QWidget()
         self.pageTarifas.setObjectName("pageTarifas")
-        self.label_53 = QtWidgets.QLabel(self.pageTarifas)
-        self.label_53.setGeometry(QtCore.QRect(390, 20, 241, 31))
+        self.formLayoutWidget_6 = QtWidgets.QWidget(self.pageTarifas)
+        self.formLayoutWidget_6.setGeometry(QtCore.QRect(180, 60, 731, 182))
+        self.formLayoutWidget_6.setObjectName("formLayoutWidget_6")
+        self.formLayout_6 = QtWidgets.QFormLayout(self.formLayoutWidget_6)
+        self.formLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.formLayout_6.setHorizontalSpacing(7)
+        self.formLayout_6.setVerticalSpacing(16)
+        self.formLayout_6.setObjectName("formLayout_6")
+        self.label_53 = QtWidgets.QLabel(self.formLayoutWidget_6)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_53.setFont(font)
+        self.label_53.setObjectName("label_53")
+        self.formLayout_6.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_53)
+        self.lineEditCedulaCitas = QtWidgets.QLineEdit(self.formLayoutWidget_6)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.lineEditCedulaCitas.setFont(font)
+        self.lineEditCedulaCitas.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.lineEditCedulaCitas.setObjectName("lineEditCedulaCitas")
+        self.formLayout_6.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEditCedulaCitas)
+        self.label_54 = QtWidgets.QLabel(self.formLayoutWidget_6)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_54.setFont(font)
+        self.label_54.setObjectName("label_54")
+        self.formLayout_6.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_54)
+        self.lineEditNombreCitas = QtWidgets.QLineEdit(self.formLayoutWidget_6)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.lineEditNombreCitas.setFont(font)
+        self.lineEditNombreCitas.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.lineEditNombreCitas.setObjectName("lineEditNombreCitas")
+        self.formLayout_6.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEditNombreCitas)
+        self.label_56 = QtWidgets.QLabel(self.formLayoutWidget_6)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_56.setFont(font)
+        self.label_56.setObjectName("label_56")
+        self.formLayout_6.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_56)
+        self.comboBoxTipoEspecieCitas = QtWidgets.QComboBox(self.formLayoutWidget_6)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.comboBoxTipoEspecieCitas.setFont(font)
+        self.comboBoxTipoEspecieCitas.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.comboBoxTipoEspecieCitas.setObjectName("comboBoxTipoEspecieCitas")
+        self.formLayout_6.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.comboBoxTipoEspecieCitas)
+        self.label_57 = QtWidgets.QLabel(self.formLayoutWidget_6)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_57.setFont(font)
+        self.label_57.setObjectName("label_57")
+        self.formLayout_6.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_57)
+        self.lineEditRazaCitas = QtWidgets.QLineEdit(self.formLayoutWidget_6)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.lineEditRazaCitas.setFont(font)
+        self.lineEditRazaCitas.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.lineEditRazaCitas.setObjectName("lineEditRazaCitas")
+        self.formLayout_6.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.lineEditRazaCitas)
+        self.pushButtonRegresarCitas = QtWidgets.QPushButton(self.pageTarifas)
+        self.pushButtonRegresarCitas.setGeometry(QtCore.QRect(180, 630, 221, 41))
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.pushButtonRegresarCitas.setFont(font)
+        self.pushButtonRegresarCitas.setStyleSheet("QPushButton {\n"
+"    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #8f938f; /* Color al hacer clic */\n"
+"}\n"
+"")
+        self.pushButtonRegresarCitas.setObjectName("pushButtonRegresarCitas")
+        self.tableWidgetListaCitas = QtWidgets.QTableWidget(self.pageTarifas)
+        self.tableWidgetListaCitas.setGeometry(QtCore.QRect(140, 260, 861, 331))
+        self.tableWidgetListaCitas.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.tableWidgetListaCitas.setObjectName("tableWidgetListaCitas")
+        self.tableWidgetListaCitas.setColumnCount(0)
+        self.tableWidgetListaCitas.setRowCount(0)
+        self.pushButtonDetallesCita = QtWidgets.QPushButton(self.pageTarifas)
+        self.pushButtonDetallesCita.setGeometry(QtCore.QRect(470, 630, 221, 41))
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.pushButtonDetallesCita.setFont(font)
+        self.pushButtonDetallesCita.setStyleSheet("QPushButton {\n"
+"    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #8f938f; /* Color al hacer clic */\n"
+"}\n"
+"")
+        self.pushButtonDetallesCita.setObjectName("pushButtonDetallesCita")
+        self.label_38 = QtWidgets.QLabel(self.pageTarifas)
+        self.label_38.setGeometry(QtCore.QRect(470, 20, 81, 31))
         font = QtGui.QFont()
         font.setPointSize(15)
         font.setBold(True)
         font.setWeight(75)
-        self.label_53.setFont(font)
-        self.label_53.setObjectName("label_53")
-        self.formLayoutWidget_6 = QtWidgets.QWidget(self.pageTarifas)
-        self.formLayoutWidget_6.setGeometry(QtCore.QRect(120, 120, 821, 204))
-        self.formLayoutWidget_6.setObjectName("formLayoutWidget_6")
-        self.formLayout_6 = QtWidgets.QFormLayout(self.formLayoutWidget_6)
-        self.formLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.formLayout_6.setObjectName("formLayout_6")
-        self.label_54 = QtWidgets.QLabel(self.formLayoutWidget_6)
+        self.label_38.setFont(font)
+        self.label_38.setObjectName("label_38")
+        self.pushButtonNuevaCita = QtWidgets.QPushButton(self.pageTarifas)
+        self.pushButtonNuevaCita.setGeometry(QtCore.QRect(740, 630, 221, 41))
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.pushButtonNuevaCita.setFont(font)
+        self.pushButtonNuevaCita.setStyleSheet("QPushButton {\n"
+"    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #8f938f; /* Color al hacer clic */\n"
+"}\n"
+"")
+        self.pushButtonNuevaCita.setObjectName("pushButtonNuevaCita")
+        self.stackedWidget.addWidget(self.pageTarifas)
+        self.pageContaduria = QtWidgets.QWidget()
+        self.pageContaduria.setObjectName("pageContaduria")
+        self.label_30 = QtWidgets.QLabel(self.pageContaduria)
+        self.label_30.setGeometry(QtCore.QRect(430, 10, 171, 41))
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_30.setFont(font)
+        self.label_30.setObjectName("label_30")
+        self.pushButtonRegresarNuevaCita = QtWidgets.QPushButton(self.pageContaduria)
+        self.pushButtonRegresarNuevaCita.setGeometry(QtCore.QRect(360, 600, 191, 51))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.pushButtonRegresarNuevaCita.setFont(font)
+        self.pushButtonRegresarNuevaCita.setStyleSheet("QPushButton {\n"
+"    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #8f938f; /* Color al hacer clic */\n"
+"}\n"
+"")
+        self.pushButtonRegresarNuevaCita.setObjectName("pushButtonRegresarNuevaCita")
+        self.formLayoutWidget_11 = QtWidgets.QWidget(self.pageContaduria)
+        self.formLayoutWidget_11.setGeometry(QtCore.QRect(150, 60, 811, 515))
+        self.formLayoutWidget_11.setObjectName("formLayoutWidget_11")
+        self.formLayout_11 = QtWidgets.QFormLayout(self.formLayoutWidget_11)
+        self.formLayout_11.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
+        self.formLayout_11.setContentsMargins(0, 0, 0, 0)
+        self.formLayout_11.setHorizontalSpacing(7)
+        self.formLayout_11.setVerticalSpacing(12)
+        self.formLayout_11.setObjectName("formLayout_11")
+        self.label_115 = QtWidgets.QLabel(self.formLayoutWidget_11)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_115.setFont(font)
+        self.label_115.setObjectName("label_115")
+        self.formLayout_11.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_115)
+        self.comboBoxUsuarioCita = QtWidgets.QComboBox(self.formLayoutWidget_11)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.comboBoxUsuarioCita.setFont(font)
+        self.comboBoxUsuarioCita.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.comboBoxUsuarioCita.setObjectName("comboBoxUsuarioCita")
+        self.formLayout_11.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.comboBoxUsuarioCita)
+        self.label_97 = QtWidgets.QLabel(self.formLayoutWidget_11)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_97.setFont(font)
+        self.label_97.setObjectName("label_97")
+        self.formLayout_11.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_97)
+        self.lineEditNombreUsuario = QtWidgets.QLineEdit(self.formLayoutWidget_11)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.lineEditNombreUsuario.setFont(font)
+        self.lineEditNombreUsuario.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.lineEditNombreUsuario.setObjectName("lineEditNombreUsuario")
+        self.formLayout_11.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEditNombreUsuario)
+        self.label_110 = QtWidgets.QLabel(self.formLayoutWidget_11)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_110.setFont(font)
+        self.label_110.setObjectName("label_110")
+        self.formLayout_11.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_110)
+        self.comboBoxMascota = QtWidgets.QComboBox(self.formLayoutWidget_11)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.comboBoxMascota.setFont(font)
+        self.comboBoxMascota.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.comboBoxMascota.setObjectName("comboBoxMascota")
+        self.formLayout_11.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.comboBoxMascota)
+        self.label_111 = QtWidgets.QLabel(self.formLayoutWidget_11)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_111.setFont(font)
+        self.label_111.setObjectName("label_111")
+        self.formLayout_11.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_111)
+        self.lineEditCedulaUsuario = QtWidgets.QLineEdit(self.formLayoutWidget_11)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.lineEditCedulaUsuario.setFont(font)
+        self.lineEditCedulaUsuario.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.lineEditCedulaUsuario.setObjectName("lineEditCedulaUsuario")
+        self.formLayout_11.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEditCedulaUsuario)
+        self.label_114 = QtWidgets.QLabel(self.formLayoutWidget_11)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_114.setFont(font)
+        self.label_114.setObjectName("label_114")
+        self.formLayout_11.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.label_114)
+        self.calendarWidgetFechaCita = QtWidgets.QCalendarWidget(self.formLayoutWidget_11)
+        self.calendarWidgetFechaCita.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.calendarWidgetFechaCita.setObjectName("calendarWidgetFechaCita")
+        self.formLayout_11.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.calendarWidgetFechaCita)
+        self.label_112 = QtWidgets.QLabel(self.formLayoutWidget_11)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_112.setFont(font)
+        self.label_112.setObjectName("label_112")
+        self.formLayout_11.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.label_112)
+        self.timeEditCita = QtWidgets.QTimeEdit(self.formLayoutWidget_11)
+        self.timeEditCita.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.timeEditCita.setObjectName("timeEditCita")
+        self.formLayout_11.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.timeEditCita)
+        self.label_113 = QtWidgets.QLabel(self.formLayoutWidget_11)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_113.setFont(font)
+        self.label_113.setObjectName("label_113")
+        self.formLayout_11.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_113)
+        self.comboBoxServicio = QtWidgets.QComboBox(self.formLayoutWidget_11)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.comboBoxServicio.setFont(font)
+        self.comboBoxServicio.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.comboBoxServicio.setObjectName("comboBoxServicio")
+        self.formLayout_11.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.comboBoxServicio)
+        self.pushButtonAsignarCita = QtWidgets.QPushButton(self.pageContaduria)
+        self.pushButtonAsignarCita.setGeometry(QtCore.QRect(570, 600, 191, 51))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.pushButtonAsignarCita.setFont(font)
+        self.pushButtonAsignarCita.setStyleSheet("QPushButton {\n"
+"    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #8f938f; /* Color al hacer clic */\n"
+"}\n"
+"")
+        self.pushButtonAsignarCita.setObjectName("pushButtonAsignarCita")
+        self.stackedWidget.addWidget(self.pageContaduria)
+        self.pageDetallesContaduria = QtWidgets.QWidget()
+        self.pageDetallesContaduria.setObjectName("pageDetallesContaduria")
+        self.label_75 = QtWidgets.QLabel(self.pageDetallesContaduria)
+        self.label_75.setGeometry(QtCore.QRect(430, 10, 171, 31))
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_75.setFont(font)
+        self.label_75.setObjectName("label_75")
+        self.formLayoutWidget_9 = QtWidgets.QWidget(self.pageDetallesContaduria)
+        self.formLayoutWidget_9.setGeometry(QtCore.QRect(130, 70, 841, 501))
+        self.formLayoutWidget_9.setObjectName("formLayoutWidget_9")
+        self.formLayout_10 = QtWidgets.QFormLayout(self.formLayoutWidget_9)
+        self.formLayout_10.setContentsMargins(0, 0, 0, 0)
+        self.formLayout_10.setVerticalSpacing(11)
+        self.formLayout_10.setObjectName("formLayout_10")
+        self.label_80 = QtWidgets.QLabel(self.formLayoutWidget_9)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_80.setFont(font)
+        self.label_80.setObjectName("label_80")
+        self.formLayout_10.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_80)
+        self.lineEditNombreDetallesCita = QtWidgets.QLineEdit(self.formLayoutWidget_9)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.lineEditNombreDetallesCita.setFont(font)
+        self.lineEditNombreDetallesCita.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.lineEditNombreDetallesCita.setObjectName("lineEditNombreDetallesCita")
+        self.formLayout_10.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEditNombreDetallesCita)
+        self.label_81 = QtWidgets.QLabel(self.formLayoutWidget_9)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_81.setFont(font)
+        self.label_81.setObjectName("label_81")
+        self.formLayout_10.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_81)
+        self.lineEditCedulaDetallesCita = QtWidgets.QLineEdit(self.formLayoutWidget_9)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.lineEditCedulaDetallesCita.setFont(font)
+        self.lineEditCedulaDetallesCita.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.lineEditCedulaDetallesCita.setObjectName("lineEditCedulaDetallesCita")
+        self.formLayout_10.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEditCedulaDetallesCita)
+        self.label_82 = QtWidgets.QLabel(self.formLayoutWidget_9)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_82.setFont(font)
+        self.label_82.setObjectName("label_82")
+        self.formLayout_10.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_82)
+        self.lineEditTelefonoDetallesCita = QtWidgets.QLineEdit(self.formLayoutWidget_9)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.lineEditTelefonoDetallesCita.setFont(font)
+        self.lineEditTelefonoDetallesCita.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.lineEditTelefonoDetallesCita.setObjectName("lineEditTelefonoDetallesCita")
+        self.formLayout_10.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEditTelefonoDetallesCita)
+        self.label_83 = QtWidgets.QLabel(self.formLayoutWidget_9)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_83.setFont(font)
+        self.label_83.setObjectName("label_83")
+        self.formLayout_10.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_83)
+        self.lineEditDireccionDetallesCita = QtWidgets.QLineEdit(self.formLayoutWidget_9)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.lineEditDireccionDetallesCita.setFont(font)
+        self.lineEditDireccionDetallesCita.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.lineEditDireccionDetallesCita.setObjectName("lineEditDireccionDetallesCita")
+        self.formLayout_10.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.lineEditDireccionDetallesCita)
+        self.label_85 = QtWidgets.QLabel(self.formLayoutWidget_9)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_85.setFont(font)
+        self.label_85.setObjectName("label_85")
+        self.formLayout_10.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_85)
+        self.lineEditNombreMascotaCita = QtWidgets.QLineEdit(self.formLayoutWidget_9)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.lineEditNombreMascotaCita.setFont(font)
+        self.lineEditNombreMascotaCita.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.lineEditNombreMascotaCita.setObjectName("lineEditNombreMascotaCita")
+        self.formLayout_10.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.lineEditNombreMascotaCita)
+        self.label_76 = QtWidgets.QLabel(self.formLayoutWidget_9)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_76.setFont(font)
+        self.label_76.setObjectName("label_76")
+        self.formLayout_10.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.label_76)
+        self.lineEditRazaCita = QtWidgets.QLineEdit(self.formLayoutWidget_9)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.lineEditRazaCita.setFont(font)
+        self.lineEditRazaCita.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.lineEditRazaCita.setObjectName("lineEditRazaCita")
+        self.formLayout_10.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.lineEditRazaCita)
+        self.label_77 = QtWidgets.QLabel(self.formLayoutWidget_9)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_77.setFont(font)
+        self.label_77.setObjectName("label_77")
+        self.formLayout_10.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.label_77)
+        self.lineEditServicioDetallesCita = QtWidgets.QLineEdit(self.formLayoutWidget_9)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.lineEditServicioDetallesCita.setFont(font)
+        self.lineEditServicioDetallesCita.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.lineEditServicioDetallesCita.setObjectName("lineEditServicioDetallesCita")
+        self.formLayout_10.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.lineEditServicioDetallesCita)
+        self.label_78 = QtWidgets.QLabel(self.formLayoutWidget_9)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_78.setFont(font)
+        self.label_78.setObjectName("label_78")
+        self.formLayout_10.setWidget(7, QtWidgets.QFormLayout.LabelRole, self.label_78)
+        self.lineEditTipoServicioCita = QtWidgets.QLineEdit(self.formLayoutWidget_9)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.lineEditTipoServicioCita.setFont(font)
+        self.lineEditTipoServicioCita.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.lineEditTipoServicioCita.setObjectName("lineEditTipoServicioCita")
+        self.formLayout_10.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.lineEditTipoServicioCita)
+        self.label_79 = QtWidgets.QLabel(self.formLayoutWidget_9)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.label_79.setFont(font)
+        self.label_79.setObjectName("label_79")
+        self.formLayout_10.setWidget(8, QtWidgets.QFormLayout.LabelRole, self.label_79)
+        self.lineEditEstadoCita = QtWidgets.QLineEdit(self.formLayoutWidget_9)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.lineEditEstadoCita.setFont(font)
+        self.lineEditEstadoCita.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.lineEditEstadoCita.setObjectName("lineEditEstadoCita")
+        self.formLayout_10.setWidget(8, QtWidgets.QFormLayout.FieldRole, self.lineEditEstadoCita)
+        self.label_84 = QtWidgets.QLabel(self.formLayoutWidget_9)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.label_54.setFont(font)
-        self.label_54.setObjectName("label_54")
-        self.formLayout_6.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_54)
-        self.comboBoxTipoServicio = QtWidgets.QComboBox(self.formLayoutWidget_6)
+        self.label_84.setFont(font)
+        self.label_84.setObjectName("label_84")
+        self.formLayout_10.setWidget(9, QtWidgets.QFormLayout.LabelRole, self.label_84)
+        self.label_86 = QtWidgets.QLabel(self.formLayoutWidget_9)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.comboBoxTipoServicio.setFont(font)
-        self.comboBoxTipoServicio.setStyleSheet("\n"
+        self.label_86.setFont(font)
+        self.label_86.setObjectName("label_86")
+        self.formLayout_10.setWidget(10, QtWidgets.QFormLayout.LabelRole, self.label_86)
+        self.lineEditFechaCita = QtWidgets.QLineEdit(self.formLayoutWidget_9)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.lineEditFechaCita.setFont(font)
+        self.lineEditFechaCita.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.lineEditFechaCita.setObjectName("lineEditFechaCita")
+        self.formLayout_10.setWidget(9, QtWidgets.QFormLayout.FieldRole, self.lineEditFechaCita)
+        self.lineEditHoraCita = QtWidgets.QLineEdit(self.formLayoutWidget_9)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.lineEditHoraCita.setFont(font)
+        self.lineEditHoraCita.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.lineEditHoraCita.setObjectName("lineEditHoraCita")
+        self.formLayout_10.setWidget(10, QtWidgets.QFormLayout.FieldRole, self.lineEditHoraCita)
+        self.pushButtonCancelarCita = QtWidgets.QPushButton(self.pageDetallesContaduria)
+        self.pushButtonCancelarCita.setGeometry(QtCore.QRect(580, 600, 191, 51))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.pushButtonCancelarCita.setFont(font)
+        self.pushButtonCancelarCita.setStyleSheet("QPushButton {\n"
+"    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #8f938f; /* Color al hacer clic */\n"
+"}\n"
+"")
+        self.pushButtonCancelarCita.setObjectName("pushButtonCancelarCita")
+        self.pushButtonRegresarDetallesCita = QtWidgets.QPushButton(self.pageDetallesContaduria)
+        self.pushButtonRegresarDetallesCita.setGeometry(QtCore.QRect(350, 600, 191, 51))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.pushButtonRegresarDetallesCita.setFont(font)
+        self.pushButtonRegresarDetallesCita.setStyleSheet("QPushButton {\n"
+"    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #8f938f; /* Color al hacer clic */\n"
+"}\n"
+"")
+        self.pushButtonRegresarDetallesCita.setObjectName("pushButtonRegresarDetallesCita")
+        self.stackedWidget.addWidget(self.pageDetallesContaduria)
+        self.page = QtWidgets.QWidget()
+        self.page.setObjectName("page")
+        self.tableWidgetVentas = QtWidgets.QTableWidget(self.page)
+        self.tableWidgetVentas.setGeometry(QtCore.QRect(130, 320, 821, 241))
+        self.tableWidgetVentas.setStyleSheet("\n"
 "    background-color: #a4a8a5; /* Color del botón */\n"
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
 "")
-        self.comboBoxTipoServicio.setObjectName("comboBoxTipoServicio")
-        self.formLayout_6.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.comboBoxTipoServicio)
-        self.label_57 = QtWidgets.QLabel(self.formLayoutWidget_6)
+        self.tableWidgetVentas.setObjectName("tableWidgetVentas")
+        self.tableWidgetVentas.setColumnCount(0)
+        self.tableWidgetVentas.setRowCount(0)
+        self.pushButtonComprar = QtWidgets.QPushButton(self.page)
+        self.pushButtonComprar.setGeometry(QtCore.QRect(530, 630, 191, 31))
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.pushButtonComprar.setFont(font)
+        self.pushButtonComprar.setStyleSheet("QPushButton {\n"
+"    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #8f938f; /* Color al hacer clic */\n"
+"}\n"
+"")
+        self.pushButtonComprar.setObjectName("pushButtonComprar")
+        self.label_59 = QtWidgets.QLabel(self.page)
+        self.label_59.setGeometry(QtCore.QRect(460, 20, 101, 31))
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_59.setFont(font)
+        self.label_59.setObjectName("label_59")
+        self.formLayoutWidget_12 = QtWidgets.QWidget(self.page)
+        self.formLayoutWidget_12.setGeometry(QtCore.QRect(130, 90, 821, 204))
+        self.formLayoutWidget_12.setObjectName("formLayoutWidget_12")
+        self.formLayout_12 = QtWidgets.QFormLayout(self.formLayoutWidget_12)
+        self.formLayout_12.setContentsMargins(0, 0, 0, 0)
+        self.formLayout_12.setVerticalSpacing(8)
+        self.formLayout_12.setObjectName("formLayout_12")
+        self.label_65 = QtWidgets.QLabel(self.formLayoutWidget_12)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.label_57.setFont(font)
-        self.label_57.setObjectName("label_57")
-        self.formLayout_6.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_57)
-        self.label_56 = QtWidgets.QLabel(self.formLayoutWidget_6)
+        self.label_65.setFont(font)
+        self.label_65.setObjectName("label_65")
+        self.formLayout_12.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_65)
+        self.comboBoxClienteVentas = QtWidgets.QComboBox(self.formLayoutWidget_12)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.label_56.setFont(font)
-        self.label_56.setObjectName("label_56")
-        self.formLayout_6.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_56)
-        self.doubleSpinBoxTarifa = QtWidgets.QDoubleSpinBox(self.formLayoutWidget_6)
+        self.comboBoxClienteVentas.setFont(font)
+        self.comboBoxClienteVentas.setStyleSheet("\n"
+"    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
+"")
+        self.comboBoxClienteVentas.setObjectName("comboBoxClienteVentas")
+        self.formLayout_12.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.comboBoxClienteVentas)
+        self.label_61 = QtWidgets.QLabel(self.formLayoutWidget_12)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.label_61.setFont(font)
+        self.label_61.setObjectName("label_61")
+        self.formLayout_12.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_61)
+        self.comboBoxProducto = QtWidgets.QComboBox(self.formLayoutWidget_12)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.comboBoxProducto.setFont(font)
+        self.comboBoxProducto.setStyleSheet("\n"
+"    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
+"")
+        self.comboBoxProducto.setObjectName("comboBoxProducto")
+        self.formLayout_12.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.comboBoxProducto)
+        self.label_64 = QtWidgets.QLabel(self.formLayoutWidget_12)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.label_64.setFont(font)
+        self.label_64.setObjectName("label_64")
+        self.formLayout_12.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_64)
+        self.doubleSpinBoxTarifa = QtWidgets.QDoubleSpinBox(self.formLayoutWidget_12)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.doubleSpinBoxTarifa.setFont(font)
@@ -1189,11 +1777,8 @@ class Ui_Form(object):
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
 "")
         self.doubleSpinBoxTarifa.setObjectName("doubleSpinBoxTarifa")
-        self.formLayout_6.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.doubleSpinBoxTarifa)
-        self.doubleSpinBoxTarifa.setDecimals(0)  # No permitir decimales
-        self.doubleSpinBoxTarifa.setMaximum(10000000)  # Ajusta el límite según necesidad
-        self.doubleSpinBoxTarifa.setSingleStep(1000)  # Incremento de 1000 en 1000
-        self.pushButtonTarifaHorario = QtWidgets.QPushButton(self.formLayoutWidget_6)
+        self.formLayout_12.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.doubleSpinBoxTarifa)
+        self.pushButtonTarifaHorario = QtWidgets.QPushButton(self.formLayoutWidget_12)
         font = QtGui.QFont()
         font.setPointSize(13)
         self.pushButtonTarifaHorario.setFont(font)
@@ -1213,34 +1798,13 @@ class Ui_Form(object):
 "}\n"
 "")
         self.pushButtonTarifaHorario.setObjectName("pushButtonTarifaHorario")
-        self.formLayout_6.setWidget(3, QtWidgets.QFormLayout.SpanningRole, self.pushButtonTarifaHorario)
-        self.comboBoxHorarioTarifa = QtWidgets.QComboBox(self.formLayoutWidget_6)
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        self.comboBoxHorarioTarifa.setFont(font)
-        self.comboBoxHorarioTarifa.setStyleSheet("\n"
-"    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
-"")
-        self.comboBoxHorarioTarifa.setObjectName("comboBoxHorarioTarifa")
-        self.formLayout_6.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.comboBoxHorarioTarifa)
-        self.tableWidgetTarifas = QtWidgets.QTableWidget(self.pageTarifas)
-        self.tableWidgetTarifas.setGeometry(QtCore.QRect(120, 340, 821, 241))
-        self.tableWidgetTarifas.setStyleSheet("\n"
-"    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
-"")
-        self.tableWidgetTarifas.setObjectName("tableWidgetTarifas")
-        self.tableWidgetTarifas.setColumnCount(0)
-        self.tableWidgetTarifas.setRowCount(0)
-        self.pushButtonRegresarTarifa = QtWidgets.QPushButton(self.pageTarifas)
-        self.pushButtonRegresarTarifa.setGeometry(QtCore.QRect(300, 630, 191, 31))
+        self.formLayout_12.setWidget(3, QtWidgets.QFormLayout.SpanningRole, self.pushButtonTarifaHorario)
+        self.pushButtonRegresarVentas = QtWidgets.QPushButton(self.page)
+        self.pushButtonRegresarVentas.setGeometry(QtCore.QRect(310, 630, 191, 31))
         font = QtGui.QFont()
         font.setPointSize(13)
-        self.pushButtonRegresarTarifa.setFont(font)
-        self.pushButtonRegresarTarifa.setStyleSheet("QPushButton {\n"
+        self.pushButtonRegresarVentas.setFont(font)
+        self.pushButtonRegresarVentas.setStyleSheet("QPushButton {\n"
 "    background-color: #a4a8a5; /* Color del botón */\n"
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
@@ -1255,17 +1819,27 @@ class Ui_Form(object):
 "    background-color: #8f938f; /* Color al hacer clic */\n"
 "}\n"
 "")
-        self.pushButtonRegresarTarifa.setObjectName("pushButtonRegresarTarifa")
-        self.pushButtonEliminarTarifa = QtWidgets.QPushButton(self.pageTarifas)
-        self.pushButtonEliminarTarifa.setGeometry(QtCore.QRect(520, 630, 191, 31))
+        self.pushButtonRegresarVentas.setObjectName("pushButtonRegresarVentas")
+        self.stackedWidget.addWidget(self.page)
+        self.pageRegistrosPropietarios = QtWidgets.QWidget()
+        self.pageRegistrosPropietarios.setObjectName("pageRegistrosPropietarios")
+        self.tableWidgetPagos = QtWidgets.QTableWidget(self.pageRegistrosPropietarios)
+        self.tableWidgetPagos.setGeometry(QtCore.QRect(60, 210, 1011, 331))
+        self.tableWidgetPagos.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
+        self.tableWidgetPagos.setObjectName("tableWidgetPagos")
+        self.tableWidgetPagos.setColumnCount(0)
+        self.tableWidgetPagos.setRowCount(0)
+        self.pushButtonRegresarPagos = QtWidgets.QPushButton(self.pageRegistrosPropietarios)
+        self.pushButtonRegresarPagos.setGeometry(QtCore.QRect(320, 600, 191, 51))
         font = QtGui.QFont()
-        font.setPointSize(13)
-        self.pushButtonEliminarTarifa.setFont(font)
-        self.pushButtonEliminarTarifa.setStyleSheet("QPushButton {\n"
+        font.setPointSize(10)
+        self.pushButtonRegresarPagos.setFont(font)
+        self.pushButtonRegresarPagos.setStyleSheet("QPushButton {\n"
 "    background-color: #a4a8a5; /* Color del botón */\n"
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
-"\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -1276,18 +1850,37 @@ class Ui_Form(object):
 "    background-color: #8f938f; /* Color al hacer clic */\n"
 "}\n"
 "")
-        self.pushButtonEliminarTarifa.setObjectName("pushButtonEliminarTarifa")
-        self.stackedWidget.addWidget(self.pageTarifas)
-        self.pageContaduria = QtWidgets.QWidget()
-        self.pageContaduria.setObjectName("pageContaduria")
-        self.label_70 = QtWidgets.QLabel(self.pageContaduria)
-        self.label_70.setGeometry(QtCore.QRect(450, 10, 121, 31))
+        self.pushButtonRegresarPagos.setObjectName("pushButtonRegresarPagos")
+        self.label_55 = QtWidgets.QLabel(self.pageRegistrosPropietarios)
+        self.label_55.setGeometry(QtCore.QRect(470, 20, 91, 31))
         font = QtGui.QFont()
-        font.setPointSize(14)
-        self.label_70.setFont(font)
-        self.label_70.setObjectName("label_70")
-        self.horizontalLayoutWidget = QtWidgets.QWidget(self.pageContaduria)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(60, 60, 1011, 91))
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_55.setFont(font)
+        self.label_55.setObjectName("label_55")
+        self.pushButtonExportarPagos = QtWidgets.QPushButton(self.pageRegistrosPropietarios)
+        self.pushButtonExportarPagos.setGeometry(QtCore.QRect(540, 600, 191, 51))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.pushButtonExportarPagos.setFont(font)
+        self.pushButtonExportarPagos.setStyleSheet("QPushButton {\n"
+"    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #8f938f; /* Color al hacer clic */\n"
+"}\n"
+"")
+        self.pushButtonExportarPagos.setObjectName("pushButtonExportarPagos")
+        self.horizontalLayoutWidget = QtWidgets.QWidget(self.pageRegistrosPropietarios)
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(60, 90, 1011, 91))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -1299,512 +1892,69 @@ class Ui_Form(object):
         self.label_71.setFont(font)
         self.label_71.setObjectName("label_71")
         self.horizontalLayout_2.addWidget(self.label_71)
-        self.dateEditDesdeContaduria = QtWidgets.QDateEdit(self.horizontalLayoutWidget)
+        self.dateEditDesdePagos = QtWidgets.QDateEdit(self.horizontalLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.dateEditDesdeContaduria.setFont(font)
-        self.dateEditDesdeContaduria.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+        self.dateEditDesdePagos.setFont(font)
+        self.dateEditDesdePagos.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.dateEditDesdeContaduria.setObjectName("dateEditDesdeContaduria")
-        self.horizontalLayout_2.addWidget(self.dateEditDesdeContaduria)
+        self.dateEditDesdePagos.setObjectName("dateEditDesdePagos")
+        self.horizontalLayout_2.addWidget(self.dateEditDesdePagos)
         self.label_72 = QtWidgets.QLabel(self.horizontalLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.label_72.setFont(font)
         self.label_72.setObjectName("label_72")
         self.horizontalLayout_2.addWidget(self.label_72)
-        self.dateEditHastaContaduria = QtWidgets.QDateEdit(self.horizontalLayoutWidget)
+        self.dateEditHastaPagos = QtWidgets.QDateEdit(self.horizontalLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.dateEditHastaContaduria.setFont(font)
-        self.dateEditHastaContaduria.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+        self.dateEditHastaPagos.setFont(font)
+        self.dateEditHastaPagos.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.dateEditHastaContaduria.setObjectName("dateEditHastaContaduria")
-        self.horizontalLayout_2.addWidget(self.dateEditHastaContaduria)
+        self.dateEditHastaPagos.setObjectName("dateEditHastaPagos")
+        self.horizontalLayout_2.addWidget(self.dateEditHastaPagos)
         self.label_73 = QtWidgets.QLabel(self.horizontalLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.label_73.setFont(font)
         self.label_73.setObjectName("label_73")
         self.horizontalLayout_2.addWidget(self.label_73)
-        self.comboBoxPeriodoContaduria = QtWidgets.QComboBox(self.horizontalLayoutWidget)
+        self.comboBoxPeriodoPagos = QtWidgets.QComboBox(self.horizontalLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.comboBoxPeriodoContaduria.setFont(font)
-        self.comboBoxPeriodoContaduria.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+        self.comboBoxPeriodoPagos.setFont(font)
+        self.comboBoxPeriodoPagos.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.comboBoxPeriodoContaduria.setObjectName("comboBoxPeriodoContaduria")
-        self.horizontalLayout_2.addWidget(self.comboBoxPeriodoContaduria)
+        self.comboBoxPeriodoPagos.setObjectName("comboBoxPeriodoPagos")
+        self.horizontalLayout_2.addWidget(self.comboBoxPeriodoPagos)
         self.label_74 = QtWidgets.QLabel(self.horizontalLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.label_74.setFont(font)
         self.label_74.setObjectName("label_74")
         self.horizontalLayout_2.addWidget(self.label_74)
-        self.comboBoxEstadoContaduria = QtWidgets.QComboBox(self.horizontalLayoutWidget)
+        self.comboBoxEstadoPagos = QtWidgets.QComboBox(self.horizontalLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.comboBoxEstadoContaduria.setFont(font)
-        self.comboBoxEstadoContaduria.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
+        self.comboBoxEstadoPagos.setFont(font)
+        self.comboBoxEstadoPagos.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.comboBoxEstadoContaduria.setObjectName("comboBoxEstadoContaduria")
-        self.horizontalLayout_2.addWidget(self.comboBoxEstadoContaduria)
-        self.tableWidgetContaduria = QtWidgets.QTableWidget(self.pageContaduria)
-        self.tableWidgetContaduria.setGeometry(QtCore.QRect(60, 160, 1011, 361))
-        self.tableWidgetContaduria.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.tableWidgetContaduria.setObjectName("tableWidgetContaduria")
-        self.tableWidgetContaduria.setColumnCount(0)
-        self.tableWidgetContaduria.setRowCount(0)
-        self.pushButtonRegresarContaduria = QtWidgets.QPushButton(self.pageContaduria)
-        self.pushButtonRegresarContaduria.setGeometry(QtCore.QRect(210, 580, 191, 51))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.pushButtonRegresarContaduria.setFont(font)
-        self.pushButtonRegresarContaduria.setStyleSheet("QPushButton {\n"
-"    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #8f938f; /* Color al hacer clic */\n"
-"}\n"
-"")
-        self.pushButtonRegresarContaduria.setObjectName("pushButtonRegresarContaduria")
-        self.pushButtonDetallesContaduria = QtWidgets.QPushButton(self.pageContaduria)
-        self.pushButtonDetallesContaduria.setGeometry(QtCore.QRect(440, 580, 191, 51))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.pushButtonDetallesContaduria.setFont(font)
-        self.pushButtonDetallesContaduria.setStyleSheet("QPushButton {\n"
-"    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #8f938f; /* Color al hacer clic */\n"
-"}\n"
-"")
-        self.pushButtonDetallesContaduria.setObjectName("pushButtonDetallesContaduria")
-        self.pushButtonExportarContaduria = QtWidgets.QPushButton(self.pageContaduria)
-        self.pushButtonExportarContaduria.setGeometry(QtCore.QRect(670, 580, 191, 51))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.pushButtonExportarContaduria.setFont(font)
-        self.pushButtonExportarContaduria.setStyleSheet("QPushButton {\n"
-"    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #8f938f; /* Color al hacer clic */\n"
-"}\n"
-"")
-        self.pushButtonExportarContaduria.setObjectName("pushButtonExportarContaduria")
-        self.stackedWidget.addWidget(self.pageContaduria)
-        self.pageDetallesContaduria = QtWidgets.QWidget()
-        self.pageDetallesContaduria.setObjectName("pageDetallesContaduria")
-        self.label_75 = QtWidgets.QLabel(self.pageDetallesContaduria)
-        self.label_75.setGeometry(QtCore.QRect(380, 10, 231, 31))
-        font = QtGui.QFont()
-        font.setPointSize(15)
-        self.label_75.setFont(font)
-        self.label_75.setObjectName("label_75")
-        self.formLayoutWidget_9 = QtWidgets.QWidget(self.pageDetallesContaduria)
-        self.formLayoutWidget_9.setGeometry(QtCore.QRect(30, 50, 601, 501))
-        self.formLayoutWidget_9.setObjectName("formLayoutWidget_9")
-        self.formLayout_10 = QtWidgets.QFormLayout(self.formLayoutWidget_9)
-        self.formLayout_10.setContentsMargins(0, 0, 0, 0)
-        self.formLayout_10.setObjectName("formLayout_10")
-        self.label_80 = QtWidgets.QLabel(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.label_80.setFont(font)
-        self.label_80.setObjectName("label_80")
-        self.formLayout_10.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_80)
-        self.lineEditNombreDetallesFactura = QtWidgets.QLineEdit(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.lineEditNombreDetallesFactura.setFont(font)
-        self.lineEditNombreDetallesFactura.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.lineEditNombreDetallesFactura.setObjectName("lineEditNombreDetallesFactura")
-        self.formLayout_10.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEditNombreDetallesFactura)
-        self.label_81 = QtWidgets.QLabel(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.label_81.setFont(font)
-        self.label_81.setObjectName("label_81")
-        self.formLayout_10.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_81)
-        self.lineEditCedulaDetallesFactura = QtWidgets.QLineEdit(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.lineEditCedulaDetallesFactura.setFont(font)
-        self.lineEditCedulaDetallesFactura.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.lineEditCedulaDetallesFactura.setObjectName("lineEditCedulaDetallesFactura")
-        self.formLayout_10.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEditCedulaDetallesFactura)
-        self.label_82 = QtWidgets.QLabel(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.label_82.setFont(font)
-        self.label_82.setObjectName("label_82")
-        self.formLayout_10.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_82)
-        self.lineEditTelefonoDetallesFactura = QtWidgets.QLineEdit(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.lineEditTelefonoDetallesFactura.setFont(font)
-        self.lineEditTelefonoDetallesFactura.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.lineEditTelefonoDetallesFactura.setObjectName("lineEditTelefonoDetallesFactura")
-        self.formLayout_10.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEditTelefonoDetallesFactura)
-        self.label_83 = QtWidgets.QLabel(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.label_83.setFont(font)
-        self.label_83.setObjectName("label_83")
-        self.formLayout_10.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_83)
-        self.lineEditDireccionDetallesFactura = QtWidgets.QLineEdit(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.lineEditDireccionDetallesFactura.setFont(font)
-        self.lineEditDireccionDetallesFactura.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.lineEditDireccionDetallesFactura.setObjectName("lineEditDireccionDetallesFactura")
-        self.formLayout_10.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.lineEditDireccionDetallesFactura)
-        self.label_85 = QtWidgets.QLabel(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.label_85.setFont(font)
-        self.label_85.setObjectName("label_85")
-        self.formLayout_10.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_85)
-        self.lineEditNombreMascotaFactura = QtWidgets.QLineEdit(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.lineEditNombreMascotaFactura.setFont(font)
-        self.lineEditNombreMascotaFactura.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.lineEditNombreMascotaFactura.setObjectName("lineEditNombreMascotaFactura")
-        self.formLayout_10.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.lineEditNombreMascotaFactura)
-        self.lineEditRazaFactura = QtWidgets.QLineEdit(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.lineEditRazaFactura.setFont(font)
-        self.lineEditRazaFactura.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.lineEditRazaFactura.setObjectName("lineEditRazaFactura")
-        self.formLayout_10.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.lineEditRazaFactura)
-        self.label_76 = QtWidgets.QLabel(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.label_76.setFont(font)
-        self.label_76.setObjectName("label_76")
-        self.formLayout_10.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.label_76)
-        self.label_77 = QtWidgets.QLabel(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.label_77.setFont(font)
-        self.label_77.setObjectName("label_77")
-        self.formLayout_10.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.label_77)
-        self.label_78 = QtWidgets.QLabel(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.label_78.setFont(font)
-        self.label_78.setObjectName("label_78")
-        self.formLayout_10.setWidget(7, QtWidgets.QFormLayout.LabelRole, self.label_78)
-        self.lineEditServicioDetallesFactura = QtWidgets.QLineEdit(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.lineEditServicioDetallesFactura.setFont(font)
-        self.lineEditServicioDetallesFactura.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.lineEditServicioDetallesFactura.setObjectName("lineEditServicioDetallesFactura")
-        self.formLayout_10.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.lineEditServicioDetallesFactura)
-        self.lineEditTipoServicioFactura = QtWidgets.QLineEdit(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.lineEditTipoServicioFactura.setFont(font)
-        self.lineEditTipoServicioFactura.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.lineEditTipoServicioFactura.setObjectName("lineEditTipoServicioFactura")
-        self.formLayout_10.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.lineEditTipoServicioFactura)
-        self.label_79 = QtWidgets.QLabel(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.label_79.setFont(font)
-        self.label_79.setObjectName("label_79")
-        self.formLayout_10.setWidget(8, QtWidgets.QFormLayout.LabelRole, self.label_79)
-        self.lineEditEstadoFactura = QtWidgets.QLineEdit(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.lineEditEstadoFactura.setFont(font)
-        self.lineEditEstadoFactura.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.lineEditEstadoFactura.setObjectName("lineEditEstadoFactura")
-        self.formLayout_10.setWidget(8, QtWidgets.QFormLayout.FieldRole, self.lineEditEstadoFactura)
-        self.label_84 = QtWidgets.QLabel(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        self.label_84.setFont(font)
-        self.label_84.setObjectName("label_84")
-        self.formLayout_10.setWidget(9, QtWidgets.QFormLayout.LabelRole, self.label_84)
-        self.dateEditFechaDetallesFactura = QtWidgets.QDateEdit(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        self.dateEditFechaDetallesFactura.setFont(font)
-        self.dateEditFechaDetallesFactura.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.dateEditFechaDetallesFactura.setObjectName("dateEditFechaDetallesFactura")
-        self.formLayout_10.setWidget(9, QtWidgets.QFormLayout.FieldRole, self.dateEditFechaDetallesFactura)
-        self.label_86 = QtWidgets.QLabel(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        self.label_86.setFont(font)
-        self.label_86.setObjectName("label_86")
-        self.formLayout_10.setWidget(10, QtWidgets.QFormLayout.LabelRole, self.label_86)
-        self.label_87 = QtWidgets.QLabel(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        self.label_87.setFont(font)
-        self.label_87.setObjectName("label_87")
-        self.formLayout_10.setWidget(11, QtWidgets.QFormLayout.LabelRole, self.label_87)
-        self.lineEditValorPagadoDetalles = QtWidgets.QLineEdit(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.lineEditValorPagadoDetalles.setFont(font)
-        self.lineEditValorPagadoDetalles.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.lineEditValorPagadoDetalles.setObjectName("lineEditValorPagadoDetalles")
-        self.formLayout_10.setWidget(11, QtWidgets.QFormLayout.FieldRole, self.lineEditValorPagadoDetalles)
-        self.timeEditHoraDetallesFactura = QtWidgets.QTimeEdit(self.formLayoutWidget_9)
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        self.timeEditHoraDetallesFactura.setFont(font)
-        self.timeEditHoraDetallesFactura.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.timeEditHoraDetallesFactura.setObjectName("timeEditHoraDetallesFactura")
-        self.formLayout_10.setWidget(10, QtWidgets.QFormLayout.FieldRole, self.timeEditHoraDetallesFactura)
-        self.labelDetallesFactura = QtWidgets.QLabel(self.pageDetallesContaduria)
-        self.labelDetallesFactura.setGeometry(QtCore.QRect(670, 50, 421, 501))
-        self.labelDetallesFactura.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.labelDetallesFactura.setFrameShape(QtWidgets.QFrame.Box)
-        self.labelDetallesFactura.setText("")
-        self.labelDetallesFactura.setObjectName("labelDetallesFactura")
-        self.pushButtonImprimirDetalles = QtWidgets.QPushButton(self.pageDetallesContaduria)
-        self.pushButtonImprimirDetalles.setGeometry(QtCore.QRect(520, 600, 191, 51))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.pushButtonImprimirDetalles.setFont(font)
-        self.pushButtonImprimirDetalles.setStyleSheet("QPushButton {\n"
-"    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #8f938f; /* Color al hacer clic */\n"
-"}\n"
-"")
-        self.pushButtonImprimirDetalles.setObjectName("pushButtonImprimirDetalles")
-        self.pushButtonRegresarDetallesFactura = QtWidgets.QPushButton(self.pageDetallesContaduria)
-        self.pushButtonRegresarDetallesFactura.setGeometry(QtCore.QRect(290, 600, 191, 51))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.pushButtonRegresarDetallesFactura.setFont(font)
-        self.pushButtonRegresarDetallesFactura.setStyleSheet("QPushButton {\n"
-"    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #8f938f; /* Color al hacer clic */\n"
-"}\n"
-"")
-        self.pushButtonRegresarDetallesFactura.setObjectName("pushButtonRegresarDetallesFactura")
-        self.stackedWidget.addWidget(self.pageDetallesContaduria)
-        self.pageRegistrosPropietarios = QtWidgets.QWidget()
-        self.pageRegistrosPropietarios.setObjectName("pageRegistrosPropietarios")
-        self.tableWidgetUsuarios = QtWidgets.QTableWidget(self.pageRegistrosPropietarios)
-        self.tableWidgetUsuarios.setGeometry(QtCore.QRect(60, 250, 1011, 291))
-        self.tableWidgetUsuarios.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.tableWidgetUsuarios.setObjectName("tableWidgetUsuarios")
-        self.tableWidgetUsuarios.setColumnCount(0)
-        self.tableWidgetUsuarios.setRowCount(0)
-        self.pushButtonRegresarUsuarios = QtWidgets.QPushButton(self.pageRegistrosPropietarios)
-        self.pushButtonRegresarUsuarios.setGeometry(QtCore.QRect(240, 600, 191, 51))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.pushButtonRegresarUsuarios.setFont(font)
-        self.pushButtonRegresarUsuarios.setStyleSheet("QPushButton {\n"
-"    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #8f938f; /* Color al hacer clic */\n"
-"}\n"
-"")
-        self.pushButtonRegresarUsuarios.setObjectName("pushButtonRegresarUsuarios")
-        self.label_55 = QtWidgets.QLabel(self.pageRegistrosPropietarios)
-        self.label_55.setGeometry(QtCore.QRect(450, 20, 131, 31))
-        font = QtGui.QFont()
-        font.setPointSize(15)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_55.setFont(font)
-        self.label_55.setObjectName("label_55")
-        self.formLayoutWidget_7 = QtWidgets.QWidget(self.pageRegistrosPropietarios)
-        self.formLayoutWidget_7.setGeometry(QtCore.QRect(180, 70, 731, 151))
-        self.formLayoutWidget_7.setObjectName("formLayoutWidget_7")
-        self.formLayout_8 = QtWidgets.QFormLayout(self.formLayoutWidget_7)
-        self.formLayout_8.setContentsMargins(0, 0, 0, 0)
-        self.formLayout_8.setHorizontalSpacing(7)
-        self.formLayout_8.setVerticalSpacing(16)
-        self.formLayout_8.setObjectName("formLayout_8")
-        self.label_48 = QtWidgets.QLabel(self.formLayoutWidget_7)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.label_48.setFont(font)
-        self.label_48.setObjectName("label_48")
-        self.formLayout_8.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_48)
-        self.lineEditCedulaUsuarios = QtWidgets.QLineEdit(self.formLayoutWidget_7)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.lineEditCedulaUsuarios.setFont(font)
-        self.lineEditCedulaUsuarios.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.lineEditCedulaUsuarios.setObjectName("lineEditCedulaUsuarios")
-        self.formLayout_8.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEditCedulaUsuarios)
-        self.label_49 = QtWidgets.QLabel(self.formLayoutWidget_7)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.label_49.setFont(font)
-        self.label_49.setObjectName("label_49")
-        self.formLayout_8.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_49)
-        self.lineEditNombreUsuarios = QtWidgets.QLineEdit(self.formLayoutWidget_7)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.lineEditNombreUsuarios.setFont(font)
-        self.lineEditNombreUsuarios.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.lineEditNombreUsuarios.setObjectName("lineEditNombreUsuarios")
-        self.formLayout_8.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEditNombreUsuarios)
-        self.label_58 = QtWidgets.QLabel(self.formLayoutWidget_7)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.label_58.setFont(font)
-        self.label_58.setObjectName("label_58")
-        self.formLayout_8.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_58)
-        self.lineEditUsuarioUsuarios = QtWidgets.QLineEdit(self.formLayoutWidget_7)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.lineEditUsuarioUsuarios.setFont(font)
-        self.lineEditUsuarioUsuarios.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.lineEditUsuarioUsuarios.setObjectName("lineEditUsuarioUsuarios")
-        self.formLayout_8.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEditUsuarioUsuarios)
-        self.pushButtonModificarUsuarios = QtWidgets.QPushButton(self.pageRegistrosPropietarios)
-        self.pushButtonModificarUsuarios.setGeometry(QtCore.QRect(460, 600, 191, 51))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.pushButtonModificarUsuarios.setFont(font)
-        self.pushButtonModificarUsuarios.setStyleSheet("QPushButton {\n"
-"    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #8f938f; /* Color al hacer clic */\n"
-"}\n"
-"")
-        self.pushButtonModificarUsuarios.setObjectName("pushButtonModificarUsuarios")
-        self.pushButtonListaMascotas = QtWidgets.QPushButton(self.pageRegistrosPropietarios)
-        self.pushButtonListaMascotas.setGeometry(QtCore.QRect(680, 600, 191, 51))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.pushButtonListaMascotas.setFont(font)
-        self.pushButtonListaMascotas.setStyleSheet("QPushButton {\n"
-"    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #8f938f; /* Color al hacer clic */\n"
-"}\n"
-"")
-        self.pushButtonListaMascotas.setObjectName("pushButtonListaMascotas")
+        self.comboBoxEstadoPagos.setObjectName("comboBoxEstadoPagos")
+        self.horizontalLayout_2.addWidget(self.comboBoxEstadoPagos)
         self.stackedWidget.addWidget(self.pageRegistrosPropietarios)
         self.pageDetallesRegistro = QtWidgets.QWidget()
         self.pageDetallesRegistro.setObjectName("pageDetallesRegistro")
-        self.pushButtonRegresarRegistro = QtWidgets.QPushButton(self.pageDetallesRegistro)
-        self.pushButtonRegresarRegistro.setGeometry(QtCore.QRect(450, 640, 191, 51))
+        self.pushButtonRegresarHistoria = QtWidgets.QPushButton(self.pageDetallesRegistro)
+        self.pushButtonRegresarHistoria.setGeometry(QtCore.QRect(330, 640, 191, 51))
         font = QtGui.QFont()
         font.setPointSize(10)
-        self.pushButtonRegresarRegistro.setFont(font)
-        self.pushButtonRegresarRegistro.setStyleSheet("QPushButton {\n"
+        self.pushButtonRegresarHistoria.setFont(font)
+        self.pushButtonRegresarHistoria.setStyleSheet("QPushButton {\n"
 "    background-color: #a4a8a5; /* Color del botón */\n"
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
@@ -1818,7 +1968,7 @@ class Ui_Form(object):
 "    background-color: #8f938f; /* Color al hacer clic */\n"
 "}\n"
 "")
-        self.pushButtonRegresarRegistro.setObjectName("pushButtonRegresarRegistro")
+        self.pushButtonRegresarHistoria.setObjectName("pushButtonRegresarHistoria")
         self.tableWidgetDetallesRegistro = QtWidgets.QTableWidget(self.pageDetallesRegistro)
         self.tableWidgetDetallesRegistro.setGeometry(QtCore.QRect(100, 220, 891, 371))
         self.tableWidgetDetallesRegistro.setStyleSheet("   background-color: #a4a8a5; /* Color del botón */\n"
@@ -1828,13 +1978,15 @@ class Ui_Form(object):
         self.tableWidgetDetallesRegistro.setColumnCount(0)
         self.tableWidgetDetallesRegistro.setRowCount(0)
         self.label_62 = QtWidgets.QLabel(self.pageDetallesRegistro)
-        self.label_62.setGeometry(QtCore.QRect(400, 30, 231, 41))
+        self.label_62.setGeometry(QtCore.QRect(420, 30, 201, 41))
         font = QtGui.QFont()
         font.setPointSize(15)
+        font.setBold(True)
+        font.setWeight(75)
         self.label_62.setFont(font)
         self.label_62.setObjectName("label_62")
         self.formLayoutWidget_10 = QtWidgets.QWidget(self.pageDetallesRegistro)
-        self.formLayoutWidget_10.setGeometry(QtCore.QRect(200, 100, 731, 111))
+        self.formLayoutWidget_10.setGeometry(QtCore.QRect(180, 80, 731, 111))
         self.formLayoutWidget_10.setObjectName("formLayoutWidget_10")
         self.formLayout_9 = QtWidgets.QFormLayout(self.formLayoutWidget_10)
         self.formLayout_9.setContentsMargins(0, 0, 0, 0)
@@ -1853,79 +2005,90 @@ class Ui_Form(object):
         self.label_60.setFont(font)
         self.label_60.setObjectName("label_60")
         self.formLayout_9.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_60)
-        self.lineEditUsuarioUsuarios_2 = QtWidgets.QLineEdit(self.formLayoutWidget_10)
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.lineEditUsuarioUsuarios_2.setFont(font)
-        self.lineEditUsuarioUsuarios_2.setStyleSheet("    background-color: #a4a8a5; /* Color del botón */\n"
-"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
-"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */")
-        self.lineEditUsuarioUsuarios_2.setObjectName("lineEditUsuarioUsuarios_2")
-        self.formLayout_9.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEditUsuarioUsuarios_2)
-        self.comboBoxEstadoRegistro = QtWidgets.QComboBox(self.formLayoutWidget_10)
+        self.comboBoxUsuario_2 = QtWidgets.QComboBox(self.formLayoutWidget_10)
         font = QtGui.QFont()
         font.setPointSize(14)
-        self.comboBoxEstadoRegistro.setFont(font)
-        self.comboBoxEstadoRegistro.setStyleSheet("\n"
+        self.comboBoxUsuario_2.setFont(font)
+        self.comboBoxUsuario_2.setStyleSheet("\n"
 "    background-color: #a4a8a5; /* Color del botón */\n"
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
 "")
-        self.comboBoxEstadoRegistro.setObjectName("comboBoxEstadoRegistro")
-        self.formLayout_9.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.comboBoxEstadoRegistro)
+        self.comboBoxUsuario_2.setObjectName("comboBoxUsuario_2")
+        self.formLayout_9.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.comboBoxUsuario_2)
+        self.comboBoxMascota_2 = QtWidgets.QComboBox(self.formLayoutWidget_10)
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.comboBoxMascota_2.setFont(font)
+        self.comboBoxMascota_2.setStyleSheet("\n"
+"    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
+"")
+        self.comboBoxMascota_2.setObjectName("comboBoxMascota_2")
+        self.formLayout_9.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.comboBoxMascota_2)
+        self.pushButtonExportarHistoria = QtWidgets.QPushButton(self.pageDetallesRegistro)
+        self.pushButtonExportarHistoria.setGeometry(QtCore.QRect(550, 640, 191, 51))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.pushButtonExportarHistoria.setFont(font)
+        self.pushButtonExportarHistoria.setStyleSheet("QPushButton {\n"
+"    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #8f938f; /* Color al hacer clic */\n"
+"}\n"
+"")
+        self.pushButtonExportarHistoria.setObjectName("pushButtonExportarHistoria")
         self.stackedWidget.addWidget(self.pageDetallesRegistro)
         self.widgetBarraVertical.raise_()
         self.widgetTitulo.raise_()
         self.stackedWidget.raise_()
-       
-        # Self botones
-        self.comboBoxEstadoRegistro.currentIndexChanged.connect(self.cargar_intentos_acceso)
-        self.lineEditUsuarioUsuarios_2.textChanged.connect(self.cargar_intentos_acceso)
-        self.comboBoxEstadoRegistro.addItems(["Todos", "Exitoso", "Fallido"])
-        self.configurar_botones()
-        self.pushButtonCrear.clicked.connect(self.guardar_usuario)
-        self.llenar_roles()
-        self.retranslateUi(Form)
-        self.stackedWidget.setCurrentIndex(0)
-        self.pushButtonRegresarRegistrar.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
-        self.pushButtonRegresarUsuarios.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0)) 
-        self.pushButtonAgregarMascota.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
-        self.pushButtonRegresarMascota.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
-        self.pushButtonListaMascotas.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
-        self.pushButtonRegresarLista.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(8))
-        self.pushButtonRegresarDetalles.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
-        self.pushButtonRegresarRegistro.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
-        self.pushButtonRegresarTarifa.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
-        self.pushButtonRegistrarMascota.clicked.connect(self.registrar_mascota)
-        self.pushButtonTarifaHorario.clicked.connect(self.agregar_tarifa)
-        self.pushButtonEliminarTarifa.clicked.connect(self.eliminar_tarifa)
-        self.cargar_datos_combobox()  
-        self.cargar_usuarios()
-        self.conectar_filtros()
-        self.cargar_lista_usuarios_mascotas()
-        self.llenar_combo_especies()
-        self.conectar_filtros_lista()
-        self.conectar_boton_abrir()     
-        self.configurar_label_foto()
-        self.cargar_foto_mascota_desde_bd() 
-        self.cargar_intentos_acceso()
-        self.cargar_servicios()
-        self.cargar_horarios()
-        self.mostrar_tarifas()
+
         self.retranslateUi(Form)
         self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Form)
+       # Self botones
+        self.configurar_botones()
+        self.pushButtonRegresarRegistrar.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+        self.pushButtonCrear.clicked.connect(self.guardar_usuario)
+        self.pushButtonAgregarMascota.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
+        self.pushButtonRegistrarMascota.clicked.connect(self.registrar_mascota)
+        self.pushButtonRegresarMascota.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
+        self.cargar_datos_combobox()
+        self.cargar_lista_usuarios_mascotas()
+        self.llenar_combo_especies()
+        self.conectar_filtros_lista()       
+        self.conectar_boton_abrir()     
+        self.configurar_label_foto()
+        self.cargar_foto_mascota_desde_bd()
+        self.pushButtonListaUsuariosMascotas.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
+        self.cargar_usuarios_y_mascotas()
+        self.pushButtonNuevaCita.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(6))
+        self.pushButtonAsignarCita.clicked.connect(self.asignar_cita)
+        self.cargar_servicios()
+        self.cargar_todas_las_citas()
+        self.pushButtonDetallesCita.clicked.connect(self.abrir_detalles_cita)
+        self.pushButtonCancelarCita.clicked.connect(self.cancelar_cita)
+
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Veterinaria"))
         self.label_2.setText(_translate("Form", "Veterinaria "))
         self.label_5.setText(_translate("Form", "General"))
-        self.label_6.setText(_translate("Form", "Agregar Usuarios "))
-        self.label_7.setText(_translate("Form", "Tarifas"))
-        self.label_8.setText(_translate("Form", "Contaduria"))
-        self.label_9.setText(_translate("Form", "Usuarios"))
-        self.label_10.setText(_translate("Form", "Registros"))
+        self.label_6.setText(_translate("Form", "Agregar Cliente"))
+        self.label_7.setText(_translate("Form", "Citas"))
+        self.label_8.setText(_translate("Form", "Ventas"))
+        self.label_9.setText(_translate("Form", "Pagos"))
+        self.label_10.setText(_translate("Form", "Historia Clinica"))
         self.label_3.setText(_translate("Form", "Dinero En Caja Mes "))
         self.label_13.setText(_translate("Form", "Citas Completadas"))
         self.label_15.setText(_translate("Form", "Citas Agendadas"))
@@ -1934,10 +2097,9 @@ class Ui_Form(object):
         self.label_23.setText(_translate("Form", "Gatos"))
         self.label_20.setText(_translate("Form", "Moneda: COP"))
         self.labelFecha.setText(_translate("Form", "Miercoles 19 de febrero 2025"))
-        self.label_11.setText(_translate("Form", "Datos Propietario:"))
+        self.label_11.setText(_translate("Form", "Datos Cliente:"))
         self.label_24.setText(_translate("Form", "Usuario:"))
         self.label_93.setText(_translate("Form", "Contraseña:"))
-        self.label_30.setText(_translate("Form", "Rol:"))
         self.label_12.setText(_translate("Form", "Nombre: "))
         self.label_25.setText(_translate("Form", "Cedula: "))
         self.label_26.setText(_translate("Form", "Correo:"))
@@ -1956,6 +2118,7 @@ class Ui_Form(object):
         self.pushButtonRegistrarMascota.setText(_translate("Form", "Registrar Mascota"))
         self.pushButtonRegresarMascota.setText(_translate("Form", "Regresar"))
         self.label_29.setText(_translate("Form", "Datos Mascota:"))
+        self.pushButtonListaUsuariosMascotas.setText(_translate("Form", "Lista Usuarios/Mascotas"))
         self.label_36.setText(_translate("Form", "Lista de Usuarios Y Mascotas:"))
         self.label_42.setText(_translate("Form", "Cedula: "))
         self.lineEditCedulaLista.setPlaceholderText(_translate("Form", "Buscar por cedula..."))
@@ -1980,22 +2143,28 @@ class Ui_Form(object):
         self.label_32.setText(_translate("Form", "Direccion:"))
         self.label_52.setText(_translate("Form", "Datos Mascota:"))
         self.pushButtonRegresarDetalles.setText(_translate("Form", "Regresar"))
-        self.label_53.setText(_translate("Form", "Establecer Tarifas"))
-        self.label_54.setText(_translate("Form", "Tipo de Servicio: "))
-        self.label_57.setText(_translate("Form", "Horario:"))
-        self.label_56.setText(_translate("Form", "Tarifa Por Periodo:"))
-        self.pushButtonTarifaHorario.setText(_translate("Form", "Agregar Tarifa "))
-        self.pushButtonRegresarTarifa.setText(_translate("Form", "Regresar"))
-        self.pushButtonEliminarTarifa.setText(_translate("Form", "Eliminar Tarifa"))
-        self.label_70.setText(_translate("Form", "Contaduría "))
-        self.label_71.setText(_translate("Form", "Desde:"))
-        self.label_72.setText(_translate("Form", "Hasta:"))
-        self.label_73.setText(_translate("Form", "Periodo:"))
-        self.label_74.setText(_translate("Form", "Estado"))
-        self.pushButtonRegresarContaduria.setText(_translate("Form", "Regresar"))
-        self.pushButtonDetallesContaduria.setText(_translate("Form", "Ver Detalles"))
-        self.pushButtonExportarContaduria.setText(_translate("Form", "Exportar"))
-        self.label_75.setText(_translate("Form", "Detalles del Registro"))
+        self.label_53.setText(_translate("Form", "Cedula: "))
+        self.lineEditCedulaCitas.setPlaceholderText(_translate("Form", "Buscar por cedula..."))
+        self.label_54.setText(_translate("Form", "Nombre Cliente:"))
+        self.lineEditNombreCitas.setPlaceholderText(_translate("Form", "Buscar por Nombre..."))
+        self.label_56.setText(_translate("Form", "Tipo Especie:"))
+        self.label_57.setText(_translate("Form", "Raza:"))
+        self.lineEditRazaCitas.setPlaceholderText(_translate("Form", "Buscar por raza..."))
+        self.pushButtonRegresarCitas.setText(_translate("Form", "Regresar"))
+        self.pushButtonDetallesCita.setText(_translate("Form", "Detalles"))
+        self.label_38.setText(_translate("Form", "Citas:"))
+        self.pushButtonNuevaCita.setText(_translate("Form", "Nueva Cita"))
+        self.label_30.setText(_translate("Form", "Datos Cita:"))
+        self.pushButtonRegresarNuevaCita.setText(_translate("Form", "Regresar"))
+        self.label_115.setText(_translate("Form", "Usuario:"))
+        self.label_97.setText(_translate("Form", "Nombre"))
+        self.label_110.setText(_translate("Form", "Mascota:"))
+        self.label_111.setText(_translate("Form", "Cedula:"))
+        self.label_114.setText(_translate("Form", "Fecha:"))
+        self.label_112.setText(_translate("Form", "Hora:"))
+        self.label_113.setText(_translate("Form", "Servicio:"))
+        self.pushButtonAsignarCita.setText(_translate("Form", "Asignar Cita"))
+        self.label_75.setText(_translate("Form", "Detalles Cita:"))
         self.label_80.setText(_translate("Form", "Nombre: "))
         self.label_81.setText(_translate("Form", "Cedula: "))
         self.label_82.setText(_translate("Form", "Telefono:"))
@@ -2003,46 +2172,45 @@ class Ui_Form(object):
         self.label_85.setText(_translate("Form", "Nombre Mascota:"))
         self.label_76.setText(_translate("Form", "Raza:"))
         self.label_77.setText(_translate("Form", "Servicio:"))
-        self.label_78.setText(_translate("Form", "Tipo Vehiculo:"))
+        self.label_78.setText(_translate("Form", "Tipo Servicio:"))
         self.label_79.setText(_translate("Form", "Estado:"))
         self.label_84.setText(_translate("Form", "Fecha: "))
         self.label_86.setText(_translate("Form", "Hora:"))
-        self.label_87.setText(_translate("Form", "Valor Pagado:"))
-        self.pushButtonImprimirDetalles.setText(_translate("Form", "Imprimir Factura"))
-        self.pushButtonRegresarDetallesFactura.setText(_translate("Form", "Regresar"))
-        self.pushButtonRegresarUsuarios.setText(_translate("Form", "Regresar"))
-        self.label_55.setText(_translate("Form", "Usuarios:"))
-        self.label_48.setText(_translate("Form", "Cedula: "))
-        self.lineEditCedulaUsuarios.setPlaceholderText(_translate("Form", "Buscar por cedula..."))
-        self.label_49.setText(_translate("Form", "Nombre Cliente:"))
-        self.lineEditNombreUsuarios.setPlaceholderText(_translate("Form", "Buscar por Nombre..."))
-        self.label_58.setText(_translate("Form", "Usuario:"))
-        self.lineEditUsuarioUsuarios.setPlaceholderText(_translate("Form", "Buscar por Usuario..."))
-        self.pushButtonModificarUsuarios.setText(_translate("Form", "Modificar"))
-        self.pushButtonListaMascotas.setText(_translate("Form", "Lista Mascotas"))
-        self.pushButtonRegresarRegistro.setText(_translate("Form", "Regresar"))
-        self.label_62.setText(_translate("Form", "Detalles del Registro"))
-        self.label_51.setText(_translate("Form", "Estado:"))
-        self.label_60.setText(_translate("Form", "Usuario:"))
-        self.lineEditUsuarioUsuarios_2.setPlaceholderText(_translate("Form", "Buscar por Usuario..."))
-        self.comboBoxEstadoRegistro.setPlaceholderText(_translate("Form", "Buscar Por Estado"))
+        self.pushButtonCancelarCita.setText(_translate("Form", "Cancelar Cita"))
+        self.pushButtonRegresarDetallesCita.setText(_translate("Form", "Regresar"))
+        self.pushButtonComprar.setText(_translate("Form", "Comprar"))
+        self.label_59.setText(_translate("Form", "Ventas:"))
+        self.label_65.setText(_translate("Form", "Cliente:"))
+        self.label_61.setText(_translate("Form", "Producto:"))
+        self.label_64.setText(_translate("Form", "Valor:"))
+        self.pushButtonTarifaHorario.setText(_translate("Form", "Agregar Producto "))
+        self.pushButtonRegresarVentas.setText(_translate("Form", "Regresar"))
+        self.pushButtonRegresarPagos.setText(_translate("Form", "Regresar"))
+        self.label_55.setText(_translate("Form", "Pagos:"))
+        self.pushButtonExportarPagos.setText(_translate("Form", "Exportar"))
+        self.label_71.setText(_translate("Form", "Desde:"))
+        self.label_72.setText(_translate("Form", "Hasta:"))
+        self.label_73.setText(_translate("Form", "Periodo:"))
+        self.label_74.setText(_translate("Form", "Estado"))
+        self.pushButtonRegresarHistoria.setText(_translate("Form", "Regresar"))
+        self.label_62.setText(_translate("Form", "Historia Clinica:"))
+        self.label_51.setText(_translate("Form", "Usuario:"))
+        self.label_60.setText(_translate("Form", "Mascota:"))
+        self.comboBoxUsuario_2.setPlaceholderText(_translate("Form", "Buscar Por Estado"))
+        self.comboBoxMascota_2.setPlaceholderText(_translate("Form", "Buscar Por Estado"))
+        self.pushButtonExportarHistoria.setText(_translate("Form", "Exportar"))
 
-
+       
     def configurar_botones(self):
         
         """Asigna cada botón a la página correspondiente en el QStackedWidget."""
         self.pushButtonGeneral.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
         self.pushButtonRegistrarUsuarios.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
-        self.pushButtonTarifas.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(5))
-        self.pushButtonContaduria.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(6))
-        self.pushButtonUsuarios.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(8))
-        self.pushButtonRegistros.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(9))
+        self.pushButtonCitas.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(5))
+        self.pushButtonVentas.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(8))
+        self.pushButtonPagos.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(9))
+        self.pushButtonHistoria.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(10))
 
-    def llenar_roles(self):
-        """Llena el comboBoxRol con los roles disponibles en la base de datos."""
-        roles_disponibles = ["Administrador", "Veterinario", "Recepcionista", "Cliente"]
-        self.comboBoxRol.addItems(roles_disponibles)  # Agregar roles al comboBox
-        self.comboBoxRol.setCurrentText("Cliente")  # Seleccionar por defecto Cliente
 
     def guardar_usuario(self):
         """Guarda un nuevo usuario en la base de datos con validaciones de seguridad."""
@@ -2050,19 +2218,18 @@ class Ui_Form(object):
             # 1️⃣ Obtener datos de la interfaz
             usuario = self.lineEditUsuario.text().strip()
             contrasena = self.lineEditContrasenia.text().strip()
-            rol = self.comboBoxRol.currentText()
             nombre = self.lineEditNombre.text().strip()
             cedula = self.lineEditCedula.text().strip()
             correo = self.lineEditCorreo.text().strip()
             telefono = self.lineEditTelefono_2.text().strip()
             direccion = self.lineEditDireccion.text().strip()
+            rol = "Cliente"  # Fijar el rol a "Cliente"
 
             # 2️⃣ Validaciones
-            if not all([usuario, contrasena, rol, nombre, cedula, correo]):
+            if not all([usuario, contrasena, nombre, cedula, correo, telefono]):
                 QMessageBox.warning(None, "Error", "Por favor, llena todos los campos obligatorios.")
                 return
             
-            # Contraseña debe tener mínimo 8 caracteres
             if len(contrasena) < 8:
                 QMessageBox.warning(None, "Error", "La contraseña debe tener al menos 8 caracteres.")
                 return
@@ -2075,30 +2242,26 @@ class Ui_Form(object):
             cursor.execute("SELECT ID FROM Usuarios WHERE NombreUsuario = %s", (usuario,))
             if cursor.fetchone():
                 QMessageBox.warning(None, "Error", "El nombre de usuario ya está en uso.")
-                cursor.close()
-                conexion.close()
                 return
 
             cursor.execute("SELECT ID FROM DatosUsuarios WHERE Cedula = %s OR CorreoElectronico = %s", (cedula, correo))
             if cursor.fetchone():
                 QMessageBox.warning(None, "Error", "La cédula o el correo ya están registrados.")
-                cursor.close()
-                conexion.close()
                 return
 
-            # 5️⃣ Hashear la contraseña de forma segura
+            # 5️⃣ Hashear la contraseña
             hashed_password = bcrypt.hashpw(contrasena.encode('utf-8'), bcrypt.gensalt())
 
-            # 6️⃣ Insertar en Usuarios
+            # 6️⃣ Insertar en Usuarios con rol "Cliente"
             cursor.execute("""
                 INSERT INTO Usuarios (NombreUsuario, Contraseña, Rol)
                 VALUES (%s, %s, %s)
             """, (usuario, hashed_password, rol))
 
-            conexion.commit()  # Guardar cambios en la BD
+            conexion.commit()
             usuario_id = cursor.lastrowid  # Obtener el ID generado
 
-            # 7️⃣ Insertar en DatosUsuarios con Nombre incluido
+            # 7️⃣ Insertar en DatosUsuarios
             cursor.execute("""
                 INSERT INTO DatosUsuarios (UsuarioID, Nombre, Cedula, CorreoElectronico, Telefono, Direccion)
                 VALUES (%s, %s, %s, %s, %s, %s)
@@ -2106,19 +2269,17 @@ class Ui_Form(object):
 
             conexion.commit()
 
-            # 8️⃣ Confirmar el registro
-            QMessageBox.information(None, "Éxito", "Usuario registrado correctamente.")
+            # 8️⃣ Confirmación
+            QMessageBox.information(None, "Éxito", "Cliente registrado correctamente.")
 
-            # 9️⃣ Limpiar los campos
+            # 9️⃣ Limpiar campos
             self.lineEditUsuario.clear()
             self.lineEditContrasenia.clear()
-            self.comboBoxRol.setCurrentIndex(0)  # Reiniciar al primer rol (Cliente)
             self.lineEditNombre.clear()
             self.lineEditCedula.clear()
             self.lineEditCorreo.clear()
             self.lineEditTelefono_2.clear()
             self.lineEditDireccion.clear()
-            self.cargar_usuarios()
 
         except mysql.connector.Error as err:
             QMessageBox.critical(None, "Error", f"No se pudo registrar el usuario: {err}")
@@ -2126,6 +2287,7 @@ class Ui_Form(object):
         finally:
             cursor.close()
             conexion.close()
+
 
     def cargar_datos_combobox(self):
         """Carga los usuarios y especies en los combobox."""
@@ -2180,70 +2342,12 @@ class Ui_Form(object):
             self.lineEditRaza.clear()
             self.lineEditColor.clear()
             self.comboBoxTamanio.setCurrentIndex(0)
+            self.cargar_lista_usuarios_mascotas()
         except mysql.connector.Error as err:
             QMessageBox.critical(None, "Error", f"No se pudo registrar la mascota: {err}")
         finally:
             cursor.close()
             conexion.close()
-
-    def cargar_usuarios(self):
-        """Carga los usuarios en la tabla con ID, Usuario, Nombre, Cédula, Rol, Estado, Teléfono y cantidad de mascotas."""
-        conexion = connect_to_database()
-        cursor = conexion.cursor()
-
-        query = """
-            SELECT u.ID, u.NombreUsuario, d.Nombre, d.Cedula, u.Rol, u.Estado, d.Telefono,
-                   (SELECT COUNT(*) FROM Mascotas m WHERE m.UsuarioID = u.ID) AS CantidadMascotas
-            FROM Usuarios u
-            LEFT JOIN DatosUsuarios d ON u.ID = d.UsuarioID
-            ORDER BY u.ID
-        """
-        
-        cursor.execute(query)
-        usuarios = cursor.fetchall()
-
-        # Configurar la tabla
-        self.tableWidgetUsuarios.setRowCount(len(usuarios))
-        self.tableWidgetUsuarios.setColumnCount(7)  # ID, Usuario, Nombre, Cédula, Rol, Estado, Teléfono, Mascotas
-        self.tableWidgetUsuarios.setHorizontalHeaderLabels(["ID", "Usuario", "Nombre", "Cédula", "Rol", "Estado", "Teléfono", "Mascotas"])
-        self.tableWidgetUsuarios.setSelectionBehavior(QTableWidget.SelectRows)  # Selección por filas
-        self.tableWidgetUsuarios.setEditTriggers(QTableWidget.NoEditTriggers)  # No editable
-        self.tableWidgetUsuarios.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)  # Ajustar ancho
-
-        for row_idx, usuario in enumerate(usuarios):
-            for col_idx, dato in enumerate(usuario):
-                item = QTableWidgetItem(str(dato))
-                item.setTextAlignment(Qt.AlignCenter)  # Centrar texto
-                self.tableWidgetUsuarios.setItem(row_idx, col_idx, item)
-
-        cursor.close()
-        conexion.close()
-
-
-    def filtrar_usuarios(self):
-        """Filtra los usuarios en la tabla en tiempo real basándose en los valores de los lineEdits."""
-        texto_cedula = self.lineEditCedulaUsuarios.text().strip()
-        texto_nombre = self.lineEditNombreUsuarios.text().strip().lower()
-        texto_usuario = self.lineEditUsuarioUsuarios.text().strip().lower()
-
-        for fila in range(self.tableWidgetUsuarios.rowCount()):
-            item_cedula = self.tableWidgetUsuarios.item(fila, 3)  # Columna de Cédula
-            item_usuario = self.tableWidgetUsuarios.item(fila, 1)  # Columna de Usuario
-            item_nombre = self.tableWidgetUsuarios.item(fila, 2)  # Columna de Nombre
-
-            if item_cedula and item_usuario and item_nombre:
-                cedula_coincide = item_cedula.text().startswith(texto_cedula) if texto_cedula else True
-                usuario_coincide = texto_usuario in item_usuario.text().lower() if texto_usuario else True
-                nombre_coincide = texto_nombre in item_nombre.text().lower() if texto_nombre else True
-
-                self.tableWidgetUsuarios.setRowHidden(fila, not (cedula_coincide and usuario_coincide and nombre_coincide))
-
-
-    def conectar_filtros(self):
-        """Conecta los lineEdits a la función de filtrado en tiempo real."""
-        self.lineEditCedulaUsuarios.textChanged.connect(self.filtrar_usuarios)
-        self.lineEditNombreUsuarios.textChanged.connect(self.filtrar_usuarios)
-        self.lineEditUsuarioUsuarios.textChanged.connect(self.filtrar_usuarios)
 
 
     def cargar_lista_usuarios_mascotas(self):
@@ -2346,7 +2450,6 @@ class Ui_Form(object):
         else:
             QMessageBox.warning(None, "Selección requerida", "Por favor, seleccione una mascota de la lista.")
 
-    
     def conectar_boton_abrir(self):
         """Conecta el botón Abrir con la función para seleccionar y abrir la mascota."""
         self.pushButtonAbrirLista.clicked.connect(self.seleccionar_mascota)
@@ -2501,178 +2604,416 @@ class Ui_Form(object):
         conexion.close()
 
         self.mostrar_foto_mascota(ruta_foto)
+  
+    def cargar_todas_las_citas(self):
+        """Carga todas las citas en la tabla sin aplicar filtros."""
+        try:
+            # 1️⃣ Conectar a la base de datos
+            conexion = connect_to_database()
+            cursor = conexion.cursor()
+
+            # 2️⃣ Consulta SQL con cédula y nombre del cliente
+            consulta = """
+                SELECT 
+                    Citas.ID, 
+                    DatosUsuarios.Cedula AS Cedula,
+                    DatosUsuarios.Nombre AS Cliente,
+                    Mascotas.Nombre AS Mascota, 
+                    Mascotas.Especie AS Especie,
+                    Mascotas.Raza AS Raza,
+                    Servicios.Nombre AS Servicio,
+                    Citas.FechaHora, 
+                    Citas.Estado
+                FROM Citas
+                INNER JOIN Mascotas ON Citas.MascotaID = Mascotas.ID
+                INNER JOIN Usuarios AS Clientes ON Citas.UsuarioID = Clientes.ID
+                INNER JOIN DatosUsuarios ON Clientes.ID = DatosUsuarios.UsuarioID
+                INNER JOIN Servicios ON Citas.ServicioID = Servicios.ID
+                ORDER BY Citas.FechaHora DESC
+            """
+            cursor.execute(consulta)
+            resultados = cursor.fetchall()
+
+            # 3️⃣ Verificar si hay resultados
+            if not resultados:
+                self.tableWidgetListaCitas.setRowCount(0)
+                return  # Si no hay citas, salir del método
+
+            # 4️⃣ Configurar la tabla
+            self.tableWidgetListaCitas.setRowCount(len(resultados))
+            self.tableWidgetListaCitas.setColumnCount(len(resultados[0]))
+
+            # 5️⃣ Llenar la tabla con los resultados
+            for fila, datos in enumerate(resultados):
+                for columna, valor in enumerate(datos):
+                    item = QTableWidgetItem(str(valor) if valor is not None else "")
+                    item.setFlags(Qt.ItemIsSelectable | Qt.ItemIsEnabled)  # 🔒 No editable pero seleccionable
+                    self.tableWidgetListaCitas.setItem(fila, columna, item)
+
+            # 6️⃣ Ajustar el tamaño de las columnas para que se expandan proporcionalmente
+            header = self.tableWidgetListaCitas.horizontalHeader()
+            header.setSectionResizeMode(QHeaderView.Stretch)  # Ocupa todo el ancho
+
+            # 7️⃣ Ajustar el alto de las filas automáticamente
+            self.tableWidgetListaCitas.resizeRowsToContents()
+
+            # 8️⃣ 🔒 Solo permitir selección de una fila a la vez
+            self.tableWidgetListaCitas.setSelectionBehavior(QAbstractItemView.SelectRows)
+            self.tableWidgetListaCitas.setSelectionMode(QAbstractItemView.SingleSelection)
+
+        except mysql.connector.Error as err:
+            QMessageBox.critical(None, "Error", f"No se pudieron cargar las citas: {err}")
+
+        finally:
+            if cursor:
+                cursor.close()
+            if conexion:
+                conexion.close()
 
 
-    def cargar_intentos_acceso(self):
-        """Carga los intentos de acceso en la tabla tableWidgetDetallesRegistro con filtros en tiempo real."""
-        estado_filtro = self.comboBoxEstadoRegistro.currentText()
-        usuario_filtro = self.lineEditUsuarioUsuarios_2.text().strip()
+    def cargar_usuarios_y_mascotas(self):
+        """Carga los usuarios (clientes) en el ComboBox y actualiza los datos del cliente y sus mascotas."""
+        try:
+            conexion = connect_to_database()
+            cursor = conexion.cursor()
 
-        db = connect_to_database()
-        cursor = db.cursor()
+            # Limpiar ComboBox antes de llenarlo
+            self.comboBoxUsuarioCita.clear()
 
-        # Construcción dinámica del query con filtros
-        query = """
-            SELECT ia.ID, 
-                   IFNULL(u.NombreUsuario, 'Desconocido') AS Usuario, 
-                   ia.FechaHora, 
-                   ia.Estado, 
-                   IFNULL(ia.DireccionIP, 'No registrada') AS DireccionIP, 
-                   IFNULL(ia.NombreDispositivo, 'No registrado') AS NombreDispositivo
-            FROM IntentosDeAcceso ia
-            LEFT JOIN Usuarios u ON ia.UsuarioID = u.ID
-            WHERE 1=1
-        """
-        params = []
+            # Obtener usuarios con rol 'Cliente'
+            cursor.execute("SELECT ID, NombreUsuario FROM Usuarios WHERE Rol = 'Cliente'")
+            usuarios = cursor.fetchall()
 
-        # Aplicar filtro de estado si no está en "Todos"
-        if estado_filtro and estado_filtro != "Todos":
-            query += " AND ia.Estado = %s"
-            params.append(estado_filtro)
+            if not usuarios:
+                QMessageBox.warning(None, "Advertencia", "No hay clientes registrados.")
+                return
 
-        # Aplicar filtro de usuario si no está vacío
-        if usuario_filtro:
-            query += " AND u.NombreUsuario LIKE %s"
-            params.append(f"%{usuario_filtro}%")
+            # Agregar usuarios al ComboBox
+            for usuario in usuarios:
+                self.comboBoxUsuarioCita.addItem(usuario[1], usuario[0])  # (NombreUsuario, ID)
 
-        query += " ORDER BY ia.FechaHora DESC"
+            # 🔹 Desconectar señal para evitar llamadas duplicadas
+            try:
+                self.comboBoxUsuarioCita.currentIndexChanged.disconnect()
+            except TypeError:
+                pass  # Si no estaba conectado, no pasa nada
 
-        cursor.execute(query, params)
-        intentos = cursor.fetchall()
+            # 🔹 Conectar evento para cargar datos cuando cambie el usuario
+            self.comboBoxUsuarioCita.currentIndexChanged.connect(self.cargar_datos_cliente)
 
-        self.tableWidgetDetallesRegistro.setRowCount(len(intentos))
-        self.tableWidgetDetallesRegistro.setColumnCount(6)
-        self.tableWidgetDetallesRegistro.setHorizontalHeaderLabels(
-            ["ID", "Usuario", "Fecha y Hora", "Estado", "Dirección IP", "Dispositivo"]
-        )
+            # 🔹 Llamar automáticamente a `cargar_datos_cliente()` para el primer usuario
+            self.comboBoxUsuarioCita.setCurrentIndex(0)  # Asegura que haya una selección
+            self.cargar_datos_cliente()
 
-        # Configuración de la tabla
-        self.tableWidgetDetallesRegistro.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)  # Bloquea edición
-        self.tableWidgetDetallesRegistro.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)  # Selección por fila
-        self.tableWidgetDetallesRegistro.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)  # Una sola fila a la vez
-        self.tableWidgetDetallesRegistro.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)  # Ajustar columnas
+        except mysql.connector.Error as e:
+            QMessageBox.critical(None, "Error", f"No se pudieron cargar los usuarios: {e}")
 
-        for fila, intento in enumerate(intentos):
-            for columna, dato in enumerate(intento):
-                item = QtWidgets.QTableWidgetItem(str(dato))
-                item.setTextAlignment(Qt.AlignCenter)
-                self.tableWidgetDetallesRegistro.setItem(fila, columna, item)
+        finally:
+            cursor.close()
+            conexion.close()
 
-        cursor.close()
-        db.close()
+
+    def cargar_datos_cliente(self):
+        """Carga los datos del cliente seleccionado y las mascotas asociadas."""
+        usuario_id = self.comboBoxUsuarioCita.currentData()
+
+
+        if not usuario_id:
+            QMessageBox.warning(None, "Advertencia", "Seleccione un usuario válido.")
+            return
+
+        try:
+            conexion = connect_to_database()
+            cursor = conexion.cursor()
+
+            # Obtener datos del cliente
+            cursor.execute(
+                "SELECT Nombre, Cedula FROM DatosUsuarios WHERE UsuarioID = %s",
+                (usuario_id,)
+            )
+            resultado = cursor.fetchone()
+
+            if resultado:
+                nombre, cedula = resultado
+                
+
+                self.lineEditNombreUsuario.setText(nombre)
+                self.lineEditCedulaUsuario.setText(cedula)
+
+                # 🔹 Asegurar que los campos sean NO editables
+                self.lineEditNombreUsuario.setReadOnly(True)
+                self.lineEditCedulaUsuario.setReadOnly(True)
+
+                # 🔹 Si `setReadOnly(True)` no funciona, usa `setEnabled(False)`
+                self.lineEditNombreUsuario.setEnabled(False)
+                self.lineEditCedulaUsuario.setEnabled(False)
+            else:
+                QMessageBox.warning(None, "Advertencia", "No se encontraron datos del cliente.")
+                return
+
+            # Obtener mascotas del cliente
+            cursor.execute(
+                "SELECT ID, Nombre FROM Mascotas WHERE UsuarioID = %s",
+                (usuario_id,)
+            )
+            mascotas = cursor.fetchall()
+
+            self.comboBoxMascota.clear()
+            for mascota in mascotas:
+                self.comboBoxMascota.addItem(mascota[1], mascota[0])
+
+            # 🔹 Si no hay mascotas, deshabilita el ComboBox
+            self.comboBoxMascota.setEnabled(bool(mascotas))
+
+        except mysql.connector.Error as e:
+            QMessageBox.critical(None, "Error", f"No se pudieron cargar los datos del cliente: {e}")
+
+        finally:
+            cursor.close()
+            conexion.close()
+
+    def enviar_correo(self, correo, mensaje):
+        """Envía un correo con la información de la cita."""
+        remitente = "soporte.sig2024@gmail.com"
+        password = "ayrk muxo vzdv mesl"
+
+        try:
+            # Configurar el mensaje
+            msg = MIMEMultipart()
+            msg['From'] = remitente
+            msg['To'] = correo
+            msg['Subject'] = "Confirmación de cita en la veterinaria"
+            msg.attach(MIMEText(mensaje, 'plain'))
+
+            # Conectar al servidor SMTP y enviar el correo
+            servidor = smtplib.SMTP('smtp.gmail.com', 587)
+            servidor.starttls()
+            servidor.login(remitente, password)
+            servidor.sendmail(remitente, correo, msg.as_string())
+            servidor.quit()
+
+            QMessageBox.information(None, "Éxito", "Correo de confirmación enviado correctamente.")
+
+        except Exception as e:
+            QMessageBox.critical(None, "Error", f"Error al enviar el correo: {e}")
 
 
     def cargar_servicios(self):
-        """Carga los servicios desde la base de datos y los llena en el comboBoxTipoServicio."""
-        conexion = connect_to_database()
-        cursor = conexion.cursor()
+        """Carga solo los servicios permitidos en comboBoxServicio, guardando el ID para su correcta inserción."""
+        conexion = None
+        cursor = None
 
-        query = "SELECT Nombre FROM Servicios ORDER BY Nombre"
-        cursor.execute(query)
-        servicios = cursor.fetchall()
+        try:
+            # 🔹 Conectar a la base de datos
+            conexion = connect_to_database()
+            cursor = conexion.cursor()
 
-        self.comboBoxTipoServicio.clear()
-        for servicio in servicios:
-            self.comboBoxTipoServicio.addItem(servicio[0])
+            # 🔹 Lista de servicios organizados por categorías
+            servicios_permitidos = {
+                "🏥 Servicios Médicos Generales": [
+                    'Consulta General', 'Vacunación', 'Desparasitación',
+                    'Certificado de Salud', 'Examen de Sangre', 'Radiografía'
+                ],
+                "🏥 Cirugías y Procedimientos": [
+                    'Esterilización Canina', 'Esterilización Felina', 'Cirugía General',
+                    'Extracción de Tumores', 'Limpieza Dental', 'Suturas y Curaciones'
+                ],
+                "🛁 Servicios de Estética y Cuidado": [
+                    'Baño y Secado', 'Baño Medicado', 'Corte de Pelo',
+                    'Limpieza de Oídos', 'Corte de Uñas', 'Limpieza de Glándulas Anales'
+                ]
+            }
 
-        cursor.close()
-        conexion.close()
+            # 🔹 Crear la consulta SQL con los nombres permitidos
+            todos_los_servicios = sum(servicios_permitidos.values(), [])  # Lista plana con todos los servicios
+            sql = f"""
+                SELECT ID, Nombre FROM Servicios 
+                WHERE Nombre IN ({','.join(['%s'] * len(todos_los_servicios))})
+            """
 
-    def cargar_horarios(self):
-        """Llena el comboBoxHorarioTarifa con los horarios disponibles."""
-        self.comboBoxHorarioTarifa.clear()
-        self.comboBoxHorarioTarifa.addItems(["Diurno", "Nocturno"])
+            # 🔹 Ejecutar la consulta con los valores permitidos
+            cursor.execute(sql, todos_los_servicios)
+            servicios_obtenidos = cursor.fetchall()  # Lista de (ID, Nombre)
+
+            # 🔹 Limpiar el comboBox antes de llenarlo
+            self.comboBoxServicio.clear()
+
+            # 🔹 Agregar los servicios al comboBox con categorías
+            for categoria, servicios in servicios_permitidos.items():
+                self.comboBoxServicio.addItem(categoria)  # Agregar la categoría como separador
+                for servicio in servicios:
+                    for servicio_id, servicio_nombre in servicios_obtenidos:
+                        if servicio_nombre == servicio:
+                            self.comboBoxServicio.addItem(f"  {servicio_nombre}", servicio_id)  # Guardar el ID oculto
+
+        except mysql.connector.Error as err:
+            QMessageBox.critical(None, "Error", f"No se pudieron cargar los servicios: {err}")
+
+        finally:
+            if cursor:
+                cursor.close()
+            if conexion:
+                conexion.close()
 
 
-    def agregar_tarifa(self):
-        """Agrega una nueva tarifa a la base de datos con formato en pesos colombianos."""
-        servicio = self.comboBoxTipoServicio.currentText()
-        horario = self.comboBoxHorarioTarifa.currentText()
-        tarifa = int(self.doubleSpinBoxTarifa.value())  # Convertir a entero para evitar decimales
 
-        if not servicio or tarifa <= 0:
-            QtWidgets.QMessageBox.warning(None, "Advertencia", "Debe seleccionar un servicio y establecer un valor válido.")
+    def asignar_cita(self):
+        """Asigna una nueva cita verificando los datos y enviando un correo de confirmación."""
+        conexion = None
+        cursor = None
+
+        try:
+            # 1️⃣ Obtener datos de la interfaz
+            usuario_id = self.comboBoxUsuarioCita.currentData()
+            mascota_id = self.comboBoxMascota.currentData()
+            servicio_id = self.comboBoxServicio.currentData()
+            fecha = self.calendarWidgetFechaCita.selectedDate().toString("yyyy-MM-dd")
+            hora = self.timeEditCita.time().toString("HH:mm:ss")
+            fecha_hora_cita = f"{fecha} {hora}"
+
+            # Verificar que la fecha sea futura
+            fecha_actual = QDate.currentDate().toString("yyyy-MM-dd")
+            hora_actual = QTime.currentTime().toString("HH:mm:ss")
+
+            if fecha < fecha_actual or (fecha == fecha_actual and hora <= hora_actual):
+                QMessageBox.warning(None, "Fecha inválida", "La cita debe programarse para una fecha y hora futuras.")
+                return
+
+            # 2️⃣ Consultar información del usuario
+            conexion = connect_to_database()
+            cursor = conexion.cursor()
+
+            cursor.execute("SELECT Nombre, Cedula, CorreoElectronico FROM DatosUsuarios WHERE UsuarioID = %s", (usuario_id,))
+            resultado = cursor.fetchone()
+            if not resultado:
+                QMessageBox.critical(None, "Error", "No se encontró información del usuario.")
+                return
+
+            nombre_usuario, cedula_usuario, correo_usuario = resultado
+
+            # 3️⃣ Registrar la cita con el servicio seleccionado
+            cursor.execute("""
+                INSERT INTO Citas (MascotaID, UsuarioID, ServicioID, FechaHora, Estado)
+                VALUES (%s, %s, %s, %s, 'Pendiente')
+            """, (mascota_id, usuario_id, servicio_id, fecha_hora_cita))
+
+            conexion.commit()
+
+            # Obtener el nombre del servicio seleccionado
+            cursor.execute("SELECT Nombre FROM Servicios WHERE ID = %s", (servicio_id,))
+            servicio_nombre = cursor.fetchone()
+            servicio_nombre = servicio_nombre[0] if servicio_nombre else "Servicio desconocido"
+
+            # 4️⃣ Enviar correo de confirmación
+            mensaje = f"""
+            Estimado/a {nombre_usuario},
+
+            Su cita ha sido agendada exitosamente.
+
+            📅 Fecha: {fecha}  
+            ⏰ Hora: {hora}  
+            🐾 Mascota: {self.comboBoxMascota.currentText()}  
+            🏥 Servicio: {servicio_nombre}  
+
+            Por favor, llegue 10 minutos antes.  
+            Si necesita cancelar, comuníquese con la clínica.  
+
+            Atentamente,  
+            Clínica Veterinaria
+            """
+
+            self.enviar_correo(correo_usuario, mensaje)
+
+            QMessageBox.information(None, "Éxito", "Cita asignada y correo de confirmación enviado.")
+
+        except mysql.connector.Error as err:
+            QMessageBox.critical(None, "Error", f"No se pudo asignar la cita: {err}")
+
+        finally:
+            if cursor:
+                cursor.close()
+            if conexion:
+                conexion.close()
+
+
+    def abrir_detalles_cita(self):
+        """Abre la ventana de detalles de la cita con la información de la fila seleccionada."""
+        fila = self.tableWidgetListaCitas.currentRow()
+
+        if fila == -1:
+            QtWidgets.QMessageBox.warning(None, "Advertencia", "Seleccione una cita para ver los detalles.")
             return
 
-        conexion = connect_to_database()
-        cursor = conexion.cursor()
+        # Obtener los valores de la fila seleccionada
+        self.lineEditCedulaDetallesCita.setText(self.tableWidgetListaCitas.item(fila, 1).text())  # Cédula
+        self.lineEditNombreDetallesCita.setText(self.tableWidgetListaCitas.item(fila, 2).text())  # Nombre cliente
+        self.lineEditNombreMascotaCita.setText(self.tableWidgetListaCitas.item(fila, 3).text())  # Mascota
+        self.comboBoxTipoEspecieCitas.setCurrentText(self.tableWidgetListaCitas.item(fila, 4).text())  # Especie
+        self.lineEditRazaCita.setText(self.tableWidgetListaCitas.item(fila, 5).text())  # Raza
+        self.lineEditServicioDetallesCita.setText(self.tableWidgetListaCitas.item(fila, 6).text())  # Servicio
 
-        query = """
-            INSERT INTO Tarifas (ServicioID, Horario, Precio)
-            VALUES ((SELECT ID FROM Servicios WHERE Nombre = %s), %s, %s)
-        """
-        cursor.execute(query, (servicio, horario, tarifa))
-        conexion.commit()
+        # Separar fecha y hora
+        fecha_hora = self.tableWidgetListaCitas.item(fila, 7).text().split(" ")
+        self.lineEditFechaCita.setText(fecha_hora[0])  # Fecha
+        self.lineEditHoraCita.setText(fecha_hora[1])  # Hora
 
-        cursor.close()
-        conexion.close()
+        self.lineEditEstadoCita.setText(self.tableWidgetListaCitas.item(fila, 8).text())  # Estado
 
-        QtWidgets.QMessageBox.information(None, "Éxito", f"Tarifa agregada correctamente: ${tarifa:,.0f} COP")
-        self.mostrar_tarifas()  # Actualizar la tabla
+        # Bloquear edición de los campos
+        for widget in [
+            self.lineEditCedulaDetallesCita,
+            self.lineEditNombreDetallesCita,
+            self.lineEditNombreMascotaCita,
+            self.lineEditRazaCita,
+            self.lineEditServicioDetallesCita,
+            self.lineEditFechaCita,
+            self.lineEditHoraCita,
+            self.lineEditEstadoCita
+        ]:
+            widget.setReadOnly(True)  # Bloquear edición en QLineEdit
 
-    def mostrar_tarifas(self):
-        """Carga y muestra las tarifas en tableWidgetTarifas con formato en pesos colombianos."""
-        conexion = connect_to_database()
-        cursor = conexion.cursor()
+        # Deshabilitar QComboBox
 
-        query = """
-            SELECT t.ID, s.Nombre, t.Horario, t.Precio
-            FROM Tarifas t
-            JOIN Servicios s ON t.ServicioID = s.ID
-            ORDER BY s.Nombre, t.Horario
-        """
-        cursor.execute(query)
-        tarifas = cursor.fetchall()
+        # Cambiar a la ventana de detalles de la cita
+        self.stackedWidget.setCurrentIndex(7)
 
-        self.tableWidgetTarifas.setRowCount(len(tarifas))
-        self.tableWidgetTarifas.setColumnCount(4)
-        self.tableWidgetTarifas.setHorizontalHeaderLabels(["ID", "Servicio", "Horario", "Precio (COP)"])
+    def cancelar_cita(self):
+        """Permite cancelar la cita seleccionada."""
+        fila = self.tableWidgetListaCitas.currentRow()
 
-        self.tableWidgetTarifas.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-        self.tableWidgetTarifas.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
-        self.tableWidgetTarifas.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
-        self.tableWidgetTarifas.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
-
-        for fila, tarifa in enumerate(tarifas):
-            for columna, dato in enumerate(tarifa):
-                if columna == 3:  # Columna de precio
-                    dato = f"${int(dato):,} COP"  # Formato de moneda
-                item = QtWidgets.QTableWidgetItem(str(dato))
-                item.setTextAlignment(Qt.AlignCenter)
-                self.tableWidgetTarifas.setItem(fila, columna, item)
-
-        cursor.close()
-        conexion.close()
-
-
-    def eliminar_tarifa(self):
-        """Elimina la tarifa seleccionada en la tabla."""
-        fila_seleccionada = self.tableWidgetTarifas.currentRow()
-        
-        if fila_seleccionada == -1:
-            QtWidgets.QMessageBox.warning(None, "Advertencia", "Seleccione una tarifa para eliminar.")
+        if fila == -1:
+            QtWidgets.QMessageBox.warning(None, "Advertencia", "Seleccione una cita para cancelar.")
             return
 
-        tarifa_id = self.tableWidgetTarifas.item(fila_seleccionada, 0).text()
+        cita_id = self.tableWidgetListaCitas.item(fila, 0).text()  # Obtener el ID de la cita
 
         respuesta = QtWidgets.QMessageBox.question(
-            None, "Confirmar eliminación", 
-            "¿Está seguro de que desea eliminar esta tarifa?", 
+            None, "Confirmar cancelación", 
+            "¿Está seguro de que desea cancelar esta cita?", 
             QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No
         )
 
         if respuesta == QtWidgets.QMessageBox.No:
             return
 
-        conexion = connect_to_database()
-        cursor = conexion.cursor()
+        try:
+            conexion = connect_to_database()
+            cursor = conexion.cursor()
 
-        query = "DELETE FROM Tarifas WHERE ID = %s"
-        cursor.execute(query, (tarifa_id,))
-        conexion.commit()
+            query = "UPDATE Citas SET Estado = 'Cancelada' WHERE ID = %s"
+            cursor.execute(query, (cita_id,))
+            conexion.commit()
 
-        cursor.close()
-        conexion.close()
+            QtWidgets.QMessageBox.information(None, "Éxito", "Cita cancelada correctamente.")
 
-        QtWidgets.QMessageBox.information(None, "Éxito", "Tarifa eliminada correctamente.")
-        self.mostrar_tarifas()  # Actualizar la tabla
+            # Recargar la tabla de citas
+            self.cargar_todas_las_citas()
+
+        except mysql.connector.Error as err:
+            QtWidgets.QMessageBox.critical(None, "Error", f"No se pudo cancelar la cita: {err}")
+
+        finally:
+            if cursor:
+                cursor.close()
+            if conexion:
+                conexion.close()

@@ -4,6 +4,7 @@ import mysql.connector
 from captcha import CaptchaWindow
 from Inicio import Ui_Form as Ui_Login 
 from GestionAdmin import Ui_Form as Ui_Admin
+from GestionRecepcionista import Ui_Form as Ui_Recepcionista
 from olvidarContraseña import Ui_Dialog as Ui_RecuperarContrasena
 import bcrypt
 import socket
@@ -170,6 +171,8 @@ class MainWindow(QtWidgets.QDialog, Ui_Login):
 
         if self.user_role == 'Administrador':
             self.open_admin_window()
+        elif self.user_role =="Recepcionista":
+            self.open_recepcionista_window()
             
     def open_admin_window(self):
      self.admin_window = QtWidgets.QMainWindow()  # Crea una nueva ventana
@@ -178,6 +181,13 @@ class MainWindow(QtWidgets.QDialog, Ui_Login):
      self.admin_window.show()
      self.close()
 
+    def open_recepcionista_window(self):
+     self.recepcionista_window = QtWidgets.QMainWindow()  # Crea una nueva ventana
+     self.ui = Ui_Recepcionista()  # Instancia la interfaz
+     self.ui.setupUi(self.recepcionista_window)  # Aplica la UI a la ventana
+     self.recepcionista_window.show()
+     self.close()
+     
     def openForgotPasswordWindow(self):
         # Crear una nueva instancia de la ventana de recuperación de contraseña
          self.recover_password_window = QtWidgets.QDialog()

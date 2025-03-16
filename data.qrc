@@ -1,5 +1,9 @@
 <RCC>
   <qresource prefix="images">
+    <file>images/carro.png</file>
+    <file>images/cita-medica.png</file>
+    <file>images/diagnostico.png</file>
+    <file>images/metodo-de-pago.png</file>
     <file>images/agregar-usuario.png</file>
     <file>images/casa-icono-silueta.png</file>
     <file>images/cliente.png</file>
