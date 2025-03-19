@@ -2271,7 +2271,7 @@ class Ui_Form(object):
 
             # 8️⃣ Confirmación
             QMessageBox.information(None, "Éxito", "Cliente registrado correctamente.")
-
+            self.cargar_usuarios_y_mascotas()
             # 9️⃣ Limpiar campos
             self.lineEditUsuario.clear()
             self.lineEditContrasenia.clear()
@@ -2925,6 +2925,7 @@ class Ui_Form(object):
             self.enviar_correo(correo_usuario, mensaje)
 
             QMessageBox.information(None, "Éxito", "Cita asignada y correo de confirmación enviado.")
+            self.cargar_todas_las_citas()
 
         except mysql.connector.Error as err:
             QMessageBox.critical(None, "Error", f"No se pudo asignar la cita: {err}")
