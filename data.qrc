@@ -1,5 +1,9 @@
 <RCC>
   <qresource prefix="images">
+    <file>images/poder.png</file>
+    <file>images/cerrar-sesion.png</file>
+    <file>images/pata.png</file>
+    <file>images/usuario-de-perfil.png</file>
     <file>images/carro.png</file>
     <file>images/cita-medica.png</file>
     <file>images/diagnostico.png</file>

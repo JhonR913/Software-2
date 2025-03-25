@@ -5,6 +5,8 @@ from captcha import CaptchaWindow
 from Inicio import Ui_Form as Ui_Login 
 from GestionAdmin import Ui_Form as Ui_Admin
 from GestionRecepcionista import Ui_Form as Ui_Recepcionista
+from GestionCliente import Ui_Form as Ui_Cliente
+from GestionVeterinario import Ui_Form as Ui_Veterinario
 from olvidarContraseña import Ui_Dialog as Ui_RecuperarContrasena
 import bcrypt
 import socket
@@ -173,6 +175,10 @@ class MainWindow(QtWidgets.QDialog, Ui_Login):
             self.open_admin_window()
         elif self.user_role =="Recepcionista":
             self.open_recepcionista_window()
+        elif self.user_role =="Cliente":
+            self.open_cliente_window()
+        elif self.user_role =="Veterinario":
+            self.open_veterinario_window()    
             
     def open_admin_window(self):
      self.admin_window = QtWidgets.QMainWindow()  # Crea una nueva ventana
@@ -186,6 +192,20 @@ class MainWindow(QtWidgets.QDialog, Ui_Login):
      self.ui = Ui_Recepcionista()  # Instancia la interfaz
      self.ui.setupUi(self.recepcionista_window)  # Aplica la UI a la ventana
      self.recepcionista_window.show()
+     self.close()
+     
+    def open_cliente_window(self):
+     self.cliente_window = QtWidgets.QMainWindow()  # Crea una nueva ventana
+     self.ui = Ui_Cliente()  # Instancia la interfaz
+     self.ui.setupUi(self.cliente_window)  # Aplica la UI a la ventana
+     self.cliente_window.show()
+     self.close()
+
+    def open_veterinario_window(self):
+     self.veterinario_window = QtWidgets.QMainWindow()  # Crea una nueva ventana
+     self.ui = Ui_Veterinario()  # Instancia la interfaz
+     self.ui.setupUi(self.veterinario_window)  # Aplica la UI a la ventana
+     self.veterinario_window.show()
      self.close()
      
     def openForgotPasswordWindow(self):
