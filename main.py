@@ -185,28 +185,43 @@ class MainWindow(QtWidgets.QDialog, Ui_Login):
      self.ui = Ui_Admin()  # Instancia la interfaz
      self.ui.setupUi(self.admin_window)  # Aplica la UI a la ventana
      self.admin_window.show()
-     self.close()
-
+     self.hide()  # Ocultar el login
+     self.admin_window.closeEvent = lambda event: self.reopen_login(event)
+     self.limpiar_campos()
     def open_recepcionista_window(self):
      self.recepcionista_window = QtWidgets.QMainWindow()  # Crea una nueva ventana
      self.ui = Ui_Recepcionista()  # Instancia la interfaz
      self.ui.setupUi(self.recepcionista_window)  # Aplica la UI a la ventana
      self.recepcionista_window.show()
-     self.close()
+     self.hide()  # Ocultar el login
+     self.recepcionista_window.closeEvent = lambda event: self.reopen_login(event)
+     self.limpiar_campos()
+     
      
     def open_cliente_window(self):
      self.cliente_window = QtWidgets.QMainWindow()  # Crea una nueva ventana
      self.ui = Ui_Cliente()  # Instancia la interfaz
+     self.ui.client_id = self.user_id
      self.ui.setupUi(self.cliente_window)  # Aplica la UI a la ventana
      self.cliente_window.show()
-     self.close()
+     self.hide()  # Ocultar el login
+     self.cliente_window.closeEvent = lambda event: self.reopen_login(event)
+     self.limpiar_campos()
+    
+    def reopen_login(self, event):
+     """Vuelve a mostrar la ventana de login cuando se cierra la ventana del cliente."""
+     self.show()  # Reaparece la ventana de login
+     event.accept()  # Permite que la ventana del cliente se cierre correctamente
 
     def open_veterinario_window(self):
      self.veterinario_window = QtWidgets.QMainWindow()  # Crea una nueva ventana
      self.ui = Ui_Veterinario()  # Instancia la interfaz
+     self.ui.client_id = self.user_id
      self.ui.setupUi(self.veterinario_window)  # Aplica la UI a la ventana
      self.veterinario_window.show()
-     self.close()
+     self.hide()  # Ocultar el login
+     self.veterinario_window.closeEvent = lambda event: self.reopen_login(event)
+     self.limpiar_campos()
      
     def openForgotPasswordWindow(self):
         # Crear una nueva instancia de la ventana de recuperación de contraseña

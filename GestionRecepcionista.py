@@ -16,8 +16,9 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from PyQt5.QtWidgets import (
-    QTableWidgetItem, QHeaderView, QAbstractItemView, QMessageBox
+    QTableWidgetItem, QHeaderView, QAbstractItemView, QMessageBox,QAbstractSpinBox
 )
+
 
 def connect_to_database():
     return mysql.connector.connect(
@@ -169,7 +170,7 @@ class Ui_Form(object):
 "    background-color: #a4a8a5; /* Color del botón */\n"
 "    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
 "    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
-"    image:url(:/images/images/diagnostico.png); /* Imagen en el botón */\n"
+"    image:url(:/images/images/poder.png); /* Imagen en el botón */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -2062,6 +2063,14 @@ class Ui_Form(object):
         self.pushButtonAgregarMascota.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
         self.pushButtonRegistrarMascota.clicked.connect(self.registrar_mascota)
         self.pushButtonRegresarMascota.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
+        self.pushButtonRegresarCitas.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+        self.pushButtonRegresarVentas.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+        self.pushButtonRegresarPagos.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+        self.pushButtonRegresarNuevaCita.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(5))
+        self.pushButtonRegresarDetalles.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
+        self.pushButtonRegresarLista.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
+        
+        
         self.cargar_datos_combobox()
         self.cargar_lista_usuarios_mascotas()
         self.llenar_combo_especies()
@@ -2077,8 +2086,15 @@ class Ui_Form(object):
         self.cargar_todas_las_citas()
         self.pushButtonDetallesCita.clicked.connect(self.abrir_detalles_cita)
         self.pushButtonCancelarCita.clicked.connect(self.cancelar_cita)
-
-
+        self.pushButtonComprar.clicked.connect(self.realizar_compra)
+        self.pushButtonTarifaHorario.clicked.connect(self.agregar_producto_a_venta)
+        self.llenar_combobox_clientes()
+        self.cargar_productos()       
+        self.cargar_tarifa_producto()
+        self.cargar_pagos()
+        self.pushButtonHistoria.clicked.connect(self.cerrar_ventana)
+         
+          
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Veterinaria"))
@@ -2088,7 +2104,7 @@ class Ui_Form(object):
         self.label_7.setText(_translate("Form", "Citas"))
         self.label_8.setText(_translate("Form", "Ventas"))
         self.label_9.setText(_translate("Form", "Pagos"))
-        self.label_10.setText(_translate("Form", "Historia Clinica"))
+        self.label_10.setText(_translate("Form", "Cerrar Sesión"))
         self.label_3.setText(_translate("Form", "Dinero En Caja Mes "))
         self.label_13.setText(_translate("Form", "Citas Completadas"))
         self.label_15.setText(_translate("Form", "Citas Agendadas"))
@@ -2209,7 +2225,7 @@ class Ui_Form(object):
         self.pushButtonCitas.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(5))
         self.pushButtonVentas.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(8))
         self.pushButtonPagos.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(9))
-        self.pushButtonHistoria.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(10))
+        
 
 
     def guardar_usuario(self):
@@ -3018,3 +3034,305 @@ class Ui_Form(object):
                 cursor.close()
             if conexion:
                 conexion.close()
+
+
+    def llenar_combobox_clientes(self):
+        """Llena el comboBoxClienteVentas con todos los clientes registrados en la base de datos, filtrando por el rol 'cliente'."""
+        
+        try:
+            # 1️⃣ Conectar a la base de datos
+            conexion = connect_to_database()
+            cursor = conexion.cursor()
+
+            # 2️⃣ Consultar todos los clientes en la tabla `Usuarios` y `DatosUsuarios`, filtrando por el rol 'cliente'
+            query = """
+                SELECT u.ID, d.Nombre
+                FROM Usuarios u
+                JOIN DatosUsuarios d ON u.ID = d.UsuarioID
+                WHERE u.Rol = 'Cliente'  # Filtrar solo los usuarios con el rol 'Cliente'
+            """
+            cursor.execute(query)
+            clientes = cursor.fetchall()
+
+            # 3️⃣ Limpiar el comboBox antes de agregar los nuevos elementos
+            self.comboBoxClienteVentas.clear()
+
+            # 4️⃣ Agregar los clientes al comboBox
+            for cliente in clientes:
+                usuario_id, nombre_cliente = cliente
+                self.comboBoxClienteVentas.addItem(nombre_cliente, usuario_id)
+
+        except mysql.connector.Error as err:
+            QMessageBox.critical(None, "Error", f"Error al cargar los clientes: {err}")
+
+        finally:
+            # Cerrar el cursor y la conexión si fueron creados
+            if cursor:
+                cursor.close()
+            if conexion:
+                conexion.close()
+
+
+
+    def cargar_productos(self):
+        """Carga los productos disponibles en comboBoxProducto y configura evento de cambio."""
+        
+        try:
+            conexion = connect_to_database()
+            cursor   = conexion.cursor()
+
+            cursor.execute("SELECT ID, Nombre FROM Servicios")
+            productos = cursor.fetchall()
+
+            self.comboBoxProducto.clear()
+            for producto in productos:
+                self.comboBoxProducto.addItem(producto[1], producto[0])
+
+            # 📌 Conectar evento de cambio de selección
+            self.comboBoxProducto.currentIndexChanged.connect(self.cargar_tarifa_producto)
+
+        except mysql.connector.Error as e:
+            QMessageBox.critical(None, "Error", f"No se pudieron cargar los productos: {e}")
+
+        finally:
+            cursor.close()
+            conexion.close()
+
+    def cargar_tarifa_producto(self):
+        """Carga la tarifa del producto seleccionado en doubleSpinBoxTarifa (solo lectura)."""
+        
+        producto_id = self.comboBoxProducto.currentData()
+        
+        if not producto_id:
+            print("⚠️ No se ha seleccionado ningún producto.")
+            return
+
+        try:
+            # 1️⃣ Conectar a la base de datos
+            conexion = connect_to_database()
+            cursor   = conexion.cursor()
+
+            print(f"🔍 Buscando tarifa para ServicioID: {producto_id}")  # Depuración
+
+            # 2️⃣ Consultar la tarifa más reciente
+            query = """
+                SELECT Precio 
+                FROM Tarifas 
+                WHERE ServicioID = %s 
+                ORDER BY ID DESC 
+                LIMIT 1
+            """
+            cursor.execute(query, (producto_id,))
+            resultado = cursor.fetchone()
+
+            # 3️⃣ Si se encuentra la tarifa, actualizar el campo
+            if resultado:
+                precio = resultado[0]
+                print(f"✅ Tarifa encontrada: {precio}")  # Depuración
+                
+                self.doubleSpinBoxTarifa.setDecimals(2)   # ✅ Permitir decimales
+                self.doubleSpinBoxTarifa.setMaximum(9999999.99)  # ✅ Evitar límites pequeños
+                self.doubleSpinBoxTarifa.setValue(precio)
+                self.doubleSpinBoxTarifa.setReadOnly(True)  # 🔒 Bloquear edición
+                self.doubleSpinBoxTarifa.setButtonSymbols(QAbstractSpinBox.NoButtons)  # 🔍 Ocultar botones
+                self.doubleSpinBoxTarifa.setLocale(QtCore.QLocale(QtCore.QLocale.English))  # 🌍 Asegurar formato numérico
+            
+            else:
+                print("⚠️ No se encontró tarifa asociada.")
+                self.doubleSpinBoxTarifa.setValue(0)
+
+        except mysql.connector.Error as e:
+            QMessageBox.critical(None, "Error", f"No se pudo cargar la tarifa: {e}")
+
+        finally:
+            cursor.close()
+            conexion.close()
+
+    
+    def agregar_producto_a_venta(self):
+        """Agrega el producto seleccionado a tableWidgetVentas y configura la tabla si es necesario."""
+
+        producto_nombre = self.comboBoxProducto.currentText()
+        producto_id     = self.comboBoxProducto.currentData()
+        precio          = self.doubleSpinBoxTarifa.value()
+        cantidad        = 1  # Se puede permitir modificar la cantidad en la interfaz
+        
+        if not producto_id:
+            QMessageBox.warning(None, "Advertencia", "Seleccione un producto válido.")
+            return
+
+        # 🔹 Configurar la tabla si no tiene columnas definidas
+        if self.tableWidgetVentas.columnCount() == 0:
+            self.tableWidgetVentas.setColumnCount(3)
+            self.tableWidgetVentas.setHorizontalHeaderLabels(["Producto", "Cantidad", "Precio"])
+            self.tableWidgetVentas.setAlternatingRowColors(True)
+            self.tableWidgetVentas.setSelectionBehavior(QAbstractItemView.SelectRows)
+            self.tableWidgetVentas.setEditTriggers(QAbstractItemView.NoEditTriggers)  # Evita edición manual
+            self.tableWidgetVentas.horizontalHeader().setStretchLastSection(True)
+
+        row_position = self.tableWidgetVentas.rowCount()
+        self.tableWidgetVentas.insertRow(row_position)
+
+        self.tableWidgetVentas.setItem(row_position, 0, QTableWidgetItem(producto_nombre))
+        self.tableWidgetVentas.setItem(row_position, 1, QTableWidgetItem(str(cantidad)))
+        self.tableWidgetVentas.setItem(row_position, 2, QTableWidgetItem(f"{precio:,.2f} pesos"))
+
+        # 🔹 Ajustar el tamaño de las columnas automáticamente
+        self.tableWidgetVentas.resizeColumnsToContents()
+        self.tableWidgetVentas.resizeRowsToContents()
+
+        # 🔹 Asegurar que la tabla sea visible
+        self.tableWidgetVentas.viewport().update()
+
+
+    def realizar_compra(self):
+        """Registra la venta en la base de datos y permite elegir el método de pago."""
+
+        # Verificar si se ha seleccionado un cliente en el comboBox
+        cliente_seleccionado = self.comboBoxClienteVentas.currentData()
+        if not cliente_seleccionado:
+            QMessageBox.warning(None, "Advertencia", "No se ha seleccionado un cliente.")
+            return
+
+        if self.tableWidgetVentas.rowCount() == 0:
+            QMessageBox.warning(None, "Advertencia", "No hay servicios en la venta.")
+            return
+
+        # 🚀 Selección del método de pago con QMessageBox
+        msg_box = QMessageBox()
+        msg_box.setWindowTitle("Seleccionar método de pago")
+        msg_box.setText("¿Con qué método de pago desea realizar la compra?")
+        msg_box.setIcon(QMessageBox.Question)
+
+        btn_efectivo = msg_box.addButton("Efectivo", QMessageBox.AcceptRole)
+        btn_tarjeta  = msg_box.addButton("Tarjeta", QMessageBox.AcceptRole)
+        btn_cancelar = msg_box.addButton("Cancelar", QMessageBox.RejectRole)
+
+        msg_box.exec_()
+
+        if msg_box.clickedButton() == btn_efectivo:
+            metodo_pago = "Efectivo"
+        elif msg_box.clickedButton() == btn_tarjeta:
+            metodo_pago = "Tarjeta"
+        else:
+            return  # 🚨 Si el usuario cancela, no se hace la compra
+
+        try:
+            conexion = connect_to_database()
+            cursor   = conexion.cursor()
+
+            usuario_id = cliente_seleccionado  # Usar el ID del cliente seleccionado en el comboBox
+
+            total    = 0
+            detalles = []
+
+            for row in range(self.tableWidgetVentas.rowCount()):
+                item_nombre   = self.tableWidgetVentas.item(row, 0)
+                item_cantidad = self.tableWidgetVentas.item(row, 1)
+                item_precio   = self.tableWidgetVentas.item(row, 2)
+
+                if not item_nombre or not item_cantidad or not item_precio:
+                    continue  # 🔍 Evitar errores por celdas vacías
+                
+                servicio_nombre = item_nombre.text()
+                cantidad        = int(item_cantidad.text())
+                precio_unitario = float(item_precio.text().replace(" pesos", "").replace(",", ""))
+                total          += precio_unitario * cantidad
+
+                cursor.execute("SELECT ID FROM Servicios WHERE Nombre = %s", (servicio_nombre,))
+                servicio_id = cursor.fetchone()
+
+                if servicio_id:
+                    detalles.append((servicio_id[0], cantidad, precio_unitario))
+
+            # Insertar la venta con el método de pago seleccionado
+            cursor.execute("INSERT INTO Ventas (UsuarioID, Total, MetodoPago) VALUES (%s, %s, %s)", 
+                           (usuario_id, total, metodo_pago))
+            venta_id = cursor.lastrowid
+
+            # Insertar los detalles de la venta
+            for servicio_id, cantidad, precio_unitario in detalles:
+                cursor.execute(""" 
+                    INSERT INTO DetallesVenta (VentaID, ServicioID, Cantidad, PrecioUnitario)
+                    VALUES (%s, %s, %s, %s)
+                """, (venta_id, servicio_id, cantidad, precio_unitario))
+
+            conexion.commit()
+            self.tableWidgetVentas.setRowCount(0)
+            self.cargar_pagos()
+            QMessageBox.information(None, "Compra realizada", f"Total a pagar: {total:,.2f} pesos\nMétodo de pago: {metodo_pago}")
+
+        except mysql.connector.Error as e:
+            QMessageBox.critical(None, "Error", f"No se pudo completar la compra: {e}")
+
+        finally:
+            cursor.close()
+            conexion.close()
+
+
+    def cargar_pagos(self):
+        """Carga los pagos registrados en la base de datos y los muestra en tableWidgetPagos."""
+
+        try:
+            # 1️⃣ Conectar a la base de datos
+            conexion = connect_to_database()
+            cursor = conexion.cursor()
+
+            # 2️⃣ Consultar los pagos en la tabla `Ventas`, uniendo con las tablas `Usuarios` y `DetallesVenta`
+            query = """
+                SELECT v.ID AS VentaID, u.NombreUsuario, v.Total, v.MetodoPago, v.Estado, v.FechaHora
+                FROM Ventas v
+                JOIN Usuarios u ON v.UsuarioID = u.ID
+            """
+            cursor.execute(query)
+            pagos = cursor.fetchall()
+
+            # 3️⃣ Limpiar la tabla antes de agregar los nuevos datos
+            self.tableWidgetPagos.setRowCount(0)
+
+            # 4️⃣ Configurar los títulos de las columnas
+            self.tableWidgetPagos.setColumnCount(6)
+            self.tableWidgetPagos.setHorizontalHeaderLabels(["VentaID", "Cliente", "Total", "Método de Pago", "Estado", "Fecha y Hora"])
+
+            # 5️⃣ Ajustar el tamaño de las columnas
+            self.tableWidgetPagos.horizontalHeader().setSectionResizeMode(0, QHeaderView.Stretch)  # VentaID
+            self.tableWidgetPagos.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)  # Cliente
+            self.tableWidgetPagos.horizontalHeader().setSectionResizeMode(2, QHeaderView.Stretch)  # Total
+            self.tableWidgetPagos.horizontalHeader().setSectionResizeMode(3, QHeaderView.Stretch)  # Método de Pago
+            self.tableWidgetPagos.horizontalHeader().setSectionResizeMode(4, QHeaderView.Stretch)  # Estado
+            self.tableWidgetPagos.horizontalHeader().setSectionResizeMode(5, QHeaderView.Stretch)  # Fecha y Hora
+
+            # 6️⃣ Desactivar la selección múltiple de filas
+            self.tableWidgetPagos.setSelectionMode(QAbstractItemView.SingleSelection)
+            self.tableWidgetPagos.setSelectionBehavior(QAbstractItemView.SelectRows)
+            self.tableWidgetPagos.setEditTriggers(QAbstractItemView.NoEditTriggers)
+
+            # 7️⃣ Llenar el tableWidget con los pagos obtenidos
+            for pago in pagos:
+                fila = self.tableWidgetPagos.rowCount()
+                self.tableWidgetPagos.insertRow(fila)
+
+                venta_id, nombre_cliente, total, metodo_pago, estado, fecha_hora = pago
+
+                # Insertar los valores de cada pago en la fila
+                self.tableWidgetPagos.setItem(fila, 0, QTableWidgetItem(str(venta_id)))
+                self.tableWidgetPagos.setItem(fila, 1, QTableWidgetItem(nombre_cliente))
+                self.tableWidgetPagos.setItem(fila, 2, QTableWidgetItem(f"{total:,.2f} pesos"))
+                self.tableWidgetPagos.setItem(fila, 3, QTableWidgetItem(metodo_pago))
+                self.tableWidgetPagos.setItem(fila, 4, QTableWidgetItem(estado))
+                self.tableWidgetPagos.setItem(fila, 5, QTableWidgetItem(str(fecha_hora)))
+
+        except mysql.connector.Error as err:
+            QMessageBox.critical(None, "Error", f"Error al cargar los pagos: {err}")
+
+        finally:
+            # Cerrar el cursor y la conexión si fueron creados
+            if cursor:
+                cursor.close()
+            if conexion:
+                conexion.close()
+
+    def cerrar_ventana(self):
+        widget = QtWidgets.QApplication.activeWindow()  # Obtiene la ventana activa
+        if widget:
+          widget.close()  # Cierra la ventana actual

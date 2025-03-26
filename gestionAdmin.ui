@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1254</width>
+    <width>1257</width>
     <height>822</height>
    </rect>
   </property>
@@ -388,7 +388,7 @@ QPushButton:pressed {
     <number>1</number>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="pageGeneral">
     <widget class="QWidget" name="widgetDinero" native="true">
@@ -913,6 +913,53 @@ image: url(:images/images/pesos.png);</string>
      </property>
      <property name="text">
       <string>Miercoles 19 de febrero 2025</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonCerrar">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>570</y>
+       <width>101</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #a4a8a5; /* Color del botón */
+    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */
+    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */
+    
+	image: url(:/images/images/poder.png);
+}
+
+QPushButton:hover {
+    background-color: #b0b5b0; /* Color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #8f938f; /* Color al hacer clic */
+}
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_31">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>660</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Cerrar sesión</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>

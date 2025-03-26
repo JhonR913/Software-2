@@ -22,10 +22,11 @@ def connect_to_database():
     )
 
 
+
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(1254, 822)
+        Form.resize(1257, 822)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -422,6 +423,30 @@ class Ui_Form(object):
         font.setPointSize(12)
         self.labelFecha.setFont(font)
         self.labelFecha.setObjectName("labelFecha")
+        self.pushButtonCerrar = QtWidgets.QPushButton(self.pageGeneral)
+        self.pushButtonCerrar.setGeometry(QtCore.QRect(370, 570, 101, 81))
+        self.pushButtonCerrar.setStyleSheet("QPushButton {\n"
+"    background-color: #a4a8a5; /* Color del botón */\n"
+"    border-radius: 15px;       /* Borde redondeado, ajusta el valor para más curvatura */\n"
+"    border: 2px solid #808080; /* Opcional: agrega un borde de color gris */\n"
+"    \n"
+"    image: url(:/images/images/poder.png);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #b0b5b0; /* Color al pasar el mouse */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #8f938f; /* Color al hacer clic */\n"
+"}\n"
+"")
+        self.pushButtonCerrar.setText("")
+        self.pushButtonCerrar.setObjectName("pushButtonCerrar")
+        self.label_31 = QtWidgets.QLabel(self.pageGeneral)
+        self.label_31.setGeometry(QtCore.QRect(380, 660, 81, 31))
+        self.label_31.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_31.setObjectName("label_31")
         self.stackedWidget.addWidget(self.pageGeneral)
         self.pageAgregarUsuarios = QtWidgets.QWidget()
         self.pageAgregarUsuarios.setObjectName("pageAgregarUsuarios")
@@ -1190,9 +1215,6 @@ class Ui_Form(object):
 "")
         self.doubleSpinBoxTarifa.setObjectName("doubleSpinBoxTarifa")
         self.formLayout_6.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.doubleSpinBoxTarifa)
-        self.doubleSpinBoxTarifa.setDecimals(0)  # No permitir decimales
-        self.doubleSpinBoxTarifa.setMaximum(10000000)  # Ajusta el límite según necesidad
-        self.doubleSpinBoxTarifa.setSingleStep(1000)  # Incremento de 1000 en 1000
         self.pushButtonTarifaHorario = QtWidgets.QPushButton(self.formLayoutWidget_6)
         font = QtGui.QFont()
         font.setPointSize(13)
@@ -1877,7 +1899,7 @@ class Ui_Form(object):
         self.widgetBarraVertical.raise_()
         self.widgetTitulo.raise_()
         self.stackedWidget.raise_()
-       
+      
         # Self botones
         self.comboBoxEstadoRegistro.currentIndexChanged.connect(self.cargar_intentos_acceso)
         self.lineEditUsuarioUsuarios_2.textChanged.connect(self.cargar_intentos_acceso)
@@ -1912,9 +1934,11 @@ class Ui_Form(object):
         self.cargar_servicios()
         self.cargar_horarios()
         self.mostrar_tarifas()
+        self.pushButtonCerrar.clicked.connect(self.cerrar_ventana)
         self.retranslateUi(Form)
         self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Form)
+
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
@@ -1934,6 +1958,7 @@ class Ui_Form(object):
         self.label_23.setText(_translate("Form", "Gatos"))
         self.label_20.setText(_translate("Form", "Moneda: COP"))
         self.labelFecha.setText(_translate("Form", "Miercoles 19 de febrero 2025"))
+        self.label_31.setText(_translate("Form", "Cerrar sesión"))
         self.label_11.setText(_translate("Form", "Datos Propietario:"))
         self.label_24.setText(_translate("Form", "Usuario:"))
         self.label_93.setText(_translate("Form", "Contraseña:"))
@@ -2676,3 +2701,8 @@ class Ui_Form(object):
 
         QtWidgets.QMessageBox.information(None, "Éxito", "Tarifa eliminada correctamente.")
         self.mostrar_tarifas()  # Actualizar la tabla
+
+    def cerrar_ventana(self):
+        widget = QtWidgets.QApplication.activeWindow()  # Obtiene la ventana activa
+        if widget:
+          widget.close()  # Cierra la ventana actual
