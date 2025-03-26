@@ -2062,14 +2062,14 @@ class Ui_Form(object):
         self.pushButtonCrear.clicked.connect(self.guardar_usuario)
         self.pushButtonAgregarMascota.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
         self.pushButtonRegistrarMascota.clicked.connect(self.registrar_mascota)
-        self.pushButtonRegresarMascota.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
+        self.pushButtonRegresarMascota.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
         self.pushButtonRegresarCitas.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
         self.pushButtonRegresarVentas.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
         self.pushButtonRegresarPagos.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
         self.pushButtonRegresarNuevaCita.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(5))
         self.pushButtonRegresarDetalles.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(3))
         self.pushButtonRegresarLista.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
-        
+
         
         self.cargar_datos_combobox()
         self.cargar_lista_usuarios_mascotas()

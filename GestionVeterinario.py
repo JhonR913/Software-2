@@ -1420,6 +1420,14 @@ class Ui_Form(object):
         self.conectar_boton_abrir_cita_asignada()
         self.conectar_boton_guardar()
         self.pushButtonPagos.clicked.connect(self.cerrar_ventana)
+        self.pushButtonRegresarRegistrar.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+        self.pushButtonRegresarCitas.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+        self.pushButtonRegresarVentas.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(0))
+        self.pushButtonRegresarLista.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
+        self.pushButtonRegresarDetalles.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(2))
+        self.pushButtonRegresarDetallesCita.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(4))
+        
+
         
         self.retranslateUi(Form)
         self.stackedWidget.setCurrentIndex(0)
